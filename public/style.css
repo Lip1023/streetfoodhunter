@@ -1,24 +1,84 @@
 /* colour */
-.white{color:white;}
-.red{color:red;}
-.black{color:black;}
+.green{background-color:green;}
+.red{background-color:red;}
+.yellow{background-color:blue}
+/* position */
+.hidden{display: none;}
 .center{
     display: flex;
-    align-content: center;
     justify-content: center;
+    text-align: center;
+    align-items: center;
 }
-
-body{font-family: 'Playfair Display', serif;}
-
 .roundborder{
     border-radius: 10px;
 }
+.shadowborder{
+    border:rgba(71, 71, 71, 0.315)solid 5px;
+}
 
-#maincontainer{
+body{font-family: 'Playfair Display', serif;}
+/* navbar */
+#dropdown{
+    padding-right: 8rem;
+}
+#dropdownmenu{
+    width: 270px;
+    height: 300px;
+}
+
+
+/* index page */
+.book{
+    border: solid 1px black;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
+    margin: 0;
+}
+
+.screen{
+    border: rgba(128, 128, 128, 0.082) solid;
+    border-radius: 5px;
+    background: rgba(128, 128, 128, 0.082);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 83vh;
+}
+
+#screenvideo{
+    padding: 1rem 0;
+    width: 50%;
+
+}
+
+#foodimage{
+    padding: 1rem 0;
+    width: 50%;
+    filter: brightness(0.9);
+}
+
+.knob{
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.596);
+  font-weight: bold;
+}
+
+.knob:hover{
+    filter: brightness(0.7)
+}
+
+#viewmore{
+text-decoration: none;
+color: rgba(0, 116, 6, 0.842);
 }
 
 /* search page */
@@ -29,25 +89,57 @@ body{font-family: 'Playfair Display', serif;}
 
 
 /* recipe page */
-#book{
-    min-height: 85vh;
-    border: solid 1px black;
-    padding:1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-}
+
 #food{
     width: 45vw;
     height: 100%;
     filter: brightness(0.9);
 }
-.middle p{
-    font-weight: 900;
-    font-size: 1.5rem;
-}
-.middle ul{
-    font-size: 1.25rem;
+
+#recipebox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 83vh;
 }
 
+#commentbox{
+    justify-content: center;
+    margin: 0.75rem;
+}
+#commentform{
+    text-align: center;
+}
+
+/* star rating */
+
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
