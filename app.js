@@ -1,23 +1,20 @@
-var pg = require('pg');
+const pg= require('pg')
 const express = require('express');
 const app = express();
 const hb = require('express-handlebars');
 
+// const knex = require('knex')({
+//     client: 'postgresql',
+//     connection: {
+//         database: "streetfood",
+//         user: "admin",
+//         password: "supersecret"
+//     }
+// });
+// var client = new pg.Client('postgres://xccelerate:password@localhost:5432/bookings');
 
-const knex = require('knex')({
-    client: 'postgresql',
-    connection: {
-        database: "streetfood",
-        user: "admin",
-        password: "supersecret"
-    }
-});
+// client.connect();
 
-var client = new pg.Client('postgres://xccelerate:password@localhost:5432/bookings');
-
-client.connect();
-
-//connecting handlebars
 app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars'); 
 
@@ -28,6 +25,10 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     });
 
     app.get('/recipes', (req, res)=>{
+        res.render('recipeindex' )
+    });
+//hardcoding the id for now
+    app.get('/recipes:1', (req, res)=>{
         res.render('recipe' )
     });
 
@@ -39,4 +40,8 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.get('/mypage', (req, res)=>{
         res.render('mypage' )
     });
+ 
+    app.listen(8080, ()=>{
 
+        console.log(`App is listening to port 8080`);
+    });
