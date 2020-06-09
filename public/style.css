@@ -1,7 +1,8 @@
 /* colour */
-.green{background-color:green;}
-.red{background-color:red;}
+.green{background-color:rgba(0, 128, 0, 0.493);}
+.red{background-color:rgba(255, 0, 0, 0.445);}
 .yellow{background-color:blue}
+.highlight{color: rgb(220, 255, 64);}
 /* position */
 .hidden{display: none;}
 .center{
@@ -20,11 +21,20 @@
 body{font-family: 'Playfair Display', serif;}
 /* navbar */
 #dropdown{
+    
     padding-right: 8rem;
 }
 #dropdownmenu{
     width: 270px;
-    height: 300px;
+   
+}
+
+#welcomeuser{
+padding: 1rem;
+}
+
+.lgicon{
+    width: 3rem;
 }
 
 
@@ -90,6 +100,10 @@ color: rgba(0, 116, 6, 0.842);
 
 /* recipe page */
 
+#recipemain{
+    border: none;
+}
+
 #food{
     width: 45vw;
     height: 100%;
@@ -103,12 +117,46 @@ color: rgba(0, 116, 6, 0.842);
     min-height: 83vh;
 }
 
-#commentbox{
+.commentbox{
     justify-content: center;
     margin: 0.75rem;
+    padding: 2rem;
 }
-#commentform{
+.commentform{
     text-align: center;
+}
+
+.eachrecipe{
+    border: solid 0.5px rgba(128, 128, 128, 0.096);
+    padding: 2rem;
+
+}
+
+.minviewimg{
+    width: 80%;
+}
+
+#filters{
+    margin-bottom: 1rem;
+}
+
+#filters button{
+    margin: 0.25rem;
+}
+
+
+#newrecipe{
+    float: right;
+    width: max-content;
+    height: min-content;
+    margin-top: 3rem;
+}
+
+#sort{
+    float: right;
+    margin-top: 0.75rem;
+    width: min-content;
+
 }
 
 /* star rating */
@@ -143,3 +191,6 @@ color: rgba(0, 116, 6, 0.842);
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+
+
+

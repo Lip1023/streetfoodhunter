@@ -24,13 +24,25 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
         res.render('index' )
     });
 
-    app.get('/recipes', (req, res)=>{
+
+// RECIPE
+//recipe index page
+    app.get('/recipe', (req, res)=>{
         res.render('recipeindex' )
     });
+//adding new recipe
+    app.post('/recipe',(req, res)=>{
+        res.render('newrecipe')
+    });
+//editing recipe
+// app.get('/recipe:1', (req, res)=>{
+//     res.render('editrecipe' )
+// });
 //hardcoding the id for now
-    app.get('/recipes:1', (req, res)=>{
+    app.get('/recipe:1', (req, res)=>{
         res.render('recipe' )
     });
+//
 
     app.get('/search', (req, res)=>{
         res.render('search');
@@ -39,6 +51,10 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
 
     app.get('/mypage', (req, res)=>{
         res.render('mypage' )
+    });
+
+    app.get('/signup', (req, res)=>{
+        res.render('signup' )
     });
  
     app.listen(8080, ()=>{
