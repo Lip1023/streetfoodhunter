@@ -1,8 +1,9 @@
 /* colour */
 .green{background-color:rgba(0, 128, 0, 0.493);}
 .red{background-color:rgba(255, 0, 0, 0.445);}
-.yellow{background-color:blue}
-.highlight{color: rgb(220, 255, 64);}
+.yellow{background-color:rgb(238, 255, 0)}
+.grey{color: rgb(80, 79, 79);}
+.highlight{color: rgb(74, 105, 206);}
 /* position */
 .hidden{display: none;}
 .center{
@@ -19,6 +20,13 @@
 }
 
 body{font-family: 'Playfair Display', serif;}
+.footer{
+font-family: Arial, Helvetica, sans-serif;
+padding: 2rem 8rem;   
+}
+
+
+
 /* navbar */
 #dropdown{
     
@@ -36,6 +44,7 @@ padding: 1rem;
 .lgicon{
     width: 3rem;
 }
+
 
 
 /* index page */
@@ -157,6 +166,22 @@ color: rgba(0, 116, 6, 0.842);
     margin-top: 0.75rem;
     width: min-content;
 
+}
+
+/* my page */
+
+#mypagebox{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.mypagerecipe{
+    border: 1px dotted rgba(159, 187, 184, 0.397);
+    height: min-content;
+    width: fit-content;
 }
 
 /* star rating */

@@ -34,10 +34,10 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.post('/recipe',(req, res)=>{
         res.render('newrecipe')
     });
-//editing recipe
-// app.get('/recipe:1', (req, res)=>{
-//     res.render('editrecipe' )
-// });
+//getting individual recipe by id
+app.get('/recipe:1', (req, res)=>{
+    res.render('' )
+});
 //hardcoding the id for now
     app.get('/recipe:1', (req, res)=>{
         res.render('recipe' )
@@ -49,6 +49,10 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     });
 
 
+
+
+    
+// Mypage
     app.get('/mypage', (req, res)=>{
         res.render('mypage' )
     });
@@ -56,7 +60,13 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.get('/signup', (req, res)=>{
         res.render('signup' )
     });
+
+    app.get('/forgotpassword',(req,res)=>{
+        res.render('forgotpassword')
+    })
  
+
+
     app.listen(8080, ()=>{
 
         console.log(`App is listening to port 8080`);
