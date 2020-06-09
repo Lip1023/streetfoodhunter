@@ -1,8 +1,7 @@
 /* colour */
-.green{background-color:rgba(0, 128, 0, 0.493);}
-.red{background-color:rgba(255, 0, 0, 0.445);}
+.green{background-color:green;}
+.red{background-color:red;}
 .yellow{background-color:blue}
-.highlight{color: rgb(220, 255, 64);}
 /* position */
 .hidden{display: none;}
 .center{
@@ -21,20 +20,11 @@
 body{font-family: 'Playfair Display', serif;}
 /* navbar */
 #dropdown{
-    
     padding-right: 8rem;
 }
 #dropdownmenu{
     width: 270px;
-   
-}
-
-#welcomeuser{
-padding: 1rem;
-}
-
-.lgicon{
-    width: 3rem;
+    height: 300px;
 }
 
 
@@ -117,12 +107,11 @@ color: rgba(0, 116, 6, 0.842);
     min-height: 83vh;
 }
 
-.commentbox{
+#commentbox{
     justify-content: center;
     margin: 0.75rem;
-    padding: 2rem;
 }
-.commentform{
+#commentform{
     text-align: center;
 }
 
@@ -144,18 +133,9 @@ color: rgba(0, 116, 6, 0.842);
     margin: 0.25rem;
 }
 
-
-#newrecipe{
-    float: right;
-    width: max-content;
-    height: min-content;
-    margin-top: 3rem;
-}
-
 #sort{
-    float: right;
-    margin-top: 0.75rem;
-    width: min-content;
+    position: relative;
+    width: fit-content;
 
 }
 
@@ -191,6 +171,3 @@ color: rgba(0, 116, 6, 0.842);
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
-
-
-

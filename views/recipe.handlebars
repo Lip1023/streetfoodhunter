@@ -1,74 +1,50 @@
-<div class="book roundborder cotainer-fluid">
+ <div class="book roundborder cotainer-fluid">
 
-    <div class="left col-sm-12 col-md-6">
-        <img id="food" class="roundborder" src="fishball.jpg" alt="food">
+            <div class="left col-sm-12 col-md-6">
+                <img id="food" class="roundborder" src="fishball.jpg" alt="food">
+            </div>
+
+            <div id="recipebox" class="middle col-sm-12 col-md-6">
+                <!-- 4 -->
+                <h1>Fishball</h1><br>
+                <h3>Difficulty: ★★★☆☆ </h3>
+                <h3>Cooking time: 20minutes </h3>
+                <h3>Ingredients:
+                    <br>Fish 100g, Flour 200g, 1/2 Water</h3><br>
+            <h3>How to:
+                <ul>1. do something</ul>
+                    <ul>2. do something more</ul>
+                    <ul>3. do some thing again</ul>
+                    <ul>4. eat it</ul>
+            </h3>
+
+            </div>
+
+        </div>
     </div>
-
-    <div id="recipebox" class="middle col-sm-12 col-md-6">
-        <!-- 4 -->
-        <br><h1>Fishball</h1><br>
-        <br><h3>Difficulty: ★★★☆☆   </h3>
-        <h3>Cooking time: 20minutes </h3>
-        <h3>Ingredients:
-            <br>Fish 100g, Flour 200g, 1/2 Water</h3><br>
-        <h3>How to:
-            <ul>1. do something</ul>
-            <ul>2. do something more</ul>
-            <ul>3. do some thing again</ul>
-            <ul>4. eat it</ul>
-        </h3>
-
-    </div>
-
-</div>
-</div>
 
 <!-- comment box -->
-<div class="cotainer-fluid book roundborder commentbox">
+    <div class="cotainer-fluid book roundborder" id="commentbox">
 
-    <form class="commentform" action="post">
-        <H1>Share your thoughts about the recipe!</H1><br>
+        <form id="commentform" action="post">
+            <H1>Share your thoughts about the recipe!</H1><br>
+      <div class="form-group">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text">1 star</label>
+              </div>
 
-        <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-
-        <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-        </div>
-
-        <br><input type="submit" name="submit">
+     <br><input type="submit" name="submit" >
 
     </form>
-</div>
-
-{{!-- post own recipe --}}
-<div class="cotainer-fluid book roundborder commentbox">
-
-    <form class="commentform" action="post">
-
-        <h1>Share your own version of the recipe!</h1><br>
-
-        <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="5"></textarea>
-        </div>
-
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile">Upload your food image</label>
-        </div><br>
-
-        <br><input type="submit" name="submit">
-
-    </form>
-
-</div>>
+    </div>
