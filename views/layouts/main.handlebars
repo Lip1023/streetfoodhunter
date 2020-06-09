@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street Food Hunters-Recipes</title>
+    <title>Street Food Hunters-Home</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="../public/style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- icon -->
     <script src="https://kit.fontawesome.com/1959ac8c31.js" crossorigin="anonymous"></script>
 
@@ -34,7 +34,10 @@
 
                 </ul>
 
-
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                </form>
 
 
                 <ul>
@@ -44,29 +47,41 @@
                             My Page
                         </a>
 
-                        <div class="dropdown-menu container-fluid" id="dropdownmenu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu container-fluid " id="dropdownmenu" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="/mypage">My Page</a>
-                            <a class="dropdown-item" href="/mypage">Login with Facebook</a>
+                            <h5 id="welcomeuser" class="justify-content-lg-center form-inline">Welcome Pullip123!</h5>
 
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/mypage">My Page</a>
+                            <a class="dropdown-item" href="/signup">Sign Up</a>
 
+
+                            <div class="dropdown-divider"></div>
+                            <div class="icons justify-content-lg-center form-inline">
+
+                                <img src="t2.png" class="lgicon" alt="twitter">
+                                <img src="g2.png" class="lgicon ml-lg-2" alt="google">
+                            </div>
+                            <div class="dropdown-divider"></div>
                             <form class="justify-content-lg-center form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="ID" aria-label="ID">
+                                <input class="form-control mr-sm-2 my-lg-2" type="search" placeholder="ID"
+                                    aria-label="ID">
 
                                 <input class="form-control mr-sm-2" type="search" placeholder="Password"
                                     aria-label="Password">
 
-                                <button id="login" class="m-n1 btn btn-outline-success my-2 my-sm-0"
-                                    type="submit">Login</button>
+                                <div class="icons mb-lg-4">
 
-                                   <!-- <button id="password" class="m-n1 btn btn-outline-success my-2 my-sm-0"><a href="#"> Forgot
-                                        password</a>
-                                </button> -->
+                                    <button id="forgotpw" class=" btn btn-outline-primary mt-lg-4" type="submit">Forgot
+                                        password</button>
+                                    <button id="login" class="btn btn-outline-primary mt-lg-4 ml-lg-2"
+                                        type="submit">Login</button>
+
+                                </div>
+
                             </form>
 
-                     
-                            
+
                         </div>
                     </div>
                 </ul>
@@ -77,57 +92,38 @@
             </div>
         </nav>
 
-        
-        <div class="book roundborder cotainer-fluid">
+        {{{body}}}
 
-            <div class="left col-sm-12 col-md-6">
-                <img id="food" class="roundborder" src="../public/fishball.jpg" alt="food">
+        {{!-- <div class="book roundborder row" id="indexpage">
+
+            
+
+            <!-- pic screen -->
+            <div class="screen col-sm-12">
+                <br>
+                <h1>What to eat today?</h1>
+                <video id="screenvideo" src="../public/bg.mp4"></video>
+
+
+                <img src="../public/fishball.jpg" class="hidden" id="foodimage" alt="fishball">
+
+
+                <div class="buttons center">
+
+                    <div class="knob  shadowborder green" id="start-btn">Start</div>
+
+                    <div class="knob"></div>
+
+                    <div class="knob  shadowborder red" id="stop-btn">Stop</div>
+
+                </div>
+
+                <div class="knob"></div>
             </div>
 
-            <div id="recipebox" class="middle col-sm-12 col-md-6">
-                <!-- 4 -->
-                <h1>Fishball</h1><br>
-                <h3>Difficulty: ★★★☆☆ </h3>
-                <h3>Cooking time: 20minutes </h3>
-                <h3>Ingredients:
-                    <br>Fish 100g, Flour 200g, 1/2 Water</h3><br>
-            <h3>How to:
-                <ul>1. do something</ul>
-                    <ul>2. do something more</ul>
-                    <ul>3. do some thing again</ul>
-                    <ul>4. eat it</ul>
-            </h3>
+           
 
-            </div>
-
-        </div>
-    </div>
-
-<!-- comment box -->
-    <div class="cotainer-fluid book roundborder" id="commentbox">
-
-        <form id="commentform" action="post">
-            <H1>Share your thoughts about the recipe!</H1><br>
-        <label for="comment">Username</label>
-            <input type="text" name="comment" placeholder="comment here">
-
-            <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="text">1 star</label>
-              </div>
-
-     <br><input type="submit" name="submit" >
-
-    </form>
-    </div>
+        </div> --}}
 
     </div>
 
@@ -140,7 +136,7 @@
     <!-- Latest compiled and minified Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 
     <!-- Latest compiled and minified Popper: Use for pop up bubble -->
 
