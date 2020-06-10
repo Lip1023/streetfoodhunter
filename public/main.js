@@ -53,3 +53,11 @@ $('#pwConfirm').on('blur', function(e){
         $('#pwConfirm').css('border', 'solid 1px green');
     }
 })
+
+$( () => {
+    $(".form-check-input").on("change", () => {
+        var radioButtons = $(".form-check-input:checked").val();
+        //var selectedIndex = 1 + radioButtons.find(':checked');
+        console.log(Number(radioButtons));
+    })
+})

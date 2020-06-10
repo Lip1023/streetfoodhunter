@@ -30,7 +30,7 @@ let list1 = {
         "recipe_id": 1,
         "recipe_name": "Spicy Fishball",
         "users_user_id": "pullip123",
-        "recipe_image_url": "fishball.jpg",
+        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
         "recipe_rating": '&#x2764;&#x2764;&#x2764;&#x2764;&#x2764;'
     },{
         "recipe_id": 0,
@@ -82,7 +82,7 @@ let list1 = {
         res.render('recipeindex',list1 )
     });
 //adding new recipe
-    app.post('/recipe',(req, res)=>{
+    app.get('/newrecipe',(req, res)=>{
         res.render('newrecipe')
     });
 
@@ -91,7 +91,8 @@ let result = {
     difficulty: 1,
     cookingtime: 20,
     ingredient: 'fish: 100g, flour: 200g, water: 1/2 cup',
-    how_to: ['do somthing', 'do something more', 'do some thing again', 'eat it']
+    how_to: ['do somthing', 'do something more', 'do some thing again', 'eat it'],
+    imgae_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg"
 };
 
 function numberToStars(num) {

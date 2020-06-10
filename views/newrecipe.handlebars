@@ -1,0 +1,89 @@
+<!-- sign up part -->
+<div class="signup">
+    <br>
+    <h1>Add New Recipe</h1><br>
+    <form>
+        <div class="form-group row">
+            <label for="recipename" class="col-sm-2 col-form-label">Recipe Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="recipename">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="cookingtime" class="col-sm-2 col-form-label">Cooking Time</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cookingtime" placeholder="ex) 10minutes">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="text" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="recipedescription" placeholder="Please describe your recipe in short">
+            </div>
+        </div>
+        <fieldset class="form-group">
+            <!-- <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Difficulty</legend>
+                <div class="col-sm-10 d-flex">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Choose below</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>Very Easy</option>
+                            <option>Easy</option>
+                            <option>Okay</option>
+                            <option>Hard</option>
+                            <option>Very Hard</option>
+                        </select>
+                        </div> -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                            value="1" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                            <p>★☆☆☆☆</p>
+                                
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                            value="2">
+                        <label class="form-check-label" for="gridRadios2">
+                            <p>★★☆☆☆</p>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                            value="3" >
+                        <label class="form-check-label" for="gridRadios3">
+                            <p>★★★☆☆</p>
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4"
+                            value="4" >
+                        <label class="form-check-label" for="gridRadios4">
+                            <p>★★★★☆</p>
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5"
+                            value="5" >
+                        <label class="form-check-label" for="gridRadios5">
+                            <p>★★★★★</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">HOW TO</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Please describe how you made the food"></textarea>
+            </div>
+    <br><br><div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-outline-dark">UPLOAD</button>
+            </div>
+        </div>
+    </form>
+</div>
