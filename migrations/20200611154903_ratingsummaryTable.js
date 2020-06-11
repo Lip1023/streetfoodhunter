@@ -1,16 +1,16 @@
 
 exports.up = function(knex,Promise) {
-    return knex.schema.createTable('fav_recipeTable', (table) => {
+    return knex.schema.createTable('ratingsummaryTable', (table) => {
         table.increments();
         // this is equal to primary key -SERIAL
-        table.integer('user_id').unsigned().unique();
-        table.foreign('user_id').references('userTable.id');
         table.integer('recipe_id').unsigned().unique();
         table.foreign('recipe_id').references('recipeTable.id');
+        table.integer('totalvoters')
+        table.integer('averagescore')
         table.timestamps(false, true); 
     });
 };
 
 exports.down = function(knex,Promise) {
-  return knex.schema.dropTable('fav_recipeTable')
+  return knex.schema.dropTable('ratingsummaryTable')
 };
