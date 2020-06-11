@@ -101,6 +101,21 @@ $('.nullcheck').each( function(index) {
 
 $('#ice').click( (event) => {
     event.preventDefault();
+    let pathArray = window.location.pathname.split('/');
+    let id = pathArray[pathArray.length - 1];
+    let rating = $('input[name=rate]:checked', '.rate').val();
+    let comment_content = $("#exampleFormControlTextarea1").val();
+    let blablabla = {
+        id: id,
+        rating: rating,
+        comment_content: comment_content
+    }
+    let sure = confirm("Are you sure?");
+    if (sure) {
+        $.post("/comment", blablabla, (completeMessage) => {
+            alert(completeMessage);
+        });
+    }
 });
 
 $('#electric').click( (event) => {
