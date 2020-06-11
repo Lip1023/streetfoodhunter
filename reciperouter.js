@@ -15,49 +15,49 @@ let list1 = {
         "recipe_name": "Spicy Fishball",
         "users_user_id": "pullip123",
         "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
-        "recipe_rating": '&#x2764;&#x2764;&#x2764;&#x2764;&#x2764;'
+        "recipe_rating": '74'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '45'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '24'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '66'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '47'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '56'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '50'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
+        "recipe_rating": '100'
     }]
 }
 //let list1 = {recipe:[]};
@@ -119,6 +119,37 @@ router.post('/comment', (req, res)=>{
     res.send("completed");
 });
 //
+
+let list2 = {
+    my_recipe: [{
+        "recipe_id": 1,
+        "recipe_name": "Spicy Fishball",
+        "recipe_difficulty": "3",
+        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+        "recipe_rating": '74'
+    },{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "recipe_difficulty": "4",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '50'
+    }],
+    fav_recipe: [{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "users_user_id": "Username",
+        "recipe_difficulty": "4",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '50'
+    },{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "users_user_id": "Username",
+        "recipe_difficulty": "4",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '50'
+    }]
+}
 
   return router;
 };

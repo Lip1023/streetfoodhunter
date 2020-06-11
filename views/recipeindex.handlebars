@@ -93,7 +93,22 @@ let list1 = {
     <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
         <h2> <a href='/recipe:{{recipe_id}}'>{{recipe_name}}</a></h2>
         <p>{{users_user_id}}</p>
-        <p>{{{recipe_rating}}}</p>  <!-- need triple brackets here -->
+        <div class="rating">
+            <div class="rating-upper" style="width: {{recipe_rating}}%">
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+            </div>
+            <div class="rating-lower">
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+            </div>
+        </div>
         <img class="minviewimg col-sm-10" src="{{recipe_image_url}}" alt="recipe image">
     </div>
     {{else}}

@@ -117,7 +117,3 @@ $('#ice').click( (event) => {
         });
     }
 });
-
-$('#electric').click( (event) => {
-    event.preventDefault();
-});

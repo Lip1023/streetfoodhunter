@@ -190,8 +190,11 @@ color: rgba(0, 116, 6, 0.842);
     width: fit-content;
 }
 
-/* star rating */
-
+/* heart rating in recipe */
+.rate {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
 .rate:not(:checked) > input {
     position:absolute;
     left:-9999px;
@@ -206,22 +209,49 @@ color: rgba(0, 116, 6, 0.842);
     color:#ccc;
 }
 .rate:not(:checked) > label:before {
-    content: '★ ';
+    content: '❤ ';
 }
 .rate > input:checked ~ label {
-    color: #ffc700;    
+    color: #f04444;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+    color: #ee6767;  
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+    color: #ff0000;
 }
 
-
-
+/* heart rating in recipe index */
+.rating {
+    display: inline-block;
+    unicode-bidi: bidi-override;
+    color: #888888;
+    font-size: 25px;
+    height: 25px;
+    width: auto;
+    margin: 0;
+    position: relative;
+    padding: 0;
+}
+  
+.rating-upper {
+    color: #ff0000;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+  
+.rating-lower {
+    padding: 0;
+    display: flex;
+    z-index: 0;
+}
