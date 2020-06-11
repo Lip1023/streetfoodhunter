@@ -1,9 +1,12 @@
 /* colour */
 .green{background-color:rgba(0, 128, 0, 0.493);}
+.white{color: white;}
 .red{background-color:rgba(255, 0, 0, 0.445);}
 .yellow{background-color:rgb(238, 255, 0)}
 .grey{color: rgb(80, 79, 79);}
 .highlight{color: rgb(74, 105, 206);}
+.nodeco{text-decoration: none; }
+
 /* position */
 .hidden{display: none;}
 .center{
@@ -114,8 +117,9 @@ color: rgba(0, 116, 6, 0.842);
 }
 
 #food{
+
     width: 45vw;
-    height: 100%;
+    height: 40vw;
     filter: brightness(0.9);
 }
 
@@ -143,6 +147,7 @@ color: rgba(0, 116, 6, 0.842);
 
 .minviewimg{
     width: 80%;
+    height: 12rem;
 }
 
 #filters{
@@ -165,8 +170,9 @@ color: rgba(0, 116, 6, 0.842);
     float: right;
     margin-top: 0.75rem;
     width: min-content;
-
 }
+
+
 
 /* my page */
 

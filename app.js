@@ -42,7 +42,7 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     
 // Mypage
     app.get('/mypage', (req, res)=>{
-        res.render('mypage' )
+        res.render('mypage')
     });
 
     app.get('/signup', (req, res)=>{

@@ -97,6 +97,14 @@ function numberToStars(num) {
     return str1.padEnd(5, '☆');
 }
 
+
+// function numberToDias(num) {
+//     let str1 = "";
+//     for(let i = 0; i < num; i++) {str1 += "◆";};
+//     return str1.padEnd(5, '◇');
+// }
+
+
 result.difficulty = numberToStars(result.difficulty);
 
 //hardcoding the id for now

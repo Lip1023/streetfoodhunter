@@ -6,8 +6,10 @@
 
     <div id="recipebox" class="middle col-sm-12 col-md-6">
         <!-- 4 -->
-        <br><h1>{{name}}</h1><br>
-        <br><h3>Difficulty: {{difficulty}}   </h3>
+        <br>
+        <h1>{{name}}</h1><br>
+        <br>
+        <h3>Difficulty: {{difficulty}} </h3>
         <h3>Cooking time: {{cookingtime}}minutes </h3>
         <h3>Ingredients:
             <br>{{ingredient}}</h3><br>
@@ -18,8 +20,14 @@
                 {{/each}}
             </ol>
         </h3>
+<div class="d-flex justify-content-center">
+  <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger my-2 my-sm-0">Share your own version of the recipe!
+            </a>
+</div>
+    </div>
 
     </div>
+
 
 </div>
 </div>
@@ -43,33 +51,15 @@
             <label for="star3" title="text">3 stars</label>
             <input type="radio" id="star2" name="rate" value="2" />
             <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" checked/>
+            <input type="radio" id="star1" name="rate" value="1" checked />
             <label for="star1" title="text">1 star</label>
         </div>
 
         <br><input id="ice" type="submit" name="submit">
 
     </form>
+
+
+
+
 </div>
-
-{{!-- post own recipe --}}
-<div class="cotainer-fluid book roundborder commentbox">
-
-    <form class="commentform" action="post">
-
-        <h1>Share your own version of the recipe!</h1><br>
-
-        <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="5"></textarea>
-        </div>
-
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile">Upload your food image</label>
-        </div><br>
-
-        <br><input id="electric" type="submit" name="submit">
-
-    </form>
-
-</div>>
