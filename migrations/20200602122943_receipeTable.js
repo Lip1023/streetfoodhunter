@@ -8,6 +8,8 @@ exports.up = function(knex,Promise) {
         table.string('cookingtime');
         table.integer('cookingdifficulties');
         table.string('instruction');
+        table.integer('rating').unsigned().unique();
+        table.foreign('rating').references('ratingsummayTable.averagescore');
         table.integer('food_id').unsigned().unique();
         table.foreign('food_id').references('foodprofile.id');
         table.timestamps(false, true); 

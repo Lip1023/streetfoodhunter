@@ -6,7 +6,6 @@ exports.up = function(knex,Promise) {
         table.integer('cookingtime');
         table.integer('difficulty');
         table.interger('rating');
-        table.string('ingredient');
         table.integer('ingredient_id').unsigned().unique();
         table.foreign('ingredient_id').references('ingredient.id');
         table.integer('howto_id').unsigned().unique();

@@ -5,6 +5,7 @@ exports.up = function(knex,Promise) {
         // this is equal to primary key -SERIAL
         table.string('full_name');
         table.string('user_name');
+        table.string('email')
         table.string('password');
         table.timestamps(false, true); 
     });
