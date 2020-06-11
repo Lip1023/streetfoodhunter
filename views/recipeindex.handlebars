@@ -16,7 +16,7 @@
 
     <div id="r_recipe">
 
-            <a href="/recipe" role="button" id="newrecipe" class="btn btn-danger my-2 my-sm-0">Add new recipe
+            <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger my-2 my-sm-0">Add new recipe
             </a><br>
 
         <!-- sort -->
@@ -95,6 +95,10 @@ let list1 = {
         <p>{{users_user_id}}</p>
         <p>{{{recipe_rating}}}</p>  <!-- need triple brackets here -->
         <img class="minviewimg" src="{{recipe_image_url}}" alt="recipe image">
+    </div>
+    {{else}}
+    <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
+        <p>Sorry, no result!</p>
     </div>
     {{/each}}
 </div>

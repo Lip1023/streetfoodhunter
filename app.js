@@ -2,6 +2,10 @@ const pg= require('pg')
 const express = require('express');
 const app = express();
 const hb = require('express-handlebars');
+const fs = require('fs');
+const https = require('https');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 // const knex = require('knex')({
 //     client: 'postgresql',
@@ -15,6 +19,10 @@ const hb = require('express-handlebars');
 
 // client.connect();
 
+const setupPassport = require('./passport/passport')
+const router = require('./router')(express);
+const reciperouter = require('./reciperouter')(express);
+
 app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars'); 
 
@@ -23,91 +31,6 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.get('/', (req, res)=>{
         res.render('index' )
     });
-
-let list1 = {
-    recipe: [
-    {
-        "recipe_id": 1,
-        "recipe_name": "Spicy Fishball",
-        "users_user_id": "pullip123",
-        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
-        "recipe_rating": '&#x2764;&#x2764;&#x2764;&#x2764;&#x2764;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    }]
-}
-// RECIPE
-//recipe index page
-    app.get('/recipe', (req, res)=>{
-        res.render('recipeindex',list1 )
-    });
-//adding new recipe
-    app.get('/newrecipe',(req, res)=>{
-        res.render('newrecipe')
-    });
-
-let result = {
-    name:"Spicy Fishball",
-    difficulty: 1,
-    cookingtime: 20,
-    ingredient: 'fish: 100g, flour: 200g, water: 1/2 cup',
-    how_to: ['do somthing', 'do something more', 'do some thing again', 'eat it'],
-    imgae_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg"
-};
-
-function numberToStars(num) {
-    let str1 = "";
-    for(let i = 0; i < num; i++) {str1 += "★";};
-    return str1.padEnd(5, '☆');
-}
-
-result.difficulty = numberToStars(result.difficulty);
-
-//hardcoding the id for now
-    app.get('/recipe:1', (req, res)=>{
-        res.render('recipe', result)
-    });
-//
 
     app.get('/search', (req, res)=>{
         res.render('search');
@@ -130,9 +53,30 @@ result.difficulty = numberToStars(result.difficulty);
         res.render('forgotpassword')
     })
  
+    // app.listen(8080, ()=>{
 
+    //     console.log(`App is listening to port 8080`);
+    // });
 
-    app.listen(8080, ()=>{
-
-        console.log(`App is listening to port 8080`);
+    app.use(session({
+        secret: 'superDifficultAndSecret',
+        resave: false,
+        saveUninitialized: false,
+        cookie: { secure: false }
+    }))
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: false|true}));
+    app.use(express.static('public'));
+    
+    const options = {
+        cert: fs.readFileSync('./localhost.crt'),
+        key: fs.readFileSync('./localhost.key')
+    };
+    
+    setupPassport(app);
+    app.use('/', router);
+    app.use('/', reciperouter);
+    
+    https.createServer(options, app).listen(8080, function(){
+        console.log('app is listening to port 8080')
     });
