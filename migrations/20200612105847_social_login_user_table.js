@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    return knex.schema.table('users', function(table){
+    return knex.schema.table('userTable', function(table){
         table.string('facebookID');
         table.string('twitterID');
         table.string('googleID');
@@ -11,8 +11,8 @@ exports.up = function(knex) {
   
 };
 
-exports.down = function(knex) {
-    return knex.schema.table('users', (table)=>{
+exports.down = function(knex,P) {
+    return knex.schema.table('userTable', (table)=>{
         table.dropColumn('facebookID');
         table.dropColumn('twitterID');
         table.dropColumn('googleID');

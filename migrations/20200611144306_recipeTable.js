@@ -5,11 +5,6 @@ exports.up = function(knex,Promise) {
         // this is equal to primary key -SERIAL
         table.integer('cookingtime');
         table.integer('difficulty');
-        table.interger('rating');
-        table.integer('ingredient_id').unsigned().unique();
-        table.foreign('ingredient_id').references('ingredient.id');
-        table.integer('howto_id').unsigned().unique();
-        table.foreign('howto_id').references('howto.id');
         table.integer('admin_id').unsigned().unique();
         table.foreign('admin_id').references('userTable.id');
         table.boolean('draft');
@@ -22,3 +17,25 @@ exports.up = function(knex,Promise) {
 exports.down = function(knex,Promise) {
   return knex.schema.dropTable('recipeTable')
 };
+
+//not in use
+// exports.up = function(knex,Promise) {
+//     return knex.schema.createTable('receipe', (table) => {
+//         table.increments();
+//         // this is equal to primary key -SERIAL
+//         table.string('name');
+//         table.string('ingredients');
+//         table.string('cookingtime');
+//         table.integer('cookingdifficulties');
+//         table.string('instruction');
+        
+//         table.integer('food_id').unsigned().unique();
+//         table.foreign('food_id').references('foodprofile.id');
+//         table.timestamps(false, true); 
+//     });
+// };
+
+// exports.down = function(knex,Promise) {
+//     return knex.schema.dropTable('receipe')
+  
+// };
