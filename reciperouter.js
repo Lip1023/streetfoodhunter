@@ -66,20 +66,16 @@ let list1 = {
     router.get('/recipe', (req, res)=>{
         res.render('recipeindex',list1 )
     });
-//adding new recipe
+//recipe adding page
     router.get('/newrecipe',(req, res)=>{
         res.render('newrecipe')
     });
-
+//adding new recipe
     router.post('/newrecipe', (req, res) => {
         console.log(req.body);
         res.send("completed");
     });
 
-    router.post('/relatedrecipe', (req, res) => {
-        console.log(req.body);
-        res.send("completed");
-    });
 
 let result = {
     id: 1,
