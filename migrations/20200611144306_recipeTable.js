@@ -3,7 +3,7 @@ exports.up = function(knex,Promise) {
     return knex.schema.createTable('recipeTable', (table) => {
         table.increments();
         // this is equal to primary key -SERIAL
-        table.integer('cookingtime');
+        table.string('cookingtime');
         table.integer('difficulty');
         table.integer('admin_id').unsigned().unique();
         table.foreign('admin_id').references('userTable.id');
