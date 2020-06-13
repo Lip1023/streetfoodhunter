@@ -11,6 +11,12 @@ $('#stop-btn').on('click',function(){
     $('#foodimage').removeClass('hidden')
 })
 
+// $('#call-btn').on('click',function(){
+//     $('#randomrecipe').removeClass('hidden')
+//     $('#recipenum').addClass('hidden')
+// })
+
+
 // sign up page 
 $( document ).ready()
 //username no longer than 15chr
@@ -54,6 +60,7 @@ $('#pwConfirm').on('blur', function(e){
     }
 })
 
+//recipe individual page 
 $("#fire").click( (event) => {
     event.preventDefault();
     let validate_result = true;
@@ -67,17 +74,23 @@ $("#fire").click( (event) => {
         let recipeIngredients = $("#recipeingredients").val();
         let difficulty = Number($(".form-check-input:checked").val());
         let recipeHowto = $("#recipehowto").val();    
+
+
+
         let blablabla = {
             recipeName: recipeName,
             cookingTime: cookingTime,
             recipeDescription: recipeDescription,
             recipeIngredients: recipeIngredients,
             difficulty: difficulty,
-            recipeHowto: recipeHowto
+            recipeHowto: recipeHowto,
         };
+
         $.post("/newrecipe", blablabla, (completeMessage) => {
             alert(completeMessage);
         });
+
+     
     } else {
         alert("Please complete the form before submission");
     };

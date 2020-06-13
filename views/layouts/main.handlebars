@@ -10,8 +10,15 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+    {{!-- animate --}}
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
     <!-- icon -->
     <script src="https://kit.fontawesome.com/1959ac8c31.js" crossorigin="anonymous"></script>
+    {{!-- font --}}
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
 
 </head>
 
@@ -29,25 +36,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/recipe">Recipes</a>
+                        <a class="nav-link active" href="/recipe">Recipes</a>
                     </li>
-
                 </ul>
 
-                <form class="form-inline my-2 my-lg-0 row">
-                    <input class="col-sm-8 col-md-8 form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0 row col-sm-8">
+                    <input class="col-sm-6 col-md-8 form-control mr-sm-2" type="search" aria-label="Search">
                     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
 
                 <ul>
                     <div class="dropdown" id="dropdown">
-                        <a class="nav-link dropdown-toggle" href="/mypage" id="navbarDropdown" role="button"
+                        <a class="black nav-link dropdown-toggle" href="/mypage" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            My Page
+                            Log In
                         </a>
 
-                        <div class="dropdown-menu container-fluid " id="dropdownmenu" aria-labelledby="navbarDropdown">
+                        <div class="top dropdown-menu" id="dropdownmenu" aria-labelledby="navbarDropdown">
 
                             <h5 id="welcomeuser" class="justify-content-lg-center form-inline">Welcome Pullip123!</h5>
 
@@ -72,9 +78,9 @@
 
                                 <div class="icons mb-lg-4">
 
-                                    <button id="forgotpw" class=" btn btn-outline-primary mt-lg-4" type="submit">Forgot
+                                    <button id="forgotpw" class=" btn btn-outline-dark mt-lg-4" type="submit">Forgot
                                         password</button>
-                                    <button id="login" class="btn btn-outline-primary mt-lg-4 ml-lg-2"
+                                    <button id="login" class="btn btn-outline-dark mt-lg-4 ml-lg-2"
                                         type="submit">Login</button>
 
                                 </div>
@@ -99,7 +105,7 @@
             <div class="col-lg-3">
                 <p>Street food hunters</p>
             </div>
-          
+
         </div>
 
         {{!-- <div class="book roundborder row" id="indexpage">
