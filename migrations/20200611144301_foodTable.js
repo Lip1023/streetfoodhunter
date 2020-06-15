@@ -6,7 +6,7 @@ exports.up = function(knex,Promise) {
         table.string('food_name');
         table.string('local_name');
         table.string('cuisine_name');
-        table.string('imageurl');
+        table.string('imageurl', 10485760);
         table.timestamps(false, true); 
     });
 };
