@@ -183,3 +183,18 @@ async function deleteComment(commentID) {
     throw error;
   });
 }
+
+//user display favourite_recipe
+// let result4 = [];
+// let promise4 = knex(‘fav_recipeTable’).join(‘userTable’, ‘userTable.id’, ‘=’, ‘fav_recipe.user_id’).select(‘*’);
+// promise4.then( (data) => {
+//   console.log()
+// });
+
+//filter - recipe_tag
+// let result5 = [];
+// let promise5 = knex(‘recipe_table’).join(‘recipe_tagTable’, ‘recipe_tag.recipe_id’, ‘=’, ‘recipeTable.id’).select(‘*’);
+// promise5.then( (data) => {
+//   console.log()
+// });
+//line32//promise2[0] = knex(‘recipeTable.id’).join(‘commentTable’, ‘recipeTable.id’, ‘=’, ‘commentTable.rep_id’).select(‘*’);

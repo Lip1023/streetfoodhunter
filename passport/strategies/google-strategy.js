@@ -19,16 +19,17 @@ module.exports = (passport) => {
         includeEmail: true
     }, async (accessToken, refreshToken, profile, done) => {
         // console.log(profile);
-
-        let userResult = await knex('users').where({ googleID: profile.id });
+        await knex.raw('SELECT setval(\'"userTable_id_seq"\', (SELECT MAX(id) from "userTable"));');
+        let userResult = await knex('userTable').where({ googleID: profile.id });
         if (userResult == 0) {
             let user = {
                 googleID: profile.id,
-                name: profile.displayName,
+                full_name: profile.displayName,
+                user_name: profile.displayName,
                 email: profile.emails[0].value,
                 googleAccessToken: accessToken
             }
-            let query = await knex('users').insert(user).returning('id');
+            let query = await knex('userTable').insert(user).returning('id');
             user.id = query[0];
             done(null, user);
         } else {
