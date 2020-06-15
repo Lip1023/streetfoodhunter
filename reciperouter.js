@@ -109,7 +109,7 @@ result.difficulty = numberToStars(result.difficulty);
     });
 //
 
-//post recipe
+//post recipe comment
 router.post('/comment', (req, res)=>{
     console.log(req.body);
     res.send("completed");

@@ -58,6 +58,30 @@
         <br><input id="ice" type="submit" name="submit">
 
     </form>
+    
+
+
+
+
+</div>
+{{!-- display comments --}}
+<div class="cotainer-fluid book roundborder commentbox">
+
+    <form class="commentform" action="post">
+        <H1>Recent Comment!</H1><br>
+
+        <div class="form-group"> </div>
+         <h3>How to:
+            <ol>
+                {{#each how_to}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ol>
+        </h3>
+
+
+    </form>
+    
 
 
 
