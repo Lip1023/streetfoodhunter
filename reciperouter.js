@@ -18,16 +18,16 @@ let list1 = {
         "recipe_rating": '74'
     },{
         "recipe_id": 2,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
+        "recipe_name": "Sweet Fishball",
+        "users_user_id": "pullip123",
+        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
         "recipe_rating": '45'
     },{
         "recipe_id": 3,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '24'
+        "recipe_name": "Sour Fishball",
+        "users_user_id": "pullip123",
+        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+        "recipe_rating": '81'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
