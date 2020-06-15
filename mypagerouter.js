@@ -55,18 +55,9 @@ module.exports = (express) => {
   // access was granted, the user will be logged in.  Otherwise,
   // authentication has failed.
 
-  router.get("/sso/commento", isLoggedIn, (req, res) => {
-    commentoSSO(req.query, req.user)
-    .then((url)=>{
-      res.status(302).redirect(url);
-    })
-    .catch((err)=>{
-      res.redirect("/signup");
-    });
-  });
-
   router.get("/login", (req, res) => {
-    res.render('login');
+    res.sendFile(__dirname + "/html/login.html");
+    //res.render('login');
   });
 
   router.get("/mypagecopy", (req, res) =>{

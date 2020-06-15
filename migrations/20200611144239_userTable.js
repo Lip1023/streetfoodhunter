@@ -7,6 +7,7 @@ exports.up = function(knex,Promise) {
         table.string('user_name');
         table.string('email')
         table.string('password');
+        table.string('security_answer', 10485760);
         table.timestamps(false, true); 
     });
 };
