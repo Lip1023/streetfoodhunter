@@ -17,11 +17,12 @@
         {{!-- info side --}}
         <div class="container-fluid col-sm-12 col-md-6">
 
-            <h3 class="pt-5">
-                <a class="black nodeco" href='/recipe:{{recipie_id}}'>{{recipe_name}}
-                </a>
-            </h3>
-
+                <h3 class="mt-5">
+                    <a class="black nodeco" href='/recipe:{{recipie_id}}'>{{recipe_name}}
+                    </a>
+                </h3>
+        
+            
             <h4>
                 <div class="rating" id="minheart">
                     <div class="rating-upper red" style="width:   {{recipe_rating}}%">
@@ -75,7 +76,7 @@
 
     <h3 class="pb-4 fontheavy">Favourites</h3>
 
- {{#each favourite}}
+    {{#each favourite}}
     <div class="cotainer-fluid mypagerecipe roundborder row col-12">
 
         {{!-- image side --}}
@@ -86,15 +87,17 @@
 
         {{!-- info side --}}
         <div class="container-fluid col-sm-12 col-md-6">
-
-            <h3 class="pt-4">
-                <a class="black nodeco" href='/recipe:{{recipie_id}}'>{{recipe_name}}
-                </a>
-            </h3>
-                        <h5>{{users_user_id}}</h5>
+            <div class="d-flex justify-content-center mt-5">
+                <h3>
+                    <a class="black nodeco" href='/recipe:{{recipie_id}}'>{{recipe_name}}
+                    </a>
+                </h3>
+                <br><img class="icon2 ml-2" src="delete.png" alt="delete">
+            </div>
+            <h5>{{users_user_id}}</h5>
 
             <h4>
-                 <div class="rating" id="minheart">
+                <div class="rating" id="minheart">
                     <div class="rating-upper red" style="width:   {{recipe_rating}}%">
                         <span>❤</span>
                         <span>❤</span>
@@ -141,4 +144,4 @@
     {{/each}}
 
 
-    </div>
+</div>
