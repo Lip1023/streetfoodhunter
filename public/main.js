@@ -9,6 +9,7 @@ $('#stop-btn').on('click',function(){
     $('#screenvideo')[0].pause();
     $('#screenvideo').addClass('hidden')
     $('#foodimage').removeClass('hidden')
+    $('#whattoeat').addClass('hidden')
 })
 
 // sign up page 
