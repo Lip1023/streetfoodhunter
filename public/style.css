@@ -90,13 +90,13 @@ padding: 1rem;
 
 #screenvideo{
     padding: 1rem 0;
-    width: 1100px;
+    width: 50vw;
 }
 
 #foodimage{
-    padding: 1rem 0;
-    width: 1100px;
-    height: 610px;
+    padding: 0;
+    width: 50vw;
+    height: 65vh;
     filter: brightness(0.9);
 }
 
@@ -202,9 +202,26 @@ padding: 1rem;
 }
 
 .mypagerecipe{
-    border: 1px dotted rgba(159, 187, 184, 0.397);
+    margin: 1rem;
+    border: 1px dotted rgb(163, 163, 163);
     height: min-content;
-    width: fit-content;
+    width: 80vw;
+    direction: flex;
+}
+
+.mypageimg{
+    width: 30vh;
+    height: 30vh;
+    padding: 1rem;
+}
+
+#minheart{
+    font-size: 1.6rem;
+    letter-spacing: 0.5mm;
+}
+#minstar{
+    font-size: 2rem;
+    letter-spacing: 0.4mm;
 }
 
 /* heart rating in recipe */

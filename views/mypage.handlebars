@@ -1,44 +1,144 @@
-<div class="book roundborder cotainer-fluid" id="mypagebox">
-
+<div class="book roundborder cotainer-fluid row" id="mypagebox">
     <h1 class="p-4 grey">Hi {{users_user_id}}!</h1>
 
 
-    <h3 class="pb-4">My recipes</h3>
+    <h3 class="pb-4 fontheavy">My recipes</h3>
 
-    <div class="book cotainer-fluid mypagerecipe" id="mypagerecipe1">
 
-        <div class="left col-sm-12 col-md-6">
-            <img id="foodimage" class="roundborder" src="fishball.jpg" alt="food">
+    {{#each recipe}}
+    <div class="cotainer-fluid mypagerecipe roundborder row col-12">
+
+        {{!-- image side --}}
+        <div class="col-sm-12 col-md-6">
+
+            <img class="mypageimg" src={{recipe_image_url}} alt="food">
         </div>
 
-        <div class="middle col-sm-12 col-md-6 center">
-            {{!-- <br>
-            {{!-- {{#each recipe}} --}}
-            <h3>{{recipe_name}}</h3><br>
-            <h1>{{rating}}</h1> 
+        {{!-- info side --}}
+        <div class="container-fluid col-sm-12 col-md-6">
+
+            <h3 class="pt-5">
+                <a class="black nodeco" href='/recipe:{{recipie_id}}'>{{recipe_name}}
+                </a>
+            </h3>
+
+            <h4>
+                <div class="rating" id="minheart">
+                    <div class="rating-upper red" style="width:   {{recipe_rating}}%">
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                    </div>
+                    <div class="rating-lower">
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                    </div>
+                </div>
+            </h4>
+
+            <h4>
+                <div class="rating" id="minstar">
+                    <div class="rating-upper yellow" style="width:       {{recipe_difficulty}}%">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                    <div class="rating-lower">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+            </h4>
 
         </div>
-
     </div>
 
+    {{else}}
+    <div class="col-sm-12">
+        <p>You haven't uploaded any recipes</p>
+    </div>
+    {{/each}}
 
-    <h3 class="py-4">Favourites</h3>
-    <div class="book cotainer-fluid mypagerecipe" id="mypagerecipe1">
 
-        <div class="left col-sm-12 col-md-6">
-            <img id="foodimage" class="roundborder" src="fishball.jpg" alt="food">
+
+
+
+    <h3 class="pb-4 fontheavy">Favourites</h3>
+
+ {{#each favourite}}
+    <div class="cotainer-fluid mypagerecipe roundborder row col-12">
+
+        {{!-- image side --}}
+        <div class="col-sm-12 col-md-6">
+
+            <img class="mypageimg" src={{recipe_image_url}} alt="food">
         </div>
 
-        <div class="middle col-sm-12 col-md-6 center">
-            <!-- 4 -->
-            <br>
-            {{!-- users fav recipe ids in 1 string --}}
-            {{!-- <h3>{{}}</h3><br> --}}
-            <h1>★★★★★</h1>
+        {{!-- info side --}}
+        <div class="container-fluid col-sm-12 col-md-6">
+
+            <h3 class="pt-4">
+                <a class="black nodeco" href='/recipe:{{recipie_id}}'>{{recipe_name}}
+                </a>
+            </h3>
+                        <h5>{{users_user_id}}</h5>
+
+            <h4>
+                 <div class="rating" id="minheart">
+                    <div class="rating-upper red" style="width:   {{recipe_rating}}%">
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                    </div>
+                    <div class="rating-lower">
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                    </div>
+                </div>
+            </h4>
+
+            <h4>
+                <div class="rating" id="minstar">
+                    <div class="rating-upper yellow" style="width:       {{recipe_difficulty}}%">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                    <div class="rating-lower">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+            </h4>
 
         </div>
-
     </div>
 
+    {{else}}
+    <div class="col-sm-12">
+        <p>You haven't uploaded any recipes</p>
+    </div>
+    {{/each}}
 
-</div>
+
+    </div>

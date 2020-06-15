@@ -19,7 +19,8 @@ const session = require('express-session');
 
 // client.connect();
 
-const setupPassport = require('./passport/passport')
+const setupPassport = require('./passport/passport');
+const mypagerouter = require('./mypagerouter')(express);
 const router = require('./router')(express);
 const reciperouter = require('./reciperouter')(express);
 
@@ -47,22 +48,6 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     });
 
 
-
-
-    
-// Mypage
-    app.get('/mypage', (req, res)=>{
-        res.render('mypage')
-    });
-
-    app.get('/signup', (req, res)=>{
-        res.render('signup' )
-    });
-
-    app.get('/forgotpassword',(req,res)=>{
-        res.render('forgotpassword')
-    })
- 
     // app.listen(8080, ()=>{
 
     //     console.log(`App is listening to port 8080`);
@@ -84,9 +69,10 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     };
     
     setupPassport(app);
-    app.use('/', router);
+    // app.use('/', router);
+    app.use('/', mypagerouter);
     app.use('/', reciperouter);
-    
+
     https.createServer(options, app).listen(8080, function(){
         console.log('app is listening to port 8080')
     });
