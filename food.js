@@ -30,7 +30,8 @@ Promise.all(promise1).then( (data) => {
 let result2 = [];
 let promise2 = [null, null, null];
 promise2[0] = knex('commentTable').select('*');
-promise2[1] = knex('recipeTable').join('howtoTable', 'recipeTable.id', '=', 'howtoTable.id').select('*');
+//line32//promise2[0] = knex('recipeTable.id').join('commentTable', 'recipeTable.id', '=', 'commentTable.rep_id').select('*');
+promise2[1] = knex('recipeTable').join('howtoTable', 'recipeTable.id', '=', 'howtoTable.recipe_id').select('*');
 promise2[2] = knex('recipeTable').join('ingredientTable', 'recipeTable.id', '=', 'ingredientTable.recipe_id').select('*');
 promise2[3] = knex('recipeTable').join('ratingsummaryTable', 'recipeTable.id', '=', 'ratingsummaryTable.recipe_id').select('*');
 Promise.all(promise2).then( (data) => {
@@ -56,5 +57,20 @@ Promise.all(promise2).then( (data) => {
 // let result3 = [];
 // let promise3 = knex('recipeTable').join('commentTable', 'recipeTable.id', '=', 'commentTable.recipe_id').select('*');
 // promise3.then( (data) => {
+//   console.log()
+// });
+
+
+//favourite_recipe
+// let result4 = [];
+// let promise4 = knex('fav_recipeTable').join('userTable', 'userTable.id', '=', 'fav_recipe.user_id').select('*');
+// promise4.then( (data) => {
+//   console.log()
+// });
+
+//recipe_tag
+// let result5 = [];
+// let promise5 = knex('recipe_table').join('recipe_tagTable', 'recipe_tag.recipe_id', '=', 'recipeTable.id').select('*');
+// promise5.then( (data) => {
 //   console.log()
 // });
