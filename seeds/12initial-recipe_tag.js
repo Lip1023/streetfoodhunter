@@ -2,7 +2,7 @@
 exports.seed = function(knex) {
   // Deletes ALL existing entries
 
-      return knex('recipetagTable').insert([
+      return knex('recipe_tagTable').insert([
         {tag_id: 1, recipe_id: 1},
         {tag_id: 2, recipe_id: 2},
         {tag_id: 4, recipe_id: 3},

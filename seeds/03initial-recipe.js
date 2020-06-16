@@ -1,8 +1,7 @@
 
-exports.seed = function(knex) {
+exports.seed = function(knex,Promise) {
   // Deletes ALL existing entries
 
-      // Inserts seed entries
       return knex('recipeTable').insert([
         {name: 'super easy Egg Waffle', cookingtime: '30mins', difficulty: 3, admin_id: 3, draft: false , appr_status: true,image_url:'./xxx.jpg'},
         {name: 'Tofu Pudding', cookingtime: '45mins', difficulty: 4.5, admin_id: 4, draft: false , appr_status: true,image_url:'./xxx.jpg'},
@@ -12,5 +11,5 @@ exports.seed = function(knex) {
         {name: 'Eggtart', cookingtime: '45mins', difficulty: 3.3, admin_id: 1, draft: false , appr_status: true,image_url:'./xxx.jpg'},
         {name: 'super easy Egg Waffle', cookingtime: '30mins', difficulty: 4.0, admin_id: 1, draft: false , appr_status: false,image_url:'./xxx.jpg'}
       ]);
-    
+  
 };
