@@ -137,7 +137,3 @@ $('#ice').click( (event) => {
 });
 
 
-
-
-$('#logout').removeClass('hidden')
-$('.goneafterlogin').addClass('hidden')

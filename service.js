@@ -1,3 +1,6 @@
+//This file is for search function on nav bar.
+
+
 require('dotenv').config();
 const knex = require('knex')({
     client: 'postgresql',
@@ -58,19 +61,10 @@ async function filterFDname(userinput) {
 
         userinput = "%" + userinput + "%"
 
-        let filterfood = await knex.select("*").from("foodTable").
-            innerJoin("food_rel_recipeTable", "food_id", "foodTable.id")
-            .where("food_name", "ilike", userinput)
-
-        let id_list = []
-
-        for (let item in filterfood){
-            id_list.push(item.id)
-        }
-
-        let filterfood = await knex.select("*").from("foodTable").
-            innerJoin("food_rel_recipeTable", "food_id", "foodTable.id")
-            .where("id", isinlist, id_list)
+        let filterfood = knex('foodTable')
+            .select()
+            .innerJoin("food_rel_recipeTable", "foodTable.id", "food_rel_recipeTable.id")
+            .where("foodTable.food_name", "ilike", userinput)
 
         filterfood.then((rows) => {
             console.log(rows)
@@ -84,4 +78,4 @@ async function filterFDname(userinput) {
 
 // filterRPname('egg')
 // filterUSname('tony')
-// filterFDname('egg')
+filterFDname('egg')
