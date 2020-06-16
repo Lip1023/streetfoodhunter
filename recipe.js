@@ -104,7 +104,7 @@ async function readRecipeFromID(id) {
   let client = [];
   let sql = [null, null, null, null];
   for (let i = 0; i < 4; i++) {client.push(new pg.Client(config))};
-  sql[0] = 'select * from "commentTable"';
+  sql[0] = escape('select * from "commentTable" where "recipe_id" = %L', String(id));
   sql[1] = escape('select * from "recipeTable" inner join "howtoTable" on "recipeTable"."id" = "howtoTable"."id" where "recipeTable"."id" = %L', String(id));
   sql[2] = escape('select * from "recipeTable" inner join "ingredientTable" on "recipeTable"."id" = "ingredientTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
   sql[3] = escape('select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
@@ -143,9 +143,20 @@ async function readRecipeFromID(id) {
   });
   return result1[0];
 };
-// let promise1 = readRecipeFromID(4);
-// promise1.then((stuff) => {console.log(stuff);});
+let promise1 = readRecipeFromID(4);
+promise1.then((stuff) => {console.log(stuff);});
 
+// get all comments of a particular user
+async function readCommentsByUser(user_id) {
+  let client = new pg.Client(config);
+  let sql = escape('select * from "commentTable" where "user_id" = %L', String(user_id));
+  await client.connect();
+  let temp1 = await client.query(sql);
+  await client.end();
+  return temp1.rows;
+};
+// let promise1 = readCommentsByUser(4);
+// promise1.then((stuff) => {console.log(stuff);});
 
 //post full recipe
 let list1 = 
@@ -292,12 +303,14 @@ async function updateVote(recipe_id, vote) {
 
 //delete comment
 async function deleteComment(commentID) {
-  await knex('commentTable').where({ id: commentID }).del()
-  .then( () => {return true;})
-  .catch((error) => {
-    throw error;
-  });
-}
+  let client = new pg.Client(config);
+  let sql = escape('delete from "commentTable" where "id" = %L', String(commentID));
+  await client.connect();
+  await client.query(sql);
+  await client.end();
+  return true;
+};
+// deleteComment(10).then((stuff) => {console.log(stuff);})
 
 //user display favourite_recipe
 // let result4 = [];
