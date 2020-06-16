@@ -95,14 +95,14 @@ module.exports = (express) => {
     res.sendFile(__dirname + "/html/login.html");
   });
 
-  router.get("/mypage", isLoggedIn, (req, res) => {
-    console.log(req.user.id);
-    console.log(req.session.id);
-    console.log(req.user);
+  // router.get("/mypage", isLoggedIn, (req, res) => {
+  //   console.log(req.user.id);
+  //   console.log(req.session.id);
+  //   console.log(req.user);
 
-    // res.send('This is a secret page (or rather message) you will get this on a successful login.');
-    res.sendFile(__dirname + "/html/mypage.html");
-  });
+  //   // res.send('This is a secret page (or rather message) you will get this on a successful login.');
+  //   res.sendFile(__dirname + "/html/mypage.html");
+  // });
 
   router.get("/error", (req, res) => {
     res.send("You've not logged in. Please login.");

@@ -17,23 +17,47 @@ let list1 = {
         "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
         "recipe_rating": '74'
     },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
+        "recipe_id": 2,
+        "recipe_name": "Sweet Fishball",
+        "users_user_id": "pullip123",
+        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
         "recipe_rating": '45'
     },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '24'
+        "recipe_id": 3,
+        "recipe_name": "Sour Fishball",
+        "users_user_id": "pullip123",
+        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+        "recipe_rating": '81'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
         "users_user_id": "Username",
         "recipe_image_url": "fishball.jpg",
         "recipe_rating": '66'
+    },{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "users_user_id": "Username",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '47'
+    },{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "users_user_id": "Username",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '56'
+    },{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "users_user_id": "Username",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '50'
+    },{
+        "recipe_id": 0,
+        "recipe_name": "Recipe Name",
+        "users_user_id": "Username",
+        "recipe_image_url": "fishball.jpg",
+        "recipe_rating": '100'
     },{
         "recipe_id": 0,
         "recipe_name": "Recipe Name",
@@ -80,18 +104,18 @@ let list1 = {
 let result = {
     id: 1,
     name:"Spicy Fishball",
-    difficulty: 1,
+    difficulty: 20,
     cookingtime: 20,
-    ingredient: 'fish: 100g, flour: 200g, water: 1/2 cup',
-    how_to: ['do somthing', 'do something more', 'do some thing again', 'eat it'],
+    ingredient: 'fish: 100g, flour: 200g, water: 1/2 cup, garlic 2coves, 1 medium sized onion, 1tbs salt, 2 eggs, 5 red chillis, Frying-Oil',
+    how_to: ['Take out skin of the fish', 'Boil the fish(including bones), garlic and onion for 10minutes', 'Mix flour with 1/2 of warm luke water(50°C) and leave it until cooking fish is done', 'Take out bones from the fish, mash the meat with garlic and onion', 'Mix the mashed fish with flour, add 1tbs of salt', 'Chop spicy chilli into small pieces', 'Make ball shapes of fish-flour mix and roll them on chilli pieces', 'Soak the fishball in eggwater', 'Fry them for 5 minutes in 180°C oil' ],
     imgae_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg"
 };
 
-function numberToStars(num) {
-    let str1 = "";
-    for(let i = 0; i < num; i++) {str1 += "★";};
-    return str1.padEnd(5, '☆');
-}
+// function numberToStars(num) {
+//     let str1 = "";
+//     for(let i = 0; i < num; i++) {str1 += "★";};
+//     return str1.padEnd(5, '☆');
+// }
 
 
 // function numberToDias(num) {
@@ -101,9 +125,8 @@ function numberToStars(num) {
 // }
 
 
-result.difficulty = numberToStars(result.difficulty);
+// result.difficulty = numberToStars(result.difficulty);
 
-//hardcoding the id for now
     router.get('/recipe:1', (req, res)=>{
         res.render('recipe', result)
     });

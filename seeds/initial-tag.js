@@ -19,7 +19,7 @@ exports.seed = function(knex) {
         {id: 12, tag: 'Egg'},
         {id: 13, tag: 'BBQ'},
         {id: 14, tag: 'Dessert'},
-        {id: 15, tag: 'Fired'},
+        {id: 15, tag: 'Fried'},
         {id: 16, tag: 'Steamed'},
         {id: 17, tag: 'Appetizer'},
         {id: 18, tag: 'Baked'}

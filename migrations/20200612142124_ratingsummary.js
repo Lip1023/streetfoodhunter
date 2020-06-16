@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.increments();
         table.integer('recipe_id');
         table.integer('totalvoters');
-        table.float('averagescore', 2, 1);
+        table.float('averagescore');
     });
 };
 

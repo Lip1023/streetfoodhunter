@@ -10,7 +10,7 @@ exports.up = function(knex,Promise) {
         //table.foreign('admin_id').references('userTable.id');
         table.boolean('draft');
         table.boolean('appr_status');
-        table.string('image_url');
+        table.string('image_url', 10485760);
         table.timestamps(false, true); 
     });
 };

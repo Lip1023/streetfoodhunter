@@ -4,12 +4,27 @@
         <img id="food" class="roundborder" src="{{imgae_url}}" alt="food">
     </div>
 
-    <div id="recipebox" class="col-sm-12 col-md-6">
+    <div id="recipebox" class="col-sm-12 col-md-6 scroll">
         <br>
-        <h1>{{name}}</h1><br>
-        <br>
-        <h3>Difficulty: {{difficulty}} </h3>
-        <h3>Cooking time: {{cookingtime}}minutes </h3>
+        <h1 class="font2">{{name}}</h1><br>
+        <h3 class="font2">Difficulty: <div class="rating">
+                <div class="rating-upper yellow" style="width: {{difficulty}}%">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <div class="rating-lower">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+            </div>
+        </h3>
+        <h3 class="font2">Cooking time: {{cookingtime}}minutes </h3><br>
         <h3>Ingredients:
             <br>{{ingredient}}</h3><br>
         <h3>How to:
@@ -19,8 +34,8 @@
                 {{/each}}
             </ol>
         </h3>
-        <div class="d-flex justify-content-center">
-            <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger my-2 my-sm-0">Share your own version
+        <div class="d-flex justify-content-center my-4">
+            <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger btn-lg my-2 my-sm-0">Share your own version
                 of the recipe!
             </a>
         </div>
@@ -55,35 +70,43 @@
             <label for="star1" title="text">1 star</label>
         </div>
 
-        <br><input id="ice" type="submit" name="submit">
+        <br>
+        <button id="ice" name="submit" type="submit" class="btn btn-dark">Submit</button>
 
     </form>
-    
-
-
-
-
 </div>
-{{!-- display comments --}}
-<div class="cotainer-fluid book roundborder commentbox">
 
-    <form class="commentform" action="post">
-        <H1>Recent Comment!</H1><br>
+{{!-- <div class="cotainer-fluid book roundborder commentbox">
 
-        <div class="form-group"> </div>
-         <h3>How to:
-            <ol>
-                {{#each how_to}}
-                <li>{{this}}</li>
-                {{/each}}
-            </ol>
-        </h3>
-
-
-    </form>
-    
-
-
-
-
+    <h3>Other Fishball recipes</h3><br>
+    {{#each recipe}}
+    <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
+        <h4>
+            {{recipe_name}}
+        </h4>
+        <p>{{users_user_id}}</p>
+        <div class="rating">
+            <div class="rating-upper red" style="width: {{recipe_rating}}%">
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+            </div>
+            <div class="rating-lower">
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+                <span>❤</span>
+            </div>
+        </div>
+        <img class="minviewimg col-sm-10" src="{{recipe_image_url}}" alt="recipe image">
+    </div>
+    {{else}}
+    <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
+        <p>Sorry, no result!</p>
+    </div>
+    {{/each}}
+</div> --}}
 </div>
