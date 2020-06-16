@@ -4,6 +4,7 @@ exports.up = function(knex,Promise) {
         table.increments();
         // this is equal to primary key -SERIAL
         table.integer('recipe_id').unsigned().unique();
+        table.foreign('recipe_id').references('recipeTable.id');
         table.string('howto', 10485760);
         table.timestamps(false, true); 
     });

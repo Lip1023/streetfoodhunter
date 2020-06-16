@@ -1,6 +1,6 @@
 const pg = require('pg');                 // not using knex for SQL query
 const escape = require('pg-escape');      // use another package to avoid SQL injection
-require('dotenv').config();             // https://github.com/datalanche/node-pg-format
+require('dotenv').config();             // https://github.com/segmentio/pg-escape
 
 const config = {
     user: process.env.DATABASE_USER,
@@ -104,7 +104,7 @@ async function readRecipeFromID(id) {
   let client = [];
   let sql = [null, null, null, null];
   for (let i = 0; i < 4; i++) {client.push(new pg.Client(config))};
-  sql[0] = 'select * from "commentTable"';
+  sql[0] = escape('select * from "commentTable" where "recipe_id" = %L', String(id));
   sql[1] = escape('select * from "recipeTable" inner join "howtoTable" on "recipeTable"."id" = "howtoTable"."id" where "recipeTable"."id" = %L', String(id));
   sql[2] = escape('select * from "recipeTable" inner join "ingredientTable" on "recipeTable"."id" = "ingredientTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
   sql[3] = escape('select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
@@ -143,9 +143,20 @@ async function readRecipeFromID(id) {
   });
   return result1[0];
 };
-// let promise1 = readRecipeFromID(4);
-// promise1.then((stuff) => {console.log(stuff);});
+let promise1 = readRecipeFromID(4);
+promise1.then((stuff) => {console.log(stuff);});
 
+// get all comments of a particular user
+async function readCommentsByUser(user_id) {
+  let client = new pg.Client(config);
+  let sql = escape('select * from "commentTable" where "user_id" = %L', String(user_id));
+  await client.connect();
+  let temp1 = await client.query(sql);
+  await client.end();
+  return temp1.rows;
+};
+// let promise1 = readCommentsByUser(4);
+// promise1.then((stuff) => {console.log(stuff);});
 
 //post full recipe
 let list1 = 
@@ -165,13 +176,12 @@ async function writeRecipe(list1) {
     cookingtime: list1.cookingTime,
     difficulty: list1.difficulty,
     admin_id: list1.user_id,
-    draft: "\'f\'",
-    appr_status: "\'f\'",
+    draft: 'f',
+    appr_status: 'f',
     image_url: list1.recipePhoto
   };
   let promise1 = writeRecipeTable(recipelist);
   promise1.then( async (id) => {
-    console.log('1',id);
     let ingredientlist = {
       recipe_id: id,
       ingredient: list1.recipeIngredients
@@ -182,11 +192,12 @@ async function writeRecipe(list1) {
       howto: list1.recipeHowto
     };
     await writeHowTo(howtolist);
-    return id;
+    await initializeVote(id);
+    return true;
   });
 }
-let promise1 = writeRecipe(list1);
-promise1.then((stuff) => {console.log('2',stuff);});
+// let promise1 = writeRecipe(list1);
+// promise1.then((stuff) => {console.log(stuff);});
 
 async function writeRecipeTable(list1) {
   let client = [];
@@ -194,7 +205,7 @@ async function writeRecipeTable(list1) {
   let temp1 = null;
   for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
   sql[0] = `SELECT setval(\'"recipeTable_id_seq"\', (SELECT MAX(id) from "recipeTable"));`;
-  sql[1] = escape('insert into "recipeTable" ("name", "cookingtime", "difficulty", "admin_id", "draft", "appr_status", "image_url") values (%L, %L, %L, %L, %L, %L, %L) returning "id";', String(list1.recipeName), String(list1.cookingTime), String(list1.difficulty), String(list1.user_id), list1.draft, list1.appr_status, list1.recipePhoto);
+  sql[1] = escape('insert into "recipeTable" ("name", "cookingtime", "difficulty", "admin_id", "draft", "appr_status", "image_url") values (%L, %L, %L, %L, %L, %L, %L) returning "id";', list1.name, list1.cookingtime, list1.difficulty, list1.admin_id, list1.draft, list1.appr_status, list1.image_url);
   await client[0].connect();
   await client[0].query(sql[0]);
   await client[0].end();
@@ -209,7 +220,7 @@ async function writeIngredient(list1) {
   for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
   let sql = [null, null];
   sql[0] = `SELECT setval(\'"ingredientTable_id_seq"\', (SELECT MAX(id) from "ingredientTable"));`;
-  sql[1] = escape('insert into "ingredientTable" ("recipe_id", "ingredient") values (%L, %L);', String(list1.recipe_id), String(list1.recipeIngredients));
+  sql[1] = escape('insert into "ingredientTable" ("recipe_id", "ingredient") values (%L, %L);', String(list1.recipe_id), String(list1.ingredient));
   await client[0].connect();
   await client[0].query(sql[0]);
   await client[0].end();
@@ -224,7 +235,22 @@ async function writeHowTo(list1) {
   for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
   let sql = [null, null];
   sql[0] = `SELECT setval(\'"howtoTable_id_seq"\', (SELECT MAX(id) from "howtoTable"));`;
-  sql[1] = escape('insert into "howtoTable" ("recipe_id", "howto") values (%L, %L);', String(list1.recipe_id), String(list1.recipeHowto));
+  sql[1] = escape('insert into "howtoTable" ("recipe_id", "howto") values (%L, %L);', String(list1.recipe_id), String(list1.howto));
+  await client[0].connect();
+  await client[0].query(sql[0]);
+  await client[0].end();
+  await client[1].connect();
+  await client[1].query(sql[1]);
+  await client[1].end();
+  return true;
+};
+
+async function initializeVote(recipe_id) {
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  sql[0] = `SELECT setval(\'"ratingsummaryTable_id_seq"\', (SELECT MAX(id) from "ratingsummaryTable"));`;
+  sql[1] = escape('insert into "ratingsummaryTable" ("recipe_id", "totalvoters", "averagescore") values (%L, 0, 0);', String(recipe_id));
   await client[0].connect();
   await client[0].query(sql[0]);
   await client[0].end();
@@ -236,39 +262,55 @@ async function writeHowTo(list1) {
 
 //post new comment
 async function postComment (user_id, recipe_id, comment) {
-  await knex.raw('SELECT setval(\'"commentTable_id_seq"\', (SELECT MAX(id) from "commentTable"));')
-  .then( async () => {
-    await knex('commentTable').insert({ user_id: user_id, recipe_id: recipe_id, content: comment}, ['id'])
-    .then((id) => {return id[0].id;});
-  })
-  .catch ( (error) => {
-    throw error;
-  });
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  let temp = null;
+  sql[0] = `SELECT setval(\'"commentTable_id_seq"\', (SELECT MAX(id) from "commentTable"));`;
+  sql[1] = escape('insert into "commentTable" ("user_id", "recipe_id", "content") values (%L, %L, %L) returning "id";', String(user_id), String(recipe_id), String(comment));
+  await client[0].connect();
+  await client[0].query(sql[0]);
+  await client[0].end();
+  await client[1].connect();
+  temp = await client[1].query(sql[1]);
+  await client[1].end();
+  return temp.rows[0].id;
 };
+// let promise1 = postComment(3,4,"567");
+// promise1.then((stuff) => {console.log(stuff);});
 
 
 //put new vote
 async function updateVote(recipe_id, vote) {
-  let promise3 = await knex('ratingsummaryTable').where('recipe_id', recipe_id).select("recipe_id", "totalvoters", "averagescore");
-  await promise3.then( async (data) => {
-    let temp1 = data[0].averagescore * data[0].totalvoters + vote;
-    data[0].totalvoters ++;
-    data[0].averagescore = Number(temp1 / data[0].totalvoters).toPrecision(9);
-    await knex('ratingsummaryTable').where('recipe_id', recipe_id).update(data[0])
-    .then(() => {return true;});
-  }).catch( (error) => {
-    throw error;
-  });
-}
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  let temp = [null, null];
+  sql[0] = escape('select "recipe_id", "totalvoters", "averagescore" from "ratingsummaryTable" where "recipe_id" = %L', String(recipe_id));
+  await client[0].connect();
+  temp[0] = await client[0].query(sql[0]);
+  temp[1] = temp[0].rows[0].averagescore * temp[0].rows[0].totalvoters + vote;
+  temp[0].rows[0].totalvoters ++;
+  temp[0].rows[0].averagescore = Number(temp[1] / temp[0].rows[0].totalvoters).toPrecision(9);
+  await client[1].connect();
+  sql[1] = escape('update "ratingsummaryTable" set "totalvoters" = %L, "averagescore" = %L where "recipe_id" = %L', String(temp[0].rows[0].totalvoters), String(temp[0].rows[0].averagescore), String(recipe_id));
+  await client[1].query(sql[1]);
+  await client[0].end();
+  await client[1].end();
+  return true;
+};
+// updateVote(7, 5).then((a) => {console.log(a);});
 
 //delete comment
 async function deleteComment(commentID) {
-  await knex('commentTable').where({ id: commentID }).del()
-  .then( () => {return true;})
-  .catch((error) => {
-    throw error;
-  });
-}
+  let client = new pg.Client(config);
+  let sql = escape('delete from "commentTable" where "id" = %L', String(commentID));
+  await client.connect();
+  await client.query(sql);
+  await client.end();
+  return true;
+};
+// deleteComment(10).then((stuff) => {console.log(stuff);})
 
 //user display favourite_recipe
 // let result4 = [];
