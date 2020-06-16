@@ -57,7 +57,7 @@ async function filterFDname(userinput) {
     else {
 
         userinput = "%" + userinput + "%"
-
+//% and like are working together // i case insensity
         let filterfood = await knex.select("*").from("foodTable").
             innerJoin("food_rel_recipeTable", "food_id", "foodTable.id")
             .where("food_name", "ilike", userinput)

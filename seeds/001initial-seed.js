@@ -1,5 +1,5 @@
 
-exports.seed = function (knex) {
+exports.seed = function (knex,Promise) {
   // Deletes ALL existing entries
   // .then(function () {
   //   return knex('commentTable').del()
