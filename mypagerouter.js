@@ -1,5 +1,4 @@
 const passport = require("passport");
-const commentoSSO = require('./commentoSSO');
 
 module.exports = (express) => {
   const router = express.Router();
@@ -8,7 +7,7 @@ module.exports = (express) => {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/signup");
+    res.redirect("/login");
   }
 
   
@@ -55,18 +54,9 @@ module.exports = (express) => {
   // access was granted, the user will be logged in.  Otherwise,
   // authentication has failed.
 
-  router.get("/sso/commento", isLoggedIn, (req, res) => {
-    commentoSSO(req.query, req.user)
-    .then((url)=>{
-      res.status(302).redirect(url);
-    })
-    .catch((err)=>{
-      res.redirect("/signup");
-    });
-  });
-
   router.get("/login", (req, res) => {
-    res.render('login');
+    res.sendFile(__dirname + "/html/login.html");
+    //res.render('login');
   });
 
   router.get("/mypagecopy", (req, res) =>{
@@ -130,19 +120,14 @@ favourite:[
 
 }
 
-  router.get("/mypage", (req, res) => {
+  router.get("/mypage", isLoggedIn, (req, res) => {
+    console.log(req.session.passport.user);
     res.render('mypage', userresult);
     console.log(userresult);
-    // console.log(req.user.id);
-    // console.log(req.session.id);
-    // console.log(req.user);
-
-    // res.send('This is a secret page (or rather message) you will get this on a successful login.');
-    // res.sendFile(__dirname + "/html/mypage.html");
   });
 
   router.get("/error", (req, res) => {
-    res.send("You're not logged in. Please login.");
+    res.send("Action failed. Please retry login.");
   });
 
   router.post(
@@ -179,6 +164,13 @@ favourite:[
   router.get('/forgotpassword',(req,res)=>{
     res.render('forgotpassword')
 })
+
+router.post('/forgotpassword', (req, res) => {
+  passport.authenticate("local-change", {
+    successRedirect: "/",
+    failureRedirect: "/error",
+  })
+});
 
   return router;
 };

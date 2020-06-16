@@ -19,7 +19,9 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "pg": "^8.2.1"
+    "pg": "^8.2.1",
+    "pg-escape": "^0.2.0",
+    "pg-format": "^1.0.4"
   },
   "devDependencies": {},
   "scripts": {

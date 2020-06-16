@@ -66,9 +66,18 @@ padding: 1rem;
 
 .lgicon{
     width: 3rem;
+    height: 3rem;
 }
 
 .lgicon:hover{ filter: opacity(0.5); cursor: pointer;}
+
+.icon2{
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon2:hover{ filter: opacity(0.5); cursor: pointer;}
+
 
 /* index page */
 .book{

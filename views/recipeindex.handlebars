@@ -28,72 +28,20 @@
 
     </div>
 
-
-
-
-    <!-- first row -->
-    <!--
-let list1 = {
-    recipe: [
-    {
-        recipe_id: 1,
-        recipe_name: "Spicy Fishball",
-        users_user_id: "pullip123",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x2764;&#x2764;&#x2764;&#x2764;&#x2764;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    },{
-        recipe_id: 0,
-        recipe_name: "Recipe Name",
-        users_user_id: "Username",
-        recipe_image_url: "fishball.jpg",
-        recipe_rating: '&#x25c7;&#x25c7;&#x25c7;&#x25c7;&#x25c7;'
-    }]
-}
-    -->
 </nav>
 
 <div class="row center">
     {{#each recipe}}
     <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-        <h4>
-            <a class="font2" id="minrecipename" href='/recipe:{{recipe_id}}'>{{recipe_name}}</a>
-        </h4>
+        <div class="d-flex justify-content-center">
+            <h5>
+                <a class="font2" id="minrecipename" href='/recipe:{{recipe_id}}'>{{recipe_name}}</a>
+            </h5>
+
+            <img class="icon2 ml-2" src="add2.png" alt="delete">
+
+        </div>
+
         <p>{{users_user_id}}</p>
         <div class="rating">
             <div class="rating-upper red" style="width: {{recipe_rating}}%">
@@ -110,6 +58,7 @@ let list1 = {
                 <span>❤</span>
                 <span>❤</span>
             </div>
+
         </div>
         <img class="minviewimg col-sm-10" src="{{recipe_image_url}}" alt="recipe image">
     </div>
@@ -119,32 +68,3 @@ let list1 = {
     </div>
     {{/each}}
 </div>
-<!-- second row 
-    <div class="row center">
-
-        <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-            <h2>Recipe Name</h2>
-            <p>Username</p>
-            <img class="minviewimg" src="fishball.jpg" alt="recipe image">
-        </div>
-
-        <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-            <h2>Recipe Name</h2>
-            <p>Username</p>
-            <img class="minviewimg" src="fishball.jpg" alt="recipe image">
-        </div>
-
-        <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-            <h2>Recipe Name</h2>
-            <p>Username</p>
-            <img class="minviewimg" src="fishball.jpg" alt="recipe image">
-        </div>
-
-        <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-            <h2>Recipe Name</h2>
-            <p>Username</p>
-            <img class="minviewimg" src="fishball.jpg" alt="recipe image">
-        </div>
-
-    </div>
--->

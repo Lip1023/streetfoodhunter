@@ -21,7 +21,6 @@ const session = require('express-session');
 
 const setupPassport = require('./passport/passport');
 const mypagerouter = require('./mypagerouter')(express);
-const router = require('./router')(express);
 const reciperouter = require('./reciperouter')(express);
 
 app.engine('handlebars', hb({ defaultLayout: 'main' }));
@@ -69,7 +68,6 @@ app.engine('handlebars', hb({ defaultLayout: 'main' }));
     };
     
     setupPassport(app);
-    // app.use('/', router);
     app.use('/', mypagerouter);
     app.use('/', reciperouter);
 
