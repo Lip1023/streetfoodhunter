@@ -10,8 +10,6 @@ const knex = require('knex')({
     }
 });
 
-
-
 //read all food first
 //get row number for max food num
 //once randomnum is created, select relevant food with the id(randomnum)
@@ -38,6 +36,7 @@ async function callFD() {
         console.log(randomFD)
         return randomFD
 
+    return randomFD
 }
 
 // callFD()

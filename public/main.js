@@ -15,6 +15,24 @@ $('#stop-btn').on('click', function () {
     $('#foodimage').removeClass('hidden')
     $('#whattoeat').addClass('hidden')
 })
+
+
+//get related recipe after random food pick
+// $('#call-btn').click((event) => {
+//     event.preventDefault();
+
+//         $.get(`/recipe/:1`, data)
+//             .done(() => {
+//                 console.log('success')
+//             })
+//             .fail((error) => {
+//                 alert(error);
+//             });
+// })
+
+
+
+
 // sign up page 
 $(document).ready()
 //username no longer than 15chraracters
@@ -60,7 +78,7 @@ $("#fire").click((event) => {
         let formdata = new FormData();
         let temp1 = document.getElementById("file").files[0];
         formdata.append('file', temp1);
-        
+
         $.ajax({
             type: "POST",
             url: "https://img.eservice-hk.net/api.php?version=2",
@@ -69,28 +87,28 @@ $("#fire").click((event) => {
             contentType: false,
             processData: false
         })
-        .done((response) => {
-            // console.log(JSON.parse(response).url);
-            let temp2 = {
-                recipeName: $("#recipename").val(),
-                cookingTime: $("#cookingtime").val(),
-                recipeDescription: $("#recipedescription").val(),
-                recipeIngredients: $("#recipeingredients").val(),
-                difficulty: $(".form-check-input:checked").val(),
-                recipeHowto: $("#recipehowto").val(),
-                recipePhoto: JSON.parse(response).url
-            };
-        $.post("/newrecipe", temp2)
-                .done((completeMessage) => {
-                    alert(completeMessage);
-                })
-                .fail((error) => {
-                    alert(error);
-                });
-        })
-        .fail((error) => {
-            alert(error);
-        });
+            .done((response) => {
+                // console.log(JSON.parse(response).url);
+                let temp2 = {
+                    recipeName: $("#recipename").val(),
+                    cookingTime: $("#cookingtime").val(),
+                    recipeDescription: $("#recipedescription").val(),
+                    recipeIngredients: $("#recipeingredients").val(),
+                    difficulty: $(".form-check-input:checked").val(),
+                    recipeHowto: $("#recipehowto").val(),
+                    recipePhoto: JSON.parse(response).url
+                };
+                $.post("/newrecipe", temp2)
+                    .done((completeMessage) => {
+                        alert(completeMessage);
+                    })
+                    .fail((error) => {
+                        alert(error);
+                    });
+            })
+            .fail((error) => {
+                alert(error);
+            });
     } else {
         alert("Please complete the form before submission");
     };
@@ -114,12 +132,12 @@ $('.nullcheck').each(function (index) {
 });
 
 //when click commentbox, have submit button
-$('#commentarea').on('click',function(){
+$('#commentarea').on('click', function () {
     $('#ice').removeClass('hidden')
     $('#cancel').removeClass('hidden')
 })
 
-$('#cancel').on('click',function(){
+$('#cancel').on('click', function () {
     $('.cbtn').addClass('hidden')
 })
 
