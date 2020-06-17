@@ -58,7 +58,7 @@ module.exports = (express) => {
   
 
   router.get("/login", (req, res) => {
-    res.sendFile("/mnt/c/Users/Pullip/desktop/today/streetfood/streetfoodhunter/html/login.html");
+    res.render('login');
   
   });
 

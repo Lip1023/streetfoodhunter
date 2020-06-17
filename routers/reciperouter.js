@@ -16,7 +16,7 @@ const {
     getMyPage,
     addFavourite,
     deleteFavourite
-  } = require('./recipe');
+  } = require('../services/recipe');
 
   module.exports = (express) => {
   const router = express.Router();
