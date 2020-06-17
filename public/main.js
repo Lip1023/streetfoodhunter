@@ -144,21 +144,52 @@ $('#cancel').on('click', function () {
 //submitting comment on recipe page
 $('#ice').click((event) => {
     event.preventDefault();
-    let pathArray = window.location.pathname.split('/');
-    let id = pathArray[pathArray.length - 1];
+    let recipe_id = $('#recipe_id').val();
     let rating = $('input[name=rate]:checked', '.rate').val();
     let comment_content = $("#exampleFormControlTextarea1").val();
     let blablabla = {
-        id: id,
+        recipe_id: recipe_id,
         rating: rating,
         comment_content: comment_content
-    }
+    };
     let sure = confirm("Are you sure?");
     if (sure) {
         $.post("/comment", blablabla, (completeMessage) => {
             alert(completeMessage);
+            window.location.reload();
         });
     }
 });
 
+$(".addfav").click( (event) => {
+    event.preventDefault();
+    let recipe_id = event.currentTarget.alt;
+    let blablabla = {
+        recipe_id: recipe_id
+    };
+    $.post("/addfav", blablabla, (completeMessage) => {
+        alert(completeMessage);
+    });
+});
 
+$("#sort").change(function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    let tag = urlParams.get('tag');
+    let order_by = $(this).children(":selected").html();
+    let blablabla = {
+        tag: tag,
+        order_by: order_by
+    };
+    window.location.href='/recipe?' + $.param(blablabla);
+});
+
+$("#filters button").click(function(){
+    if ($(this).html() === 'All') {
+        $('#recipe_tag').removeAttr('value');
+    } else {
+        $('#recipe_tag').attr('value', $(this).html());
+    };
+    let tag = $('#recipe_tag').val();
+    let blablabla = { tag: tag };
+    window.location.href='/recipe?' + $.param(blablabla);
+});
