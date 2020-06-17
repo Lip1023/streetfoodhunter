@@ -52,16 +52,10 @@
 </div>
 
 <!-- comment box -->
-<div class="cotainer-fluid book roundborder commentbox">
+<div class="cotainer-fluid roundborder commentbox">
 
     <form class="commentform" action="post">
-        <H1>Share your thoughts about the recipe!</H1><br>
-
-        <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-
-        <div class="rate">
+        <h2>Share your thoughts about the recipe!</h2><br>   <div class="rate">
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="text">5 stars</label>
             <input type="radio" id="star4" name="rate" value="4" />
@@ -74,43 +68,17 @@
             <label for="star1" title="text">1 star</label>
         </div>
 
-        <br>
-        <button id="ice" name="submit" type="submit" class="btn btn-dark">Submit</button>
+        <div class="form-group" id="commentarea">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+        </div>
+
+        <button id="ice" name="submit" type="submit" class="btn btn-dark hidden">Submit</button>
 
     </form>
+
+<div id="displaycomment" class="d-flex">
+    <h3 class="fontheavy">username  :</h3>
+    <h4>I followed this recipe the other night. As I dont' live in Hong Kong, I can't really buy it from wet market easily. Thank you so much!</h4>
 </div>
 
-{{!-- <div class="cotainer-fluid book roundborder commentbox">
-
-    <h3>Other Fishball recipes</h3><br>
-    {{#each recipe}}
-    <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-        <h4>
-            {{recipe_name}}
-        </h4>
-        <p>{{users_user_id}}</p>
-        <div class="rating">
-            <div class="rating-upper red" style="width: {{recipe_rating}}%">
-                <span>❤</span>
-                <span>❤</span>
-                <span>❤</span>
-                <span>❤</span>
-                <span>❤</span>
-            </div>
-            <div class="rating-lower">
-                <span>❤</span>
-                <span>❤</span>
-                <span>❤</span>
-                <span>❤</span>
-                <span>❤</span>
-            </div>
-        </div>
-        <img class="minviewimg col-sm-10" src="{{recipe_image_url}}" alt="recipe image">
-    </div>
-    {{else}}
-    <div class="eachrecipe col-sm-6 col-md-4 col-lg-3">
-        <p>Sorry, no result!</p>
-    </div>
-    {{/each}}
-</div> --}}
 </div>

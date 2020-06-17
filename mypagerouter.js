@@ -54,9 +54,12 @@ module.exports = (express) => {
   // access was granted, the user will be logged in.  Otherwise,
   // authentication has failed.
 
+
+  
+
   router.get("/login", (req, res) => {
     res.sendFile(__dirname + "/html/login.html");
-    //res.render('login');
+  
   });
 
   router.get("/mypagecopy", (req, res) =>{

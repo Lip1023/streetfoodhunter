@@ -37,7 +37,13 @@
                     </li>
                 </ul>
 
-                <form class="form-inline my-2 my-lg-0 row col-sm-8">
+                <form class="form-inline my-2 my-lg-0 row 
+                col-sm-8">
+                    <select name="input" id="selectTB" class="grey">
+                        <option class="selectOP" value="1">Recipe name</option>
+                        <option class="selectOP" value="2">Food name</option>
+                        <option class="selectOP" value="3">Username</option>
+                    </select>
                     <input class="col-sm-6 col-md-8 form-control mr-sm-2" type="search" aria-label="Search">
                     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                 </form>
@@ -68,7 +74,8 @@
                             <div class="dropdown-divider"></div>
 
                             <div class="d-flex justify-content-center">
-                                <button id="logout" class="hidden btn btn-outline-dark mt-lg-4 ml-lg-2" type="submit">Log
+                                <button id="logout" class="hidden btn btn-outline-dark mt-lg-4 ml-lg-2"
+                                    type="submit">Log
                                     out</button>
                             </div>
 
