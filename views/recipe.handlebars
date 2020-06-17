@@ -76,9 +76,12 @@
             <button id="cancel" type="button" class="cbtn btn btn-light hidden">Cancel</button>
     </form>
         
-<div id="displaycomment" class="d-flex">
-    <h4 class="fontheavy">USERNAME  :</h4>
-    <h4>I followed this recipe the other night. As I dont' live in Hong Kong, I can't really buy it from wet market easily. Thank you so much!</h4>
-</div>
 
+
+{{#each comment}}        
+<div id="displaycomment" class="d-flex">
+    <h4 class="fontheavy">{{user_id}}</h4>
+    <h4>{{content}}</h4>
+</div>
+ {{/each}}
 </div>

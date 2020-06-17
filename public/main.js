@@ -17,7 +17,7 @@ $('#stop-btn').on('click', function () {
 })
 // sign up page 
 $(document).ready()
-//username no longer than 15chr
+//username no longer than 15chraracters
 $('#usernameInput').on('keydown', function (e) {
     var input = e.target.value;
     console.log(input)
