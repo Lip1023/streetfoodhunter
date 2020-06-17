@@ -25,8 +25,16 @@ async function callFD() {
         randomFD = {
             id: randomFD.id,
             name: randomFD.food_name,
-            image_url: randomFD.imageurl
+            image_url: randomFD.imageurl,
+            numberofrecipe:'',
+            recipeid: '' 
         };
+
+        let recipes = await knex.select("recipe_id").from("food_rel_recipeTable") 
+                               .where("food_id", randomFD.id)  
+
+        randomFD.numberofrecipe = recipes.length
+        randomFD.recipeid = recipes[0]                       
         console.log(randomFD)
         return randomFD
 
