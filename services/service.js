@@ -1,6 +1,5 @@
 //This file is for search function on nav bar.
 
-
 require('dotenv').config();
 const knex = require('knex')({
     client: 'postgresql',
@@ -93,4 +92,4 @@ async function filterFDname(userinput) {
 
     // filterRPname('egg')
     // filterUSname('tony')
-    // filterFDname('stuffed')
+    filterFDname('stuffed')
