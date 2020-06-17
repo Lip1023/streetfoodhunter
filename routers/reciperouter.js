@@ -39,7 +39,7 @@ const {
 // RECIPE
 //recipe index page
     router.get('/recipe', isLoggedIn, (req, res)=>{
-        let promise1 = readRecipeList(req.body.tag);
+        let promise1 = readRecipeList(req.query.tag, req.query.order_by);
         promise1.then((list1) => {
             insertUserInfo(list1, req.session.passport.user);
             res.render('recipeindex',list1);
@@ -82,20 +82,29 @@ let result = {
 
 // result.difficulty = numberToStars(result.difficulty);
 
-    router.get('/recipe/:id', (req, res)=>{
+    router.get('/recipe::id', isLoggedIn, (req, res)=>{
         let promise1 = readRecipeFromID(req.params.id);
         promise1.then((list1) => {
             insertUserInfo(list1, req.session.passport.user);
-            console.log(list1);
             res.render('recipe',list1);
         });
     });
 
 //post recipe comment
-    router.post('/comment', (req, res)=>{
-        console.log(req.body);
-        res.send("completed");
+    router.post('/comment', isLoggedIn, (req, res)=>{
+        if (req.body.comment_content.length > 0) {
+            postComment(req.session.passport.user.id, req.body.recipe_id, req.body.comment_content);
+        }
+        updateVote(req.body.recipe_id, req.body.rating);
+        res.send("Well recived.");
     });
+
+//add favourite recipe
+router.post('/addfav', isLoggedIn, (req, res)=>{
+    addFavourite(req.session.passport.user.id, req.body.recipe_id);
+    res.send("Favourite added");
+});
+
 //
 
 return router;
