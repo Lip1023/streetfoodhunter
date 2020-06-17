@@ -176,6 +176,7 @@ async function readRecipeFromID(id) {
     result.how_to = result.howto.split(/\r\n|\r|\n/g);
     delete result.howto;
     result.recipe_rating = Math.floor(result.averagescore * 20);
+    result.difficulty = Math.floor(result.difficulty * 20);
     result.comment = [];
   });
   data[0].forEach((data) => {

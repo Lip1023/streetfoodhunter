@@ -27,6 +27,13 @@ const {
     }
     res.redirect("/login");
   }
+  
+  function insertUserInfo (obj, userobj) {
+      obj.user_id = userobj.id;
+      obj.full_name = userobj.full_name;
+      obj.user_name = userobj.user_name;
+      obj.email = userobj.email;
+  }
 
 //let list1 = {recipe:[]};
 // RECIPE
@@ -34,6 +41,7 @@ const {
     router.get('/recipe', isLoggedIn, (req, res)=>{
         let promise1 = readRecipeList(req.body.tag);
         promise1.then((list1) => {
+            insertUserInfo(list1, req.session.passport.user);
             res.render('recipeindex',list1);
         });
     });
@@ -74,16 +82,21 @@ let result = {
 
 // result.difficulty = numberToStars(result.difficulty);
 
-    router.get('/recipe:1', (req, res)=>{
-        res.render('recipe', result)
+    router.get('/recipe/:id', (req, res)=>{
+        let promise1 = readRecipeFromID(req.params.id);
+        promise1.then((list1) => {
+            insertUserInfo(list1, req.session.passport.user);
+            console.log(list1);
+            res.render('recipe',list1);
+        });
     });
 //
 
 //post recipe comment
-router.post('/comment', (req, res)=>{
-    console.log(req.body);
-    res.send("completed");
-});
+    router.post('/comment', (req, res)=>{
+        console.log(req.body);
+        res.send("completed");
+    });
 //
 
 return router;
