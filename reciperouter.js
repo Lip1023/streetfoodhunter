@@ -1,94 +1,41 @@
-module.exports = (express) => {
+const {
+    getUserNameFromID,
+    getRatingFromRecipeID,
+    readAllRecipes,
+    readRecipeList,
+    readRecipeFromID,
+    readCommentsByUser,
+    writeRecipe,
+    writeRecipeTable,
+    writeIngredient,
+    writeHowTo,
+    initializeVote,
+    postComment,
+    updateVote,
+    deleteComment,
+    getMyPage,
+    addFavourite,
+    deleteFavourite
+  } = require('./recipe');
+
+  module.exports = (express) => {
   const router = express.Router();
 
-//   function isLoggedIn(req, res, next) {
-//     if (req.isAuthenticated()) {
-//       return next();
-//     }
-//     res.redirect("/signup");
-//   }
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/login");
+  }
 
-let list1 = {
-    recipe: [
-    {
-        "recipe_id": 1,
-        "recipe_name": "Spicy Fishball",
-        "users_user_id": "pullip123",
-        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
-        "recipe_rating": '74'
-    },{
-        "recipe_id": 2,
-        "recipe_name": "Sweet Fishball",
-        "users_user_id": "pullip123",
-        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
-        "recipe_rating": '45'
-    },{
-        "recipe_id": 3,
-        "recipe_name": "Sour Fishball",
-        "users_user_id": "pullip123",
-        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
-        "recipe_rating": '81'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '66'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '47'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '56'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '50'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '100'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '47'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '56'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '50'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '100'
-    }]
-}
 //let list1 = {recipe:[]};
 // RECIPE
 //recipe index page
-    router.get('/recipe', (req, res)=>{
-        res.render('recipeindex',list1 )
+    router.get('/recipe', isLoggedIn, (req, res)=>{
+        let promise1 = readRecipeList(req.body.tag);
+        promise1.then((list1) => {
+            res.render('recipeindex',list1);
+        });
     });
 //recipe adding page
     router.get('/newrecipe',(req, res)=>{
@@ -139,36 +86,5 @@ router.post('/comment', (req, res)=>{
 });
 //
 
-let list2 = {
-    my_recipe: [{
-        "recipe_id": 1,
-        "recipe_name": "Spicy Fishball",
-        "recipe_difficulty": "3",
-        "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
-        "recipe_rating": '74'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "recipe_difficulty": "4",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '50'
-    }],
-    fav_recipe: [{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_difficulty": "4",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '50'
-    },{
-        "recipe_id": 0,
-        "recipe_name": "Recipe Name",
-        "users_user_id": "Username",
-        "recipe_difficulty": "4",
-        "recipe_image_url": "fishball.jpg",
-        "recipe_rating": '50'
-    }]
-}
-
-  return router;
+return router;
 };
