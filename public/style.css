@@ -78,7 +78,7 @@ padding: 1rem;
 
 .icon2:hover{ filter: opacity(0.5); cursor: pointer;}
 
-
+#selectTB{border: none;}
 /* index page */
 .book{
     border: solid 1px rgb(0, 0, 0);

@@ -90,7 +90,6 @@ let result = {
             res.render('recipe',list1);
         });
     });
-//
 
 //post recipe comment
     router.post('/comment', (req, res)=>{
