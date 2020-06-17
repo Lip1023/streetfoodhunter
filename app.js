@@ -46,7 +46,6 @@ app.get('/', (req, res) => {
     console.log(randomFD)
     res.render('index', randomFD)
    })
-
 });
 
 app.get('/search', (req, res) => {

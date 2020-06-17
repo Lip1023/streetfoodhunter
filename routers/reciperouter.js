@@ -83,7 +83,7 @@ let result = {
 
 // result.difficulty = numberToStars(result.difficulty);
 
-    router.get('/recipe/:id', (req, res)=>{
+    router.get('/recipe::id', (req, res)=>{
         let promise1 = readRecipeFromID(req.params.id);
         promise1.then((list1) => {
             insertUserInfo(list1, req.session.passport.user);
