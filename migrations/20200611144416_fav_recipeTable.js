@@ -7,6 +7,7 @@ exports.up = function(knex,Promise) {
         table.foreign('user_id').references('userTable.id');
         table.integer('recipe_id').unsigned();//.unique();
         table.foreign('recipe_id').references('recipeTable.id');
+        table.unique(['user_id', 'recipe_id']);
         table.timestamps(false, true); 
     });
 };
