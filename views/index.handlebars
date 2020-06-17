@@ -1,69 +1,25 @@
 <div class="row center" id="indexpage">
 
-    {{!-- <div id="recipenum" class="col-lg-3 hidden">
-        <h2 class="font2 fontheavy">Fishball</h2>
-        <h4>We've got 10 different recipes of Fishball</h4>
-    </div> --}}
-
     <!-- pic screen -->
     <div class="screen col-sm-12 col-md-8 col-lg-6">
         <br>
         <h2 id="whattoeat">What to eat today?</h2>
-        <h2 id="indexuser" class="hidden">{{users_user_id}}</h2>
         <video id="screenvideo" src="bg.mp4"></video>
 
 
         <div class="hidden shadowborder scroll" id="foodimage">
 
             <div id="recipenum">
-                <h1 class="mt-lg-2 fontheavy">Fishball</h1>
-                <h3>We've got 10 recipes of Fishball</h3>
+                <h1 class="mt-lg-2 fontheavy">
+                    {{name}}</h1>
+                <h3>We've got 10 recipes of {{name}}</h3>
 
-                <img class="smallpic pb-2" src="fishball.jpg" alt="picture">
+                <img class="smallpic pb-2"                     src="{{image_url}}"alt="food image">
                <br> <button id="call-btn" type="button" class="animate__animated animate__jello btn 
-                btn-danger btn-lg"><a class="white" href="/recipe:1"> View our famous recipe</a></button>
+                btn-danger btn-lg"><a class="white" href="/recipe/:1"> View our famous recipe</a></button>
             </div>
 
-
-            <div id="randomrecipe" class="hidden">
-                <h2 class="font2 fontheavy">{{name}}</h2><br>
-                <h4 class="font2">Difficulty: <div class="rating">
-                        <div class="rating-upper yellow" style="width: {{difficulty}}%">
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                        </div>
-                        <div class="rating-lower">
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                        </div>
-                    </div>
-                </h4>
-                <h4 class="font2">Cooking time: {{cookingtime}}minutes </h4><br>
-                <h4>Ingredients:
-                    <br>{{ingredient}}</h4><br>
-                <h4>How to:
-                    <ol>
-                        {{#each how_to}}
-                        <li>{{this}}</li>
-                        {{/each}}
-                    </ol>
-                </h4>
-
-                <br>
-                <button type="button" class="animate__animated animate__pulse animate__infinite animate__slow btn btn-success btn-lg">
-                    <a class="white" href="/signup" id="signup-btn">Sign up
-                        for more recipes</a>
-                </button>
-            </div>
         </div>
-
-
 
 
         <div id="buttonset" class="center">
@@ -71,38 +27,6 @@
             <img src="stop1.png" id="stop-btn" class="lgicon mx-4 knob" alt="stopBTN">
         </div>
     </div>
-
-    {{!-- <div id="randomrecipe" class="col-lg-3 hidden">
-        <h2 class="font2 fontheavy">{{name}}</h2>
-        <h4 class="font2">Difficulty: <div class="rating">
-                <div class="rating-upper yellow" style="width: {{difficulty}}%">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
-                <div class="rating-lower">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
-            </div>
-        </h4>
-        <h4 class="font2">Cooking time: {{cookingtime}}minutes </h4><br>
-        <h4>Ingredients:
-            <br>{{ingredient}}</h4><br>
-        <h4>How to:
-            <ol>
-                {{#each how_to}}
-                <li>{{this}}</li>
-                {{/each}}
-            </ol>
-        </h4>
-    </div> --}}
-
 </div>
 
 

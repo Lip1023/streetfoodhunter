@@ -495,6 +495,31 @@ async function deleteFavourite(user_id, recipe_id) {
 // let promise1 = deleteFavourite(2, 4);
 // promise1.then((stuff) => {console.log(stuff);});
 
+async function callFD() {
+  let allFD = knex.select("*").from("foodTable")
+  allFD.then((rows) => {
+      // console.log(rows)
+      let mxFD = rows.length
+      let number = Math.floor((Math.random() * `${mxFD}`) + 1)
+      // console.log(number)
+      let randomFD = rows[number-1]
+      // randomFD = {
+      //     id: randomFD.id,
+      //     name: randomFD.food_name,
+      //     imgae_url: randomFD.imageurl
+      // };
+      // console.log(randomFD)
+      return randomFD
+  })
+      .catch((error) => {
+          console.log(error);
+      })
+}
+
+
+
+
+
 module.exports = {
   getUserNameFromID,
   getRatingFromRecipeID,
@@ -512,5 +537,5 @@ module.exports = {
   deleteComment,
   getMyPage,
   addFavourite,
-  deleteFavourite
+  deleteFavourite,
 };

@@ -15,7 +15,7 @@ const {
     deleteComment,
     getMyPage,
     addFavourite,
-    deleteFavourite
+    deleteFavourite,
   } = require('../services/recipe');
 
   module.exports = (express) => {
@@ -34,6 +34,7 @@ const {
       obj.user_name = userobj.user_name;
       obj.email = userobj.email;
   }
+
 
 //let list1 = {recipe:[]};
 // RECIPE
