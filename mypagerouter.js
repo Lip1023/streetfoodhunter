@@ -159,7 +159,7 @@ favourite:[
 
       req.logout();
 
-      res.redirect("/login");
+      res.redirect("/");
     });
   });
 
