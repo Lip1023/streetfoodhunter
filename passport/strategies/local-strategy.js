@@ -64,6 +64,8 @@ passport.use('local-signup', new LocalStrategy({
     }
 ));
 
+
+//
 passport.use('local-change', new LocalStrategy({
     passReqToCallback: true
   },
@@ -74,6 +76,7 @@ async (req, email, password, done) => {
             return done(null, false, {message: 'Incorrect Credentials.'})
         } 
         let user = users[0];
+        //query to check question answer instead**** 
         let result = await bcrypt.checkPassword(password, user.security_answer);
         if(result){
             let hash = await bcrypt.hashPassword(password);
