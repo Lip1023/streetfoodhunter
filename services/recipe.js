@@ -42,7 +42,7 @@ async function readAllRecipes() {
   let client = [];
   let sql = [null, null, null, null];
   for (let i = 0; i < 4; i++) {client.push(new pg.Client(config))};
-  sql[0] = 'select * from "commentTable"';
+  sql[0] = 'select * from "commentTable" inner join "userTable" on "userTable"."id" = "commentTable"."user_id"';
   sql[1] = 'select * from "recipeTable" inner join "howtoTable" on "recipeTable"."id" = "howtoTable"."id"';
   sql[2] = 'select * from "recipeTable" inner join "ingredientTable" on "recipeTable"."id" = "ingredientTable"."recipe_id"';
   sql[3] = 'select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id"';
@@ -73,6 +73,8 @@ async function readAllRecipes() {
     result.comment = [];
   });
   data[0].forEach((data) => {
+    delete data.password;
+    delete data.security_answer;
     result1.forEach((result) => {
       if ( result.recipe_id === data.recipe_id ) {
         result.comment.push(data);
@@ -96,12 +98,12 @@ async function readAllRecipes() {
 //      }, ...
 //      ]
 // }
-async function readRecipeList(tag_name) {
+async function readRecipeList(tag_name = null, order_by = "New") {
   let client = [];
   let sql = [null, null, null];
   for (let i = 0; i < 3; i++) {client.push(new pg.Client(config))};
-  sql[0] = 'select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id"';
-  sql[1] = 'select "recipeTable"."id", "userTable"."full_name", "userTable"."user_name", "userTable"."email" from "recipeTable" inner join "userTable" on "recipeTable"."admin_id" = "userTable"."id"';
+  sql[0] = 'select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id" order by "recipeTable"."id" asc';
+  sql[1] = 'select "recipeTable"."id", "userTable"."full_name", "userTable"."user_name", "userTable"."email" from "recipeTable" inner join "userTable" on "recipeTable"."admin_id" = "userTable"."id" order by "recipeTable"."id" asc';
   sql[2] = 'select "recipeTable"."id", "tagTable"."tag" from "recipe_tagTable" inner join "recipeTable" on "recipeTable"."id" = "recipe_tagTable"."recipe_id" inner join "tagTable" on "tagTable"."id" = "recipe_tagTable"."tag_id" order by "recipeTable"."id" asc';
   // let sql4 = escape('SELECT note, id FROM %I ORDER BY id DESC', who);
   let temp = [null, null, null];
@@ -129,7 +131,34 @@ async function readRecipeList(tag_name) {
     };
     result2.recipe.push(temp2);
   }
-  if (tag_name) {
+  for (let j = result2.recipe.length - 1; j > 0; j--) {
+    for (let i = 0; i < j; i++) {
+      switch (order_by) {
+        case 'New':
+          if (result2.recipe[i].recipe_id < result2.recipe[i + 1].recipe_id) {
+            let temp = result2.recipe[i];
+            result2.recipe[i] = result2.recipe[i + 1];
+            result2.recipe[i + 1] = temp;
+          }
+        break;
+        case 'Rating':
+          if (result2.recipe[i].recipe_rating < result2.recipe[i + 1].recipe_rating) {
+            let temp = result2.recipe[i];
+            result2.recipe[i] = result2.recipe[i + 1];
+            result2.recipe[i + 1] = temp;
+          }
+        break;
+        default:
+          if (result2.recipe[i].recipe_name > result2.recipe[i + 1].recipe_name) {
+            let temp = result2.recipe[i];
+            result2.recipe[i] = result2.recipe[i + 1];
+            result2.recipe[i + 1] = temp;
+          }
+        break;
+      }
+    }
+  }
+  if ( (tag_name) && (tag_name.length > 0)) {
     for (let i = 0; i < result2.recipe.length; i++) {
       if (tag_name.toUpperCase() === result2.recipe[i].tag.toUpperCase()) {
         result3.recipe.push(result2.recipe[i]);
@@ -140,7 +169,7 @@ async function readRecipeList(tag_name) {
     return result2;
   };
 };
-// let promise1 = readRecipeList(false);
+// let promise1 = readRecipeList(null, 'rating');
 // promise1.then((stuff) => {console.log(stuff);});
 
 //get recipe of a particular ID
@@ -148,7 +177,7 @@ async function readRecipeFromID(id) {
   let client = [];
   let sql = [null, null, null, null];
   for (let i = 0; i < 4; i++) {client.push(new pg.Client(config))};
-  sql[0] = escape('select * from "commentTable" where "recipe_id" = %L', String(id));
+  sql[0] = escape('select * from "commentTable" inner join "userTable" on "userTable"."id" = "commentTable"."user_id" where "recipe_id" = %L', String(id));
   sql[1] = escape('select * from "recipeTable" inner join "howtoTable" on "recipeTable"."id" = "howtoTable"."id" where "recipeTable"."id" = %L', String(id));
   sql[2] = escape('select * from "recipeTable" inner join "ingredientTable" on "recipeTable"."id" = "ingredientTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
   sql[3] = escape('select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
@@ -180,6 +209,8 @@ async function readRecipeFromID(id) {
     result.comment = [];
   });
   data[0].forEach((data) => {
+    delete data.password;
+    delete data.security_answer;
     result1.forEach((result) => {
       if ( result.recipe_id === data.recipe_id ) {
         result.comment.push(data);
@@ -194,7 +225,7 @@ async function readRecipeFromID(id) {
 // get all comments of a particular user
 async function readCommentsByUser(user_id) {
   let client = new pg.Client(config);
-  let sql = escape('select * from "commentTable" where "user_id" = %L', String(user_id));
+  let sql = escape('select * from "commentTable" inner join "recipeTable" on "recipeTable"."id" = "commentTable"."recipe_id" where "user_id" = %L', String(user_id));
   await client.connect();
   let temp1 = await client.query(sql);
   await client.end();
@@ -334,7 +365,7 @@ async function updateVote(recipe_id, vote) {
   sql[0] = escape('select "recipe_id", "totalvoters", "averagescore" from "ratingsummaryTable" where "recipe_id" = %L', String(recipe_id));
   await client[0].connect();
   temp[0] = await client[0].query(sql[0]);
-  temp[1] = temp[0].rows[0].averagescore * temp[0].rows[0].totalvoters + vote;
+  temp[1] = temp[0].rows[0].averagescore * temp[0].rows[0].totalvoters + Number(vote);
   temp[0].rows[0].totalvoters ++;
   temp[0].rows[0].averagescore = Number(temp[1] / temp[0].rows[0].totalvoters).toPrecision(9);
   await client[1].connect();
