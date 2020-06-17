@@ -17,7 +17,6 @@ exports.seed = function(knex,Promise) {
         {food_name: 'Pantyhose milk tea',local_name: 'N/A',cusine_name: 'HongKongese',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/161622_41001cda24ec48d121e60035d66336f6.png'},
         {food_name: 'Stewed Pork Leg and Rice',local_name: 'Khao Kha Moo',cusine_name: 'Thai',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/161308_d0d933430c7fe4360a64501ea0e1a19b.jpg'},
         {food_name: 'Sticky rice with mango',local_name: 'Kao Niew Ma Muang',cusine_name: 'Thai',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/161746_44ee0a5d75234d9dfafb6f829ddcd434.jpg'}
-      
       ]);
  
 };

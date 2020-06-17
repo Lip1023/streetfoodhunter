@@ -1,3 +1,6 @@
+//This file is for search function on nav bar.
+
+
 require('dotenv').config();
 const knex = require('knex')({
     client: 'postgresql',
@@ -55,33 +58,39 @@ async function filterFDname(userinput) {
         console.log("No results found")
     }
     else {
-
+        let IDlist = []
         userinput = "%" + userinput + "%"
-//% and like are working together // i case insensity
-        let filterfood = await knex.select("*").from("foodTable").
-            innerJoin("food_rel_recipeTable", "food_id", "foodTable.id")
-            .where("food_name", "ilike", userinput)
-
-        let id_list = []
-
-        for (let item in filterfood){
-            id_list.push(item.id)
-        }
-
-        let filterfood = await knex.select("*").from("foodTable").
-            innerJoin("food_rel_recipeTable", "food_id", "foodTable.id")
-            .where("id", isinlist, id_list)
+        let filterfood = knex('foodTable')
+            .select("foodTable.id", "food_name")
+            .where("foodTable.food_name", "ilike", userinput)
 
         filterfood.then((rows) => {
-            console.log(rows)
-            return rows
+
+            for (i = 0; i < rows.length; i++) {
+                IDlist.push(rows[i].id)
+                console.log(IDlist)
+            }
+            return IDlist
         })
+            .then((IDlist) => {
+                let recipelist = knex('recipeTable')
+                    .select("*")
+                    .innerJoin("food_rel_recipeTable", "recipeTable.id" , "food_rel_recipeTable.recipe_id")
+                    .where("food_id", IDlist[0])
+
+                recipelist.then((rows) => {
+
+                    console.log(rows)
+                    return rows
+                })
+            })
+
             .catch((error) => {
                 console.log(error);
             })
     }
 }
 
-// filterRPname('egg')
-// filterUSname('tony')
-// filterFDname('egg')
+    // filterRPname('egg')
+    // filterUSname('tony')
+    // filterFDname('stuffed')

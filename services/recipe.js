@@ -1,5 +1,6 @@
 const pg = require('pg');                 // not using knex for SQL query
 const escape = require('pg-escape');      // use another package to avoid SQL injection
+const Knex = require('knex');
 require('dotenv').config();             // https://github.com/segmentio/pg-escape
 
 const config = {
@@ -11,6 +12,30 @@ const config = {
     max: 10, // max number of clients in the pool
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 }
+
+//get user name from user ID
+async function getUserNameFromID(id) {
+  let client = new pg.Client(config);
+  let sql = escape('select "user_name" from "userTable" where "id" = %L', String(id));
+  await client.connect();
+  temp1 = await client.query(sql);
+  await client.end();
+  return temp1.rows[0].user_name;
+}
+// let promise1 = getUserNameFromID(1);
+// promise1.then((stuff) => {console.log(stuff);});=
+
+//get rating from recipe ID
+async function getRatingFromRecipeID(id) {
+  let client = new pg.Client(config);
+  let sql = escape('select "averagescore" from "ratingsummaryTable" where "recipe_id" = %L', String(id));
+  await client.connect();
+  temp1 = await client.query(sql);
+  await client.end();
+  return temp1.rows[0].averagescore;
+}
+// let promise1 = getRatingFromRecipeID(4);
+// promise1.then((stuff) => {console.log(stuff);});
 
 //get full recipe
 async function readAllRecipes() {
@@ -59,44 +84,63 @@ async function readAllRecipes() {
 // let promise1 = readAllRecipes();
 // promise1.then((stuff) => {console.log(stuff);});
 
-//get list of all recipes
+//get list of all recipes / recipes by tag name
 // {
+//     recipe: [{
 //     "recipe_id": 0,
 //     "recipe_name": "Recipe Name",
 //     "users_user_id": "Username",
 //     "recipe_image_url": "fishball.jpg",
-//     "recipe_rating": '47'
+//     "recipe_rating": '47',
+//     "tag": 'Sweet'
+//      }, ...
+//      ]
 // }
-async function readRecipeList() {
+async function readRecipeList(tag_name) {
   let client = [];
-  let sql = [null, null];
-  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null, null];
+  for (let i = 0; i < 3; i++) {client.push(new pg.Client(config))};
   sql[0] = 'select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id"';
   sql[1] = 'select "recipeTable"."id", "userTable"."full_name", "userTable"."user_name", "userTable"."email" from "recipeTable" inner join "userTable" on "recipeTable"."admin_id" = "userTable"."id"';
+  sql[2] = 'select "recipeTable"."id", "tagTable"."tag" from "recipe_tagTable" inner join "recipeTable" on "recipeTable"."id" = "recipe_tagTable"."recipe_id" inner join "tagTable" on "tagTable"."id" = "recipe_tagTable"."tag_id" order by "recipeTable"."id" asc';
   // let sql4 = escape('SELECT note, id FROM %I ORDER BY id DESC', who);
-  let temp = [null, null];
-  let result2 = [];
+  let temp = [null, null, null];
+  let result2 = {recipe: []};
+  let result3 = {recipe: []};
   await client[0].connect();
   temp[0] = await client[0].query(sql[0]);
   await client[0].end();
   await client[1].connect();
   temp[1] = await client[1].query(sql[1]);
   await client[1].end();
+  await client[2].connect();
+  temp[2] = await client[2].query(sql[2]);
+  await client[2].end();
   let data = temp.map(x => x.rows);
   for (let i = 0; i < data[0].length; i++) {
-    let temp1 = {...data[0][i], ...data[1][i]};
+    let temp1 = {...data[0][i], ...data[1][i], ...data[2][i]};
     let temp2 = {
       recipe_id: temp1.recipe_id,
       recipe_name: temp1.name,
       users_user_id: temp1.user_name,
       recipe_image_url: temp1.image_url,
-      recipe_rating: Math.floor(temp1.averagescore * 20)
+      recipe_rating: Math.floor(temp1.averagescore * 20),
+      tag: temp1.tag
     };
-    result2.push(temp2);
+    result2.recipe.push(temp2);
   }
-  return result2;
+  if (tag_name) {
+    for (let i = 0; i < result2.recipe.length; i++) {
+      if (tag_name.toUpperCase() === result2.recipe[i].tag.toUpperCase()) {
+        result3.recipe.push(result2.recipe[i]);
+      }
+    };
+    return result3;
+  } else {
+    return result2;
+  };
 };
-// let promise1 = readRecipeList();
+// let promise1 = readRecipeList(false);
 // promise1.then((stuff) => {console.log(stuff);});
 
 //get recipe of a particular ID
@@ -104,7 +148,7 @@ async function readRecipeFromID(id) {
   let client = [];
   let sql = [null, null, null, null];
   for (let i = 0; i < 4; i++) {client.push(new pg.Client(config))};
-  sql[0] = 'select * from "commentTable"';
+  sql[0] = escape('select * from "commentTable" where "recipe_id" = %L', String(id));
   sql[1] = escape('select * from "recipeTable" inner join "howtoTable" on "recipeTable"."id" = "howtoTable"."id" where "recipeTable"."id" = %L', String(id));
   sql[2] = escape('select * from "recipeTable" inner join "ingredientTable" on "recipeTable"."id" = "ingredientTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
   sql[3] = escape('select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id" where "recipeTable"."id" = %L', String(id));
@@ -132,6 +176,7 @@ async function readRecipeFromID(id) {
     result.how_to = result.howto.split(/\r\n|\r|\n/g);
     delete result.howto;
     result.recipe_rating = Math.floor(result.averagescore * 20);
+    result.difficulty = Math.floor(result.difficulty * 20);
     result.comment = [];
   });
   data[0].forEach((data) => {
@@ -146,6 +191,17 @@ async function readRecipeFromID(id) {
 // let promise1 = readRecipeFromID(4);
 // promise1.then((stuff) => {console.log(stuff);});
 
+// get all comments of a particular user
+async function readCommentsByUser(user_id) {
+  let client = new pg.Client(config);
+  let sql = escape('select * from "commentTable" where "user_id" = %L', String(user_id));
+  await client.connect();
+  let temp1 = await client.query(sql);
+  await client.end();
+  return temp1.rows;
+};
+// let promise1 = readCommentsByUser(4);
+// promise1.then((stuff) => {console.log(stuff);});
 
 //post full recipe
 let list1 = 
@@ -292,12 +348,14 @@ async function updateVote(recipe_id, vote) {
 
 //delete comment
 async function deleteComment(commentID) {
-  await knex('commentTable').where({ id: commentID }).del()
-  .then( () => {return true;})
-  .catch((error) => {
-    throw error;
-  });
-}
+  let client = new pg.Client(config);
+  let sql = escape('delete from "commentTable" where "id" = %L', String(commentID));
+  await client.connect();
+  await client.query(sql);
+  await client.end();
+  return true;
+};
+// deleteComment(10).then((stuff) => {console.log(stuff);})
 
 //user display favourite_recipe
 // let result4 = [];
@@ -313,3 +371,146 @@ async function deleteComment(commentID) {
 //   console.log()
 // });
 //line32//promise2[0] = knex(‘recipeTable.id’).join(‘commentTable’, ‘recipeTable.id’, ‘=’, ‘commentTable.rep_id’).select(‘*’);
+
+let userresult= {
+  users_user_id: "pullip123",
+  recipe:[
+  {
+   "recipe_id": "1",
+   "recipe_name": "Spicy Fishball",
+   "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+   "recipe_rating": "74",
+   "recipe_difficulty": "90"
+  },
+  { 
+   "recipe_id": "2",
+   "recipe_name": "Sweet Fishball",
+   "recipe_image_url": "https://i2.wp.com/tasteful.ph/wp-content/uploads/2018/02/fishballMAIN-1.jpg?resize=1080%2C720&ssl=1",
+   "recipe_rating": "45",
+   "recipe_difficulty": "10"
+  },
+  { 
+  "recipe_id": "3",
+  "recipe_name": "Sour Fishball",
+  "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+  "recipe_rating": "81",
+  "recipe_difficulty": "10"
+ }
+],
+
+favourite:[
+  { 
+    "users_user_id": "alex123",
+    "recipe_id": "4",
+    "recipe_name": "Drunken siumai",
+    "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+    "recipe_rating": "74",
+    "recipe_difficulty": "50"
+   },
+   { 
+    "users_user_id": "christine123",
+    "recipe_id": "5",
+    "recipe_name": "Sweet siumai",
+    "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+    "recipe_rating": "45",
+    "recipe_difficulty": "30"
+   },
+   {  
+   "users_user_id": "tom123",
+   "recipe_id": "6",
+   "recipe_name": "Sour siumai",
+   "recipe_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg",
+   "recipe_rating": "81",
+   "recipe_difficulty": "70"
+  }
+]
+}
+
+// get MyPage for a particular user
+async function getMyPage(id) {
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  let temp = [null, null];
+  let result1 = {recipe: [], favourite: []};
+  sql[0] = escape('select * from "recipeTable" inner join "ratingsummaryTable" on "recipeTable"."id" = "ratingsummaryTable"."recipe_id" where "recipeTable"."admin_id" = %L', String(id));
+  await client[0].connect();
+  temp[0] = await client[0].query(sql[0]);
+  await client[1].connect();
+  sql[1] = escape('select * from "recipeTable" inner join "fav_recipeTable" on "recipeTable"."id" = "fav_recipeTable"."recipe_id" inner join "userTable" on "recipeTable"."admin_id" = "userTable"."id" inner join "ratingsummaryTable" on "ratingsummaryTable"."recipe_id" = "recipeTable"."id" where "fav_recipeTable"."user_id" = %L', String(id));
+  temp[1] = await client[1].query(sql[1]);
+  result1.recipe = temp[0].rows;
+  result1.favourite = temp[1].rows;
+  result1.recipe.forEach( async (result) => {
+    result.recipe_name = result.name;
+    result.recipe_image_url = result.image_url;
+    result.recipe_rating = Math.floor(result.averagescore * 20);
+    result.recipe_difficulty = Math.floor(result.difficulty * 20);
+  });
+  result1.favourite.forEach( async (result) => {
+    result.users_user_id = result.user_name;
+    result.recipe_rating = Math.floor(result.averagescore * 20);
+    result.recipe_name = result.name;
+    result.recipe_image_url = result.image_url;
+    result.recipe_difficulty = Math.floor(result.difficulty * 20);
+    delete result.password;
+    delete result.security_answer;
+    });
+  await client[0].end();
+  await client[1].end();
+  return result1;
+}
+// let promise1 = getMyPage(3);
+// promise1.then((stuff) => {console.log(stuff);});
+
+// add favourite recipe
+async function addFavourite(user_id, recipe_id) {
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  let temp = null;
+  sql[0] = `SELECT setval(\'"fav_recipeTable_id_seq"\', (SELECT MAX(id) from "fav_recipeTable"));`;
+  sql[1] = escape('insert into "fav_recipeTable" ("user_id", "recipe_id") values (%L, %L) ON CONFLICT ("user_id", "recipe_id") DO NOTHING;', String(user_id), String(recipe_id));
+  await client[0].connect();
+  await client[0].query(sql[0]);
+  await client[0].end();
+  await client[1].connect();
+  temp = await client[1].query(sql[1]);
+  await client[1].end();
+  return temp.rowCount;
+}
+// let promise1 = addFavourite(2, 4);
+// promise1.then((stuff) => {console.log(stuff);});
+
+// remove favourite recipe
+async function deleteFavourite(user_id, recipe_id) {
+  let client = new pg.Client(config);
+  let sql = escape('delete from "fav_recipeTable" where "user_id" = %L and "recipe_id" = %L', String(user_id), String(recipe_id));
+  let temp = null;
+  await client.connect();
+  temp = await client.query(sql);
+  await client.end();
+  return temp.rowCount;
+}
+// let promise1 = deleteFavourite(2, 4);
+// promise1.then((stuff) => {console.log(stuff);});
+
+module.exports = {
+  getUserNameFromID,
+  getRatingFromRecipeID,
+  readAllRecipes,
+  readRecipeList,
+  readRecipeFromID,
+  readCommentsByUser,
+  writeRecipe,
+  writeRecipeTable,
+  writeIngredient,
+  writeHowTo,
+  initializeVote,
+  postComment,
+  updateVote,
+  deleteComment,
+  getMyPage,
+  addFavourite,
+  deleteFavourite
+};
