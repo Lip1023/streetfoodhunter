@@ -20,8 +20,8 @@ const session = require('express-session');
 // client.connect();
 
 const setupPassport = require('./passport/passport');
-const mypagerouter = require('./mypagerouter')(express);
-const reciperouter = require('./reciperouter')(express);
+const mypagerouter = require('./routers/mypagerouter')(express);
+const reciperouter = require('./routers/reciperouter')(express);
 
 app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars'); 
