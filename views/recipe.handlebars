@@ -1,9 +1,7 @@
 <div class="book roundborder cotainer-fluid row col-sm-12">
-
     <div class="col-sm-12 col-md-6 d-flex justify-content-center">
         <img id="food" class="roundborder" src="{{imgae_url}}" alt="food">
     </div>
-
     <div id="recipebox" class="col-sm-12 col-md-6 scroll">
         <br>
         <div class="d-flex justify-content-center">
@@ -44,13 +42,9 @@
             </a>
         </div>
     </div>
-
-</div>
-
-
 </div>
 </div>
-
+</div>
 <!-- comment box -->
 <div class="cotainer-fluid roundborder commentbox">
 
@@ -67,18 +61,16 @@
             <input type="radio" id="star1" name="rate" value="1" checked />
             <label for="star1" title="text">1 star</label>
         </div>
-
         <div class="form-group" id="commentarea">
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
         </div>
-
         <button id="ice" name="submit" type="submit" class="cbtn btn btn-light hidden">Submit</button>
             <button id="cancel" type="button" class="cbtn btn btn-light hidden">Cancel</button>
     </form>
-        
+{{#each comment}}        
 <div id="displaycomment" class="d-flex">
-    <h4 class="fontheavy">USERNAME  :</h4>
-    <h4>I followed this recipe the other night. As I dont' live in Hong Kong, I can't really buy it from wet market easily. Thank you so much!</h4>
+    <h4 class="fontheavy">{{user_id}}</h4>
+    <h4>{{content}}</h4>
 </div>
-
-</div>
+ {{/each}}
+ </div>
