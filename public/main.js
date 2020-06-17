@@ -4,7 +4,7 @@ $('#selectTB').on('change', function () {
     $('#selectTB').removeClass("grey")
     $('#selectTB').addClass("black")
 })
-
+//video play
 $(document).ready()
 $('#start-btn').on('click', function () {
     $('#screenvideo')[0].play();
@@ -15,7 +15,6 @@ $('#stop-btn').on('click', function () {
     $('#foodimage').removeClass('hidden')
     $('#whattoeat').addClass('hidden')
 })
-
 // sign up page 
 $(document).ready()
 //username no longer than 15chr
@@ -114,14 +113,15 @@ $('.nullcheck').each(function (index) {
     });
 });
 
-
+//when click commentbox, have submit button
 $('#commentarea').on('click',function(){
     $('#ice').removeClass('hidden')
+    $('#cancel').removeClass('hidden')
 })
 
-// $('#commentarea').on('blur',function(){
-//     $('#ice').addClass('hidden')
-// })
+$('#cancel').on('click',function(){
+    $('.cbtn').addClass('hidden')
+})
 
 //submitting comment on recipe page
 $('#ice').click((event) => {

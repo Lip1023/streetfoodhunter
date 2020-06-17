@@ -130,7 +130,6 @@ let result = {
     router.get('/recipe:1', (req, res)=>{
         res.render('recipe', result)
     });
-//
 
 //post recipe comment
 router.post('/comment', (req, res)=>{
