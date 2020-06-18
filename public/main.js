@@ -172,6 +172,18 @@ $(".addfav").click( (event) => {
     });
 });
 
+$(".deletefav").click( (event) => {
+    event.preventDefault();
+    let recipe_id = event.currentTarget.alt;
+    let blablabla = {
+        recipe_id: recipe_id
+    };
+    $.post("/deletefav", blablabla, (completeMessage) => {
+        window.location.reload();
+        alert(completeMessage);
+    });
+});
+
 $("#sort").change(function(){
     const urlParams = new URLSearchParams(window.location.search);
     let tag = urlParams.get('tag');
