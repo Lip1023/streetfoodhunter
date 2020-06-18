@@ -15,8 +15,13 @@
                 <h3>We've got {{numberofrecipe}} recipes of {{name}}</h3>
 
                 <img class="smallpic pb-2"                     src="{{image_url}}"alt="food image">
-               <br> <button id="call-btn" type="button" class="animate__animated animate__jello btn 
-                btn-danger btn-lg"><a class="white" href="/recipe:/1"> View our famous recipe</a></button>
+               <br> 
+               {{#if recipeid}}
+               <button id="call-btn" type="button" class="animate__animated animate__jello btn 
+                btn-danger btn-lg">
+                <a class="white" href="/recipe:{{recipeid.recipe_id}}"> View our famous recipe</a>
+                </button>
+                {{/if}}
             </div>
 
         </div>
