@@ -4,6 +4,7 @@ $('#selectTB').on('change', function () {
     $('#selectTB').removeClass("grey")
     $('#selectTB').addClass("black")
 })
+
 //video play
 $(document).ready()
 $('#start-btn').on('click', function () {
@@ -15,23 +16,6 @@ $('#stop-btn').on('click', function () {
     $('#foodimage').removeClass('hidden')
     $('#whattoeat').addClass('hidden')
 })
-
-
-//get related recipe after random food pick
-// $('#call-btn').click((event) => {
-//     event.preventDefault();
-
-//         $.get(`/recipe/:1`, data)
-//             .done(() => {
-//                 console.log('success')
-//             })
-//             .fail((error) => {
-//                 alert(error);
-//             });
-// })
-
-
-
 
 // sign up page 
 $(document).ready()
@@ -56,6 +40,7 @@ $('#pwConfirm').on('blur', function (e) {
         $('#pwInput').css('border', 'solid 2px rgba(0, 128, 0, 0.4)');
     }
 })
+
 //pw confirmation
 $('#pwConfirm').on('blur', function (e) {
     firstinput = $('#pwInput').val();
@@ -67,6 +52,7 @@ $('#pwConfirm').on('blur', function (e) {
         $('#pwConfirm').css('border', 'solid 2px rgba(0, 128, 0, 0.4)');
     }
 })
+
 //posting new recipe(newrecipe page)
 $("#fire").click((event) => {
     event.preventDefault();
@@ -124,6 +110,7 @@ function nullCheck(elem) {
         return true;
     }
 }
+
 //set event for blur
 $('.nullcheck').each(function (index) {
     $(this).blur(function () {
@@ -161,7 +148,7 @@ $('#ice').click((event) => {
     }
 });
 
-$(".addfav").click( (event) => {
+$(".addfav").click((event) => {
     event.preventDefault();
     let recipe_id = event.currentTarget.alt;
     let blablabla = {
@@ -171,6 +158,8 @@ $(".addfav").click( (event) => {
         alert(completeMessage);
     });
 });
+
+
 
 $(".deletefav").click( (event) => {
     event.preventDefault();
@@ -185,6 +174,7 @@ $(".deletefav").click( (event) => {
 });
 
 $("#sort").change(function(){
+
     const urlParams = new URLSearchParams(window.location.search);
     let tag = urlParams.get('tag');
     let order_by = $(this).children(":selected").html();
@@ -192,10 +182,10 @@ $("#sort").change(function(){
         tag: tag,
         order_by: order_by
     };
-    window.location.href='/recipe?' + $.param(blablabla);
+    window.location.href = '/recipe?' + $.param(blablabla);
 });
 
-$("#filters button").click(function(){
+$("#filters button").click(function () {
     if ($(this).html() === 'All') {
         $('#recipe_tag').removeAttr('value');
     } else {
@@ -203,5 +193,5 @@ $("#filters button").click(function(){
     };
     let tag = $('#recipe_tag').val();
     let blablabla = { tag: tag };
-    window.location.href='/recipe?' + $.param(blablabla);
+    window.location.href = '/recipe?' + $.param(blablabla);
 });
