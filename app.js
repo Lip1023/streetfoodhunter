@@ -26,15 +26,6 @@ app.use(express.static("public"));
 //     imgae_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg"
 // };
 
-const { callFD } = require('./services/indexpg')
-
-app.get('/', (req, res) => {
-    let promise1 = callFD()
-   promise1.then((randomFD)=>{
-    console.log(randomFD)
-    res.render('index', randomFD)
-   })
-});
 
 app.use(session({
     secret: 'superDifficultAndSecret',
@@ -54,6 +45,25 @@ const options = {
 setupPassport(app);
 app.use('/', mypagerouter);
 app.use('/', reciperouter);
+
+const { callFD } = require('./services/indexpg')
+
+function insertUserInfo (obj, userobj) {
+    obj.user_id = userobj.id;
+    obj.full_name = userobj.full_name;
+    obj.user_name = userobj.user_name;
+    obj.email = userobj.email;
+};
+
+app.get('/', (req, res) => {
+    let promise1 = callFD()
+   promise1.then((randomFD)=>{
+    if (req.session.passport) {
+        insertUserInfo(randomFD, req.session.passport.user);
+    };
+    res.render('index', randomFD)
+   })
+});
 
 https.createServer(options, app).listen(8080, function () {
     console.log('app is listening to port 8080')

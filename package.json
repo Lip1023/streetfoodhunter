@@ -23,7 +23,9 @@
     "pg-escape": "^0.2.0",
     "pg-format": "^1.0.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "supertest": "^4.0.2"
+  },
   "scripts": {
     "test": "jest"
   },

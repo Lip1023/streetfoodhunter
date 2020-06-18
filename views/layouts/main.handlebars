@@ -53,7 +53,11 @@
                     <div class="dropdown" id="dropdown">
                         <a class="black nav-link dropdown-toggle" href="/mypage" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{#if user_name}}
+                            Profile
+                            {{else}}
                             Log In
+                            {{/if}}
                         </a>
 
                         <div class="top dropdown-menu" id="dropdownmenu" aria-labelledby="navbarDropdown">
