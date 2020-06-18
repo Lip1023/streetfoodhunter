@@ -74,7 +74,7 @@ async function filterFDname(userinput) {
             .then((IDlist) => {
                 let recipelist = knex('recipeTable')
                     .select("*")
-                    .innerJoin("food_rel_recipeTable", "recipeTable.id" , "food_rel_recipeTable.recipe_id")
+                    .innerJoin("food_rel_recipeTable", "recipeTable.id", "food_rel_recipeTable.recipe_id")
                     .where("food_id", IDlist[0])
 
                 recipelist.then((rows) => {
@@ -90,6 +90,6 @@ async function filterFDname(userinput) {
     }
 }
 
-    // filterRPname('egg')
-    // filterUSname('tony')
-    filterFDname('stuffed')
+// filterRPname('egg')
+// filterUSname('tony')
+filterFDname('stuffed')
