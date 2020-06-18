@@ -42,7 +42,7 @@ async function callfavREP() {
     console.log(dispfavrep)
 
     let myfavreciperating = await knex('ratingsummaryTable').join('recipeTable', 'ratingsummaryTable.recipe_id', '=', 'recipeTable.id').where('ratingsummaryTable.recipe_id', 6)
-    console.log(myfavreciperating)
+    // console.log(myfavreciperating)
 
     //promise1[0] = knex('food_rel_recipeTable').join('foodTable', 'food_rel_recipeTable.food_id', '=', 'foodTable.id').select('*');
 
