@@ -1,5 +1,5 @@
 
-exports.seed = function(knex) {
+exports.seed = function(knex,Promise) {
 
       // Inserts seed entries
       return knex('tagTable').insert([
