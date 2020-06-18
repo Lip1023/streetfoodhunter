@@ -70,6 +70,7 @@ passport.use('local-change', new LocalStrategy({
     passReqToCallback: true
   },
 async (req, email, password, done) => {
+    console.log(req.body.sa);
     try {
         let users = await knex('userTable').where({email:email});
         if(users.length ==0){
@@ -77,7 +78,7 @@ async (req, email, password, done) => {
         } 
         let user = users[0];
         //query to check question answer instead**** 
-        let result = await bcrypt.checkPassword(password, user.security_answer);
+        let result = await bcrypt.checkPassword(req.body.sa, user.security_answer);
         if(result){
             let hash = await bcrypt.hashPassword(password);
             user.password = hash;
