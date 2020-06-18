@@ -39,6 +39,6 @@ async function callFD() {
     return randomFD
 }
 
-// callFD()
+callFD()
 
 module.exports = { callFD }
