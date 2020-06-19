@@ -28,7 +28,7 @@
                 </div>
             </div>
         </h3>
-        <h3 class="font2">Average rating: <div class="rating">
+        <h3 class="font2">Member's rating: <div class="rating">
                 <div class="rating-upper red" style="width: {{recipe_rating}}%">
                     <span>❤</span>
                     <span>❤</span>
@@ -46,15 +46,15 @@
             </div>
         </h3>
         <h3 class="font2">Cooking time: {{cookingtime}}minutes </h3><br>
-        <h3>Ingredients:
-            <br>{{ingredient}}</h3><br>
-        <h3>How to:
+        <h4>Ingredients:
+            <br>{{ingredient}}</h4><br>
+        <h4>How to:
             <ol>
                 {{#each how_to}}
                 <li>{{this}}</li>
                 {{/each}}
             </ol>
-        </h3>
+        </h4>
         <div class="d-flex justify-content-center my-4">
             <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger btn-lg my-2 my-sm-0">Share your own version
                 of the recipe!

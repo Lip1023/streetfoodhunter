@@ -195,3 +195,46 @@ $("#filters button").click(function () {
     let blablabla = { tag: tag };
     window.location.href = '/recipe?' + $.param(blablabla);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//click searchbar, optionbar appears
+$('#searchbarinput').on('click',function(){
+    $('#selectTB').removeClass('hidden')
+})
+
+
+
+//hover on recipes on navbar, show filter buttons
+// $(document).ready()
+// $('#navrecipe').on('click',function(e){
+//     e.preventDefault
+//     console.log('hi')
+//     $('navbar').css('background-color','black');
+// })
+
