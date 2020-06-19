@@ -22,7 +22,7 @@ $(document).ready()
 //username no longer than 15chraracters
 $('#usernameInput').on('keydown', function (e) {
     var input = e.target.value;
-    console.log(input)
+    // console.log(input)
     if (input.length > 35) {
         $(this).css('border', 'solid 1.5px rgba(255, 0, 0, 0.7)');
     } else {
@@ -76,6 +76,9 @@ $("#fire").click((event) => {
             .done((response) => {
                 // console.log(JSON.parse(response).url);
                 let temp2 = {
+                    cuisineName: $('#cuisine select').val(),
+                    foodType: $('#foodtype select').val(),
+                    foodName: $('#foodnamesection select').val(),
                     recipeName: $("#recipename").val(),
                     cookingTime: $("#cookingtime").val(),
                     recipeDescription: $("#recipedescription").val(),
@@ -87,8 +90,10 @@ $("#fire").click((event) => {
                 $.post("/newrecipe", temp2)
                     .done((completeMessage) => {
                         alert(completeMessage);
+                        window.location.href = '/recipe';
                     })
                     .fail((error) => {
+                        console.log(error);
                         alert(error);
                     });
             })
@@ -102,13 +107,17 @@ $("#fire").click((event) => {
 
 // create function to validate
 function nullCheck(elem) {
+    if (!elem.val()) {  // if value not exist
+        elem.attr('style', 'border: solid 1.5px rgba(255, 0, 0, 0.7)'); //change border to red
+        return false;
+    };
     if (elem.val().length == 0) {
         elem.attr('style', 'border: solid 1.5px rgba(255, 0, 0, 0.7)'); //change border to red
         return false;
     } else {
         elem.attr('style', 'border: solid 2px rgba(0, 128, 0, 0.4)');  // recover border
         return true;
-    }
+    };
 }
 
 //set event for blur
@@ -194,4 +203,28 @@ $("#filters button").click(function () {
     let tag = $('#recipe_tag').val();
     let blablabla = { tag: tag };
     window.location.href = '/recipe?' + $.param(blablabla);
+});
+
+$('#cuisine select').change(function() {
+    let food_type = $('#foodtype select').val();
+    let blablabla = {
+        cuisine_name: $(this).val(),
+        food_type: food_type
+    };
+    window.location.href = '/newrecipe?' + $.param(blablabla);
+});
+
+$(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let cuisine_name = urlParams.get('cuisine_name');
+    let food_type = urlParams.get('food_type');
+    if (cuisine_name) {
+        $('#cuisine select').val(cuisine_name);
+    };
+    if (food_type) {
+        $('#foodtype select').val(food_type);
+    };
+    if ($('#selectTA').val()) {
+        $('#selectTB').val($('#selectTA').val());
+    }
 });

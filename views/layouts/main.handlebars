@@ -37,14 +37,14 @@
                     </li>
                 </ul>
 
-                <form class="form-inline my-2 my-lg-0 row 
-                col-sm-8">
-                    <select name="input" id="selectTB" class="grey">
-                        <option class="selectOP" value="1">Recipe name</option>
-                        <option class="selectOP" value="2">Food name</option>
-                        <option class="selectOP" value="3">Username</option>
+                <form action="/search" method="post" class="form-inline my-2 my-lg-0 row col-sm-8">
+                    {{#if selectTB}}<input class="hidden" type="text" id="selectTA" value="{{selectTB}}"/>{{/if}}
+                    <select name="selectTB" id="selectTB" class="grey">
+                        <option class="selectOP" value="RP">Recipe name</option>
+                        <option class="selectOP" value="FD">Food name</option>
+                        <option class="selectOP" value="US">Username</option>
                     </select>
-                    <input class="col-sm-6 col-md-8 form-control mr-sm-2" type="search" aria-label="Search">
+                    <input {{#if word}}value={{word}}{{/if}} name="word" class="col-sm-6 col-md-8 form-control mr-sm-2" type="search" aria-label="Search" required>
                     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                 </form>
 

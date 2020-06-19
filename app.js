@@ -66,9 +66,8 @@ app.get('/', (req, res) => {
 });
 
 https.createServer(options, app).listen(8080, function () {
-    console.log('app is listening to port 8080')
+    console.log('app is listening to port 8080');
 });
-
 
 
 

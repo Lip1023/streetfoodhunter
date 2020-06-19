@@ -1,6 +1,8 @@
 <nav id="recipemain" class="book cotainer-fluid row sticky-top navbar bg-light">
     <!-- filters -->
+    
     <div id="filters" class="font2">
+        {{#unless selectTB}}
         <button type="button" class="btn btn-outline-dark">BBQ</button>
         <button type="button" class="btn btn-outline-dark">DESSERT</button>
         <button type="button" class="btn btn-outline-dark">FRIED</button>
@@ -12,6 +14,7 @@
         <button type="button" class="btn btn-outline-dark">Korean</button>
         <button type="button" class="btn btn-outline-dark">Thai</button>
         <button type="button" class="btn btn-outline-dark">All</button>
+        {{/unless}}
         <input class="hidden" type="text" id="recipe_tag" />
     </div>
 
