@@ -58,6 +58,7 @@ function insertUserInfo (obj, userobj) {
 app.get('/', (req, res) => {
     let promise1 = callFD()
    promise1.then((randomFD)=>{
+       console.log(randomFD)
     if (req.session.passport) {
         insertUserInfo(randomFD, req.session.passport.user);
     };

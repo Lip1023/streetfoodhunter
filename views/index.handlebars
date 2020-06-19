@@ -3,8 +3,8 @@
     <!-- pic screen -->
     <div class="screen col-sm-12 col-md-8 col-lg-6">
         <br>
-        <h2 id="whattoeat">What to eat today?</h2>
-        <video id="screenvideo" src="bg.mp4"></video>
+        <h2 id="whattoeat" class="white pt-4">What to eat today?</h2>
+        <video id="screenvideo" src="bg2.mp4"></video>
 
 
         <div class="hidden shadowborder scroll" id="foodimage">
@@ -12,7 +12,7 @@
             <div id="recipenum">
                 <h1 class="mt-lg-2 fontheavy">
                     {{name}}</h1>
-                <h3>We've got {{numberofrecipe}} recipes of {{name}}</h3>
+                <h3>We've got <span style="color: rgba(255, 255, 255, 0.726);">{{numberofrecipe}}</span> recipes of {{name}}</h3>
 
                 <img class="smallpic pb-2"                     src="{{image_url}}"alt="food image">
                <br> <button id="call-btn" type="button" class="animate__animated animate__jello btn 
@@ -22,7 +22,7 @@
         </div>
 
 
-        <div id="buttonset" class="center">
+        <div id="buttonset" class="center mb-4">
             <img src="start1.png" id="start-btn" class="lgicon mx-4 knob" alt="startBTN">
             <img src="stop1.png" id="stop-btn" class="lgicon mx-4 knob" alt="stopBTN">
         </div>

@@ -228,3 +228,25 @@ $(() => {
         $('#selectTB').val($('#selectTA').val());
     }
 });
+
+
+
+
+
+
+
+
+//click searchbar, optionbar appears
+$('#searchbarinput').on('click',function(){
+    $('#selectTB').removeClass('hidden')
+})
+
+
+
+//hover on recipes on navbar, show filter buttons
+// $(document).ready()
+// $('#navrecipe').on('click',function(e){
+//     e.preventDefault
+//     console.log('hi')
+//     $('navbar').css('background-color','black');
+// })
