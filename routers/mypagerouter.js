@@ -1,4 +1,23 @@
 const passport = require("passport");
+const {
+  getUserNameFromID,
+  getRatingFromRecipeID,
+  readAllRecipes,
+  readRecipeList,
+  readRecipeFromID,
+  readCommentsByUser,
+  writeRecipe,
+  writeRecipeTable,
+  writeIngredient,
+  writeHowTo,
+  initializeVote,
+  postComment,
+  updateVote,
+  deleteComment,
+  getMyPage,
+  addFavourite,
+  deleteFavourite,
+} = require('../services/recipe');
 
 module.exports = (express) => {
   const router = express.Router();
@@ -10,7 +29,13 @@ module.exports = (express) => {
     res.redirect("/login");
   }
 
-  
+  function insertUserInfo (obj, userobj) {
+    obj.user_id = userobj.id;
+    obj.full_name = userobj.full_name;
+    obj.user_name = userobj.user_name;
+    obj.email = userobj.email;
+  }
+
   router.get(
     "/auth/twitter",
     passport.authenticate("twitter")
@@ -68,7 +93,7 @@ module.exports = (express) => {
 
 
 let userresult= {
-  users_user_id: "pullip123",
+  user_name: "pullip123",
   recipe:[
   {
    "recipe_id": "1",
@@ -124,9 +149,11 @@ favourite:[
 }
 
   router.get("/mypage", isLoggedIn, (req, res) => {
-    console.log(req.session.passport.user);
-    res.render('mypage', userresult);
-    console.log(userresult);
+    let promise1 = getMyPage(req.session.passport.user.id);
+        promise1.then((userresult) => {
+          insertUserInfo(userresult, req.session.passport.user);
+          res.render('mypage', userresult);
+        });
   });
 
   router.get("/error", (req, res) => {
@@ -168,12 +195,12 @@ favourite:[
     res.render('forgotpassword')
 })
 
-router.post('/forgotpassword', (req, res) => {
+router.post('/forgotpassword', 
   passport.authenticate("local-change", {
-    successRedirect: "/",
+    successRedirect: "/mypage",
     failureRedirect: "/error",
   })
-});
+);
 
   return router;
 };

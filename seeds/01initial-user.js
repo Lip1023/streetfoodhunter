@@ -1,5 +1,8 @@
+// const bcrypt = require('bcryptjs');
+// const password = 'tehpassword$$$'
+// const hash = bcrypt.hashSync(password, 10);
 
-exports.seed = function(knex) {
+exports.seed = function(knex,Promise) {
 
       // Inserts seed entries
       return knex('userTable').insert([

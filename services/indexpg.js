@@ -15,7 +15,6 @@ const knex = require('knex')({
 //once randomnum is created, select relevant food with the id(randomnum)
 async function callFD() {
     let allFD = await knex.select("*").from("foodTable")
-
     // console.log(rows)
     let mxFD = allFD.length
     let number = Math.floor((Math.random() * `${mxFD}`) + 1)
@@ -26,26 +25,17 @@ async function callFD() {
         name: randomFD.food_name,
         image_url: randomFD.imageurl,
         numberofrecipe: '',
-        firstrep: ''
+        recipeid: ''
     };
 
-    console.log(`this is randomFD id ${randomFD.id}`)
-
-    let numrep = await knex.select("recipe_id")
-        .from("food_rel_recipeTable")
+    let recipes = await knex.select("recipe_id").from("food_rel_recipeTable")
         .where("food_id", randomFD.id)
 
-    console.log(numrep)
-
-    let firstrep= numrep[0]
-    randomFD.firstrep = firstrep;
-
-    numrep = numrep.length
-    randomFD.numberofrecipe = numrep;
-
+    randomFD.numberofrecipe = recipes.length
+    randomFD.recipeid = recipes[0]
     console.log(randomFD)
-
     return randomFD
+
 }
 
 // callFD()

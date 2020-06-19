@@ -106,7 +106,11 @@ router.post('/addfav', isLoggedIn, (req, res)=>{
     res.send("Favourite added");
 });
 
-//
+//delete favourite recipe
+router.post('/deletefav', isLoggedIn, (req, res)=>{
+    deleteFavourite(req.session.passport.user.id, req.body.recipe_id);
+    res.send("Favourite removed");
+});
 
 return router;
 };

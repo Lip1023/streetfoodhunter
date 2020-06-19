@@ -159,7 +159,22 @@ $(".addfav").click((event) => {
     });
 });
 
-$("#sort").change(function () {
+
+
+$(".deletefav").click( (event) => {
+    event.preventDefault();
+    let recipe_id = event.currentTarget.alt;
+    let blablabla = {
+        recipe_id: recipe_id
+    };
+    $.post("/deletefav", blablabla, (completeMessage) => {
+        window.location.reload();
+        alert(completeMessage);
+    });
+});
+
+$("#sort").change(function(){
+
     const urlParams = new URLSearchParams(window.location.search);
     let tag = urlParams.get('tag');
     let order_by = $(this).children(":selected").html();
@@ -180,3 +195,46 @@ $("#filters button").click(function () {
     let blablabla = { tag: tag };
     window.location.href = '/recipe?' + $.param(blablabla);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//click searchbar, optionbar appears
+$('#searchbarinput').on('click',function(){
+    $('#selectTB').removeClass('hidden')
+})
+
+
+
+//hover on recipes on navbar, show filter buttons
+// $(document).ready()
+// $('#navrecipe').on('click',function(e){
+//     e.preventDefault
+//     console.log('hi')
+//     $('navbar').css('background-color','black');
+// })
+

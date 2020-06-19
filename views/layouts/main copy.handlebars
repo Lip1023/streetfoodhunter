@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Food Hunters-Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+    {{!-- animate --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <!-- icon -->
+    <script src="https://kit.fontawesome.com/1959ac8c31.js" crossorigin="anonymous"></script>
+    {{!-- font --}}
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <a class="navbar-brand d-flex justify-content-sm-center"  href="/">
+                <h1 class="red font2">Street Food Hunters</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active ft-lg" href="/recipe">Recipes</a>
+                    </li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0 row 
+                col-sm-8">
+                    <select name="input" id="selectTB" class="grey">
+                        <option class="selectOP" value="1">Recipe name</option>
+                        <option class="selectOP" value="2">Food name</option>
+                        <option class="selectOP" value="3">Username</option>
+                    </select>
+                    <input class="col-sm-6 col-md-8 form-control mr-sm-2" type="search" aria-label="Search">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+
+                <ul>
+                    <div class="dropdown" id="dropdown">
+                        <a class="black nav-link dropdown-toggle" href="/mypage" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{#if user_name}}
+                            Profile
+                            {{else}}
+                            Log In
+                            {{/if}}
+                        </a>
+
+                        <div class="top dropdown-menu" id="dropdownmenu" aria-labelledby="navbarDropdown">
+
+                            <h5 id="welcomeuser" class="justify-content-lg-center form-inline">
+                                {{#if user_name}}
+                                Welcome {{user_name}}!
+                                {{else}}
+                                Please Login!
+                                {{/if}}
+                            </h5>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/mypage">My Page</a>
+                            <a class="dropdown-item" href="/signup">Sign Up</a>
+
+
+                            <div class="dropdown-divider"></div>
+                            <div class="{{#if user_name}}hidden{{/if}} goneafterlogin icons justify-content-lg-center form-inline">
+
+                                <a href="/auth/twitter"><img src="t2.png" class="lgicon" alt="twitter"></a>
+                                <a href="/auth/google"><img src="g2.png" class="lgicon ml-lg-2" alt="google"></a>
+                            </div>
+                            <div class="dropdown-divider"></div>
+
+                            <div class="d-flex justify-content-center">
+                                <a href='/logout'>
+                                <button id="logout" class="{{#unless user_name}}hidden{{/unless}} btn btn-outline-dark mt-lg-4 ml-lg-2" type="submit">
+                                    Logout
+                                </button>
+                                </a>
+                            </div>
+
+                            <form action="/login" method="post"
+                                class="{{#if user_name}}hidden{{/if}} goneafterlogin justify-content-lg-center form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2 my-lg-2" type="text" name="username" placeholder="ID"
+                                    aria-label="ID">
+
+                                <input class="form-control mr-sm-2" type="password" name="password"
+                                    placeholder="Password" aria-label="Password">
+
+                                <div class="icons mb-lg-4">
+                                    <button id="forgotpw" class=" btn btn-outline-dark mt-lg-4" type="submit"><a
+                                            href="/forgotpassword" class="black">Forgotpassword</a> </button>
+                                    <button id="login" class="btn btn-outline-dark mt-lg-4 ml-lg-2"
+                                        type="submit">Login</button>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </ul>
+                <br><br><br>
+
+
+
+            </div>
+        </nav>
+
+        {{{body}}}
+
+
+        <div class="footer">
+            <div class="col-lg-3">
+                <p>Street food hunters</p>
+            </div>
+
+        </div>
+
+        {{!-- <div class="book roundborder row" id="indexpage">
+
+            
+
+            <!-- pic screen -->
+            <div class="screen col-sm-12">
+                <br>
+                <h1>What to eat today?</h1>
+                <video id="screenvideo" src="../public/bg.mp4"></video>
+
+
+                <img src="../public/fishball.jpg" class="hidden" id="foodimage" alt="fishball">
+
+
+                <div class="buttons center">
+
+                    <div class="knob  shadowborder green" id="start-btn">Start</div>
+
+                    <div class="knob"></div>
+
+                    <div class="knob  shadowborder red" id="stop-btn">Stop</div>
+
+                </div>
+
+                <div class="knob"></div>
+            </div>
+
+           
+
+        </div> --}}
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="main.js"></script>
+
+    <!-- Latest compiled and minified Popper: Use for pop up bubble -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
