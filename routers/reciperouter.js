@@ -6,9 +6,13 @@ const {
     readRecipeFromID,
     readCommentsByUser,
     writeRecipe,
+    readAllMarks,
+    readFoodFromCuisine,
     writeRecipeTable,
     writeIngredient,
     writeHowTo,
+    writeFoodName,
+    writeTag,
     initializeVote,
     postComment,
     updateVote,
@@ -17,15 +21,21 @@ const {
     addFavourite,
     deleteFavourite,
   } = require('../services/recipe');
+  const {
+    filterRPname,
+    filterUSname,
+    filterFDname,
+  } = require('../services/service');
 
   module.exports = (express) => {
   const router = express.Router();
 
   function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect("/login");
+      if (req.isAuthenticated()) {
+          return next();
+      }
+      req.session.referrer = req.originalUrl;
+      res.redirect("/login");
   }
   
   function insertUserInfo (obj, userobj) {
@@ -38,22 +48,62 @@ const {
 
 //let list1 = {recipe:[]};
 // RECIPE
-//recipe index page
+    //recipe index page
     router.get('/recipe', isLoggedIn, (req, res)=>{
-        let promise1 = readRecipeList(req.query.tag, req.query.order_by);
+        // console.log(req.query);
+        if (Object.keys(req.query).length === 0 && req.query.constructor === Object) {
+            delete req.session.search;
+        };
+        let promise1 = null;
+        // console.log(req.session.search);
+        if (req.session.search) {
+            switch (req.session.search.selectTB) {
+                case "RP":
+                    promise1 = filterRPname(req.session.search.word, req.query.order_by);
+                break;
+                case "FD":
+                    promise1 = filterFDname(req.session.search.word, req.query.order_by);
+                break;
+                case "US":
+                    promise1 = filterUSname(req.session.search.word, req.query.order_by);
+                break;
+                default:
+                    promise1 = readRecipeList(req.query.tag, req.query.order_by);
+            }
+        } else {
+            promise1 = readRecipeList(req.query.tag, req.query.order_by);
+        }
         promise1.then((list1) => {
             insertUserInfo(list1, req.session.passport.user);
+            list1 = {...list1, ...req.session.search};
             res.render('recipeindex',list1);
         });
     });
+
+    //search function - rendering recipe index page
+    router.post('/search', (req, res) => {
+        req.session.search = req.body;
+        res.redirect("/recipe?search=");
+    });
+
 //recipe adding page
-    router.get('/newrecipe',(req, res)=>{
-        res.render('newrecipe')
+    router.get('/newrecipe', isLoggedIn, (req, res)=>{
+        let promise1 = readAllMarks();
+        let promise2 = readFoodFromCuisine(req.query.cuisine_name);
+        Promise.all([promise1,promise2]).then((list1) => {
+            let list2 = {...list1[0], ...list1[1]};
+            insertUserInfo(list2, req.session.passport.user);
+            res.render('newrecipe',list2);
+        });
     });
 //adding new recipe
-    router.post('/newrecipe', (req, res) => {
-        console.log(req.body);
-        res.send("completed");
+    router.post('/newrecipe', isLoggedIn, (req, res) => {
+        let list1 = req.body;
+        insertUserInfo(list1, req.session.passport.user);
+        let promise1 = writeRecipe(list1);
+        promise1.then(() => {
+            res.send("completed");
+        });
     });
 
 
@@ -97,7 +147,7 @@ let result = {
             postComment(req.session.passport.user.id, req.body.recipe_id, req.body.comment_content);
         }
         updateVote(req.body.recipe_id, req.body.rating);
-        res.send("Well recived.");
+        res.send("Well received.");
     });
 
 //add favourite recipe
