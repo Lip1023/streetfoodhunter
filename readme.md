@@ -19,7 +19,7 @@ Add additional notes about how to deploy this on a live system
 * [Passport](http://www.passportjs.org) - authentication for Node.js
 * [Handlebars](https://handlebarsjs.com/guide/) - A simple templating language
 * [PostgreSQL](https://www.postgresql.org) - Database system 
-* [Node.js](hhttps://nodejs.org/en/about/)
+* [Node.js](https://nodejs.org/en/about/)
 
 
 ## Contributing
