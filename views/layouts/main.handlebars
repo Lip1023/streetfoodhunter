@@ -140,14 +140,14 @@
         </a>
 </div>
         <div class="center pb-4">
-            <form class="form-inline my-2 my-lg-0 row 
-                col-6 center">
-                <select name="input" id="selectTB" class="grey hidden">
-                    <option class="selectOP" value="1">Recipe name</option>
-                    <option class="selectOP" value="2">Food name</option>
-                    <option class="selectOP" value="3">Username</option>
+            <form action="/search" method="post" class="form-inline my-2 my-lg-0 row col-6 center">
+                {{#if selectTB}}<input class="hidden" type="text" id="selectTA" value="{{selectTB}}"/>{{/if}}
+                <select name="selectTB" id="selectTB" class="grey hidden">
+                    <option class="selectOP" value="RP">Recipe name</option>
+                    <option class="selectOP" value="FD">Food name</option>
+                    <option class="selectOP" value="US">Username</option>
                 </select>
-                <input class="col-sm-4 form-control mr-sm-2" id="searchbarinput" type="search" aria-label="Search">
+                <input {{#if word}}value={{word}}{{/if}} name="word" class="col-sm-4 form-control mr-sm-2" id="searchbarinput" type="search" aria-label="Search" required>
                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div> --}}

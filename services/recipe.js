@@ -238,6 +238,9 @@ async function readCommentsByUser(user_id) {
 let list1 = 
 {
   user_id: '1',
+  cuisineName: 'HongKongese',
+  foodType: 'Bitter',
+  foodName: 'Three Stuffed Treasures ',
   recipeName: '123',
   cookingTime: '213',
   recipeDescription: 'safcvs',
@@ -247,6 +250,7 @@ let list1 =
   recipePhoto: 'https://img.eservice-hk.net/upload/2020/06/14/171818_84064f1756fd535e99fec63b6abfacda.JPG'
 }
 async function writeRecipe(list1) {
+  console.log(list1);
   let recipelist = {
     name: list1.recipeName,
     cookingtime: list1.cookingTime,
@@ -268,6 +272,8 @@ async function writeRecipe(list1) {
       howto: list1.recipeHowto
     };
     await writeHowTo(howtolist);
+    await writeFoodName(list1.foodName, id);
+    await writeTag(list1.foodType, id);
     await initializeVote(id);
     return true;
   });
@@ -281,7 +287,7 @@ async function writeRecipeTable(list1) {
   let temp1 = null;
   for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
   sql[0] = `SELECT setval(\'"recipeTable_id_seq"\', (SELECT MAX(id) from "recipeTable"));`;
-  sql[1] = escape('insert into "recipeTable" ("name", "cookingtime", "difficulty", "admin_id", "draft", "appr_status", "image_url") values (%L, %L, %L, %L, %L, %L, %L) returning "id";', list1.name, list1.cookingtime, list1.difficulty, list1.admin_id, list1.draft, list1.appr_status, list1.image_url);
+  sql[1] = escape('insert into "recipeTable" ("name", "cookingtime", "difficulty", "admin_id", "draft", "appr_status", "image_url") values (%L, %L, %L, %L, %L, %L, %L) returning "id";', String(list1.name), String(list1.cookingtime), String(list1.difficulty), String(list1.admin_id), String(list1.draft), String(list1.appr_status), String(list1.image_url));
   await client[0].connect();
   await client[0].query(sql[0]);
   await client[0].end();
@@ -312,6 +318,48 @@ async function writeHowTo(list1) {
   let sql = [null, null];
   sql[0] = `SELECT setval(\'"howtoTable_id_seq"\', (SELECT MAX(id) from "howtoTable"));`;
   sql[1] = escape('insert into "howtoTable" ("recipe_id", "howto") values (%L, %L);', String(list1.recipe_id), String(list1.howto));
+  await client[0].connect();
+  await client[0].query(sql[0]);
+  await client[0].end();
+  await client[1].connect();
+  await client[1].query(sql[1]);
+  await client[1].end();
+  return true;
+};
+
+async function writeFoodName(food_name, recipe_id) {
+  let cliens = new pg.Client(config);
+  let sqk = escape('select "id" from "foodTable" where "food_name" ilike %L', String(food_name));
+  await cliens.connect();
+  let temp = await cliens.query(sqk);
+  await cliens.end();
+  let food_id = temp.rows[0].id;
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  sql[0] = `SELECT setval(\'"food_rel_recipeTable_id_seq"\', (SELECT MAX(id) from "food_rel_recipeTable"));`;
+  sql[1] = escape('insert into "food_rel_recipeTable" ("recipe_id", "food_id") values (%L, %L);', String(recipe_id), String(food_id));
+  await client[0].connect();
+  await client[0].query(sql[0]);
+  await client[0].end();
+  await client[1].connect();
+  await client[1].query(sql[1]);
+  await client[1].end();
+  return true;
+};
+
+async function writeTag(tag_name, recipe_id) {
+  let cliens = new pg.Client(config);
+  let sqk = escape('select "id" from "tagTable" where "tag" ilike %L', String(tag_name));
+  await cliens.connect();
+  let temp = await cliens.query(sqk);
+  await cliens.end();
+  let tag_id = temp.rows[0].id;
+  let client = [];
+  for (let i = 0; i < 2; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null];
+  sql[0] = `SELECT setval(\'"recipe_tagTable_id_seq"\', (SELECT MAX(id) from "recipe_tagTable"));`;
+  sql[1] = escape('insert into "recipe_tagTable" ("recipe_id", "tag_id") values (%L, %L);', String(recipe_id), String(tag_id));
   await client[0].connect();
   await client[0].query(sql[0]);
   await client[0].end();
@@ -526,6 +574,52 @@ async function deleteFavourite(user_id, recipe_id) {
 // let promise1 = deleteFavourite(2, 4);
 // promise1.then((stuff) => {console.log(stuff);});
 
+// get a list of all cuisines and types
+async function readAllMarks() {
+  let client = [];
+  for (let i = 0; i < 3; i++) {client.push(new pg.Client(config))};
+  let sql = [null, null, null];
+  let temp = [null, null, null];
+  let result1 = {cuisine_name: null, food_type: null, food_name: null};
+  sql[0] = 'select distinct "cuisine_name" from "foodTable"';
+  await client[0].connect();
+  temp[0] = await client[0].query(sql[0]);
+  sql[1] = 'select "tag" as "food_type" from "tagTable"';
+  await client[1].connect();
+  temp[1] = await client[1].query(sql[1]);
+  sql[2] = 'select "food_name" from "foodTable"';
+  await client[2].connect();
+  temp[2] = await client[2].query(sql[2]);
+  await client[0].end();
+  await client[1].end();
+  await client[2].end();
+  temp[0] = temp[0].rows.map(x => x.cuisine_name);
+  result1.cuisine_name = temp[0];
+  temp[1] = temp[1].rows.map(x => x.food_type);
+  result1.food_type = temp[1];
+  // temp[2] = temp[2].rows.map(x => x.food_name);
+  // result1.food_name = temp[2];
+  return result1;
+}
+// let promise1 = readAllMarks();
+// promise1.then((stuff) => {console.log(stuff);});
+
+// get a list of food based on cuisine name
+async function readFoodFromCuisine(cuisine_name = "") {
+  let client = new pg.Client(config);
+  let sql = escape('select "food_name" from "foodTable" where "cuisine_name" ilike %L', String(cuisine_name));
+  let temp = null;
+  let result1 = {food_name: null};
+  await client.connect();
+  temp = await client.query(sql);
+  await client.end();
+  temp = temp.rows.map(x => x.food_name);
+  result1.food_name = temp;
+  return result1;
+}
+// let promise1 = readFoodFromCuisine('hongkongese');
+// promise1.then((stuff) => {console.log(stuff);});
+
 async function callFD() {
   let allFD = knex.select("*").from("foodTable")
   allFD.then((rows) => {
@@ -559,9 +653,13 @@ module.exports = {
   readRecipeFromID,
   readCommentsByUser,
   writeRecipe,
+  readAllMarks,
+  readFoodFromCuisine,
   writeRecipeTable,
   writeIngredient,
   writeHowTo,
+  writeFoodName,
+  writeTag,
   initializeVote,
   postComment,
   updateVote,
