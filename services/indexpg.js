@@ -38,6 +38,6 @@ async function callFD() {
 
 }
 
-// callFD()
+callFD()
 
 module.exports = { callFD }
