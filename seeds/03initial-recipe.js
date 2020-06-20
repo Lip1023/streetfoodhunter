@@ -5,7 +5,7 @@ exports.seed = function(knex,Promise) {
       return knex('recipeTable').insert([
         {
           "name" : "super easy Egg Waffles ",
-          "cookingtime" : "30mins",
+          "cookingtime" : "30",
           "difficulty" : 3.0,
           "admin_id" : 3,
           "draft" : false,
@@ -14,7 +14,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Tofu Pudding",
-          "cookingtime" : "45mins",
+          "cookingtime" : "45",
           "difficulty" : 4.5,
           "admin_id" : 4,
           "draft" : false,
@@ -23,7 +23,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Three Stuffed Treasures ",
-          "cookingtime" : "20mins",
+          "cookingtime" : "20",
           "difficulty" : 3.8,
           "admin_id" : 2,
           "draft" : false,
@@ -32,7 +32,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "“shark fin” soup",
-          "cookingtime" : "20mins",
+          "cookingtime" : "20",
           "difficulty" : 3.2,
           "admin_id" : 2,
           "draft" : true,
@@ -42,7 +42,7 @@ exports.seed = function(knex,Promise) {
         {
       
           "name" : "Green Papaya Salad ",
-          "cookingtime" : "20mins",
+          "cookingtime" : "20",
           "difficulty" : 2.0,
           "admin_id" : 4,
           "draft" : false,
@@ -51,7 +51,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Eggtart",
-          "cookingtime" : "45mins",
+          "cookingtime" : "45",
           "difficulty" : 3.3,
           "admin_id" : 1,
           "draft" : false,
@@ -59,7 +59,7 @@ exports.seed = function(knex,Promise) {
           "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/15\/162011_fa24b0f62755519b65837c3d243be9c4.png"
         },
         {	"name" : "Thai Sticky mango rice",
-          "cookingtime" : "45mins",
+          "cookingtime" : "45",
           "difficulty" : 4.0,
           "admin_id" : 3,
           "draft" : false,
@@ -68,7 +68,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Easy Green Papaya Salad",
-          "cookingtime" : "15mins",
+          "cookingtime" : "15",
           "difficulty" : 1.5,
           "admin_id" : 2,
           "draft" : false,
@@ -77,7 +77,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Coconut Put Zai Go Pudding Cake",
-          "cookingtime" : "20mins",
+          "cookingtime" : "20",
           "difficulty" : 2.0,
           "admin_id" : 2,
           "draft" : false,
@@ -86,7 +86,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Pad See Ew (Thai Stir Fried Noodle)",
-          "cookingtime" : "45mins",
+          "cookingtime" : "45",
           "difficulty" : 3.5,
           "admin_id" : 4,
           "draft" : false,
@@ -95,7 +95,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Easy Homemade Ramen",
-          "cookingtime" : "30mins",
+          "cookingtime" : "30",
           "difficulty" : 2.8,
           "admin_id" : 3,
           "draft" : false,
@@ -113,7 +113,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Pantyhose milk tea",
-          "cookingtime" : "15mins",
+          "cookingtime" : "15",
           "difficulty" : 1.2,
           "admin_id" : 1,
           "draft" : false,
@@ -122,7 +122,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Stewed Pork Leg and Rice",
-          "cookingtime" : "50mins",
+          "cookingtime" : "50",
           "difficulty" : 4.3,
           "admin_id" : 3,
           "draft" : false,
@@ -132,7 +132,7 @@ exports.seed = function(knex,Promise) {
         {
       
           "name" : "Japanese ramen ",
-          "cookingtime" : "51mins",
+          "cookingtime" : "51",
           "difficulty" : 2.0,
           "admin_id" : 4,
           "draft" : false,
@@ -141,7 +141,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Japanese ramen noodle ",
-          "cookingtime" : "52mins",
+          "cookingtime" : "52",
           "difficulty" : 2.0,
           "admin_id" : 2,
           "draft" : false,
@@ -150,7 +150,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Japanese ramen noodle soup",
-          "cookingtime" : "53mins",
+          "cookingtime" : "53",
           "difficulty" : 2.0,
           "admin_id" : 3,
           "draft" : false,
@@ -159,7 +159,7 @@ exports.seed = function(knex,Promise) {
         },
         {
           "name" : "Japanese ramen noodle soup soup",
-          "cookingtime" : "54mins",
+          "cookingtime" : "54",
           "difficulty" : 2.0,
           "admin_id" : 5,
           "draft" : false,
