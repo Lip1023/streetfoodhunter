@@ -248,3 +248,15 @@ $(() => {
     }
 });
 
+//about
+$("#exploreButton").on('click', function (e) {
+    document.getElementById("more").classList.remove("hidden")
+    document.getElementById("exploreButton").classList.add("hidden")
+})
+
+//click arrow, close the tab
+$("#close").on('click', function (e) {
+    document.getElementById("more").classList.add("hidden")
+    document.getElementById("exploreButton").classList.remove("hidden")
+    document.getElementById("close").classList.add("hidden")
+})
