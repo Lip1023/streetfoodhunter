@@ -1,78 +1,78 @@
-<div class="book roundborder cotainer-fluid row col-sm-12">
+<div class="center">
+    <div class="book roundborder cotainer-fluid row col-sm-11">
 
-    <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-        <img id="food" class="roundborder" src="{{image_url}}" alt="food">
-    </div>
-
-    <div id="recipebox" class="col-sm-12 col-md-6 scroll">
-        <br>
-        <div class="d-flex justify-content-center">
-        <h1 class="font2">{{name}}</h1>
-        <img src="add2.png" class="addfav lgicon" alt="{{recipe_id}}">
-        <br>
+        <div class="col-sm-12 col-md-6 d-flex justify-content-center">
+            <img id="food" class="mt-lg-3 center roundborder" src="{{image_url}}" alt="food">
         </div>
-        <h3 class="font2">Difficulty: <div class="rating">
-                <div class="rating-upper yellow" style="width: {{difficulty}}%">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
-                <div class="rating-lower">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
+
+        <div id="recipebox" class="col-sm-12 col-md-6 scroll">
+            <br>
+            <div class="d-flex justify-content-center">
+                <h1 class="font2">{{name}}</h1>
+                <img src="add2.png" class="addfav lgicon" alt="{{recipe_id}}">
+                <br>
             </div>
-        </h3>
-        <h3 class="font2">Average rating: <div class="rating">
-                <div class="rating-upper red" style="width: {{recipe_rating}}%">
-                    <span>❤</span>
-                    <span>❤</span>
-                    <span>❤</span>
-                    <span>❤</span>
-                    <span>❤</span>
+            <h3 class="font2">Difficulty: <div class="rating">
+                    <div class="rating-upper yellow" style="width: {{difficulty}}%">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                    <div class="rating-lower">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
                 </div>
-                <div class="rating-lower">
-                    <span>❤</span>
-                    <span>❤</span>
-                    <span>❤</span>
-                    <span>❤</span>
-                    <span>❤</span>
+            </h3>
+            <h3 class="font2">Member's rating: <div class="rating">
+                    <div class="rating-upper red" style="width: {{recipe_rating}}%">
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                    </div>
+                    <div class="rating-lower">
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                        <span>❤</span>
+                    </div>
                 </div>
+            </h3>
+            <h3 class="font2">Cooking time: {{cookingtime}}minutes </h3><br>
+            <h4><span style="font-weight: bold;">Ingredients:</span>
+                <br>{{ingredient}}</h4><br>
+            <h4><span style="font-weight: bold;">How to:</span>
+                <ol>
+                    {{#each how_to}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ol>
+            </h4>
+            <div class="d-flex justify-content-center my-4">
+                <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger btn-lg my-2 my-sm-0">Share your
+                    own version
+                    of the recipe!
+                </a>
             </div>
-        </h3>
-        <h3 class="font2">Cooking time: {{cookingtime}}minutes </h3><br>
-        <h3>Ingredients:
-            <br>{{ingredient}}</h3><br>
-        <h3>How to:
-            <ol>
-                {{#each how_to}}
-                <li>{{this}}</li>
-                {{/each}}
-            </ol>
-        </h3>
-        <div class="d-flex justify-content-center my-4">
-            <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger btn-lg my-2 my-sm-0">Share your own version
-                of the recipe!
-            </a>
         </div>
+
     </div>
-
-</div>
-
-
-</div>
 </div>
 
 <!-- comment box -->
 <div class="cotainer-fluid roundborder commentbox">
 
     <form class="commentform font2" action="post">
-        <h2>Share your thoughts about the recipe!</h2><br>   <div class="rate">
+        <h2>Share your thoughts about the recipe!</h2><br>
+        <div class="rate">
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="text">5 stars</label>
             <input type="radio" id="star4" name="rate" value="4" />
@@ -92,15 +92,15 @@
         <input class="hidden" type="radio" id="recipe_id" value="{{recipe_id}}" />
 
         <button id="ice" name="submit" type="submit" class="cbtn btn btn-light hidden">Submit</button>
-            <button id="cancel" type="button" class="cbtn btn btn-light hidden">Cancel</button>
+        <button id="cancel" type="button" class="cbtn btn btn-light hidden">Cancel</button>
     </form>
-        
 
 
-{{#each comment}}        
-<div id="displaycomment" class="d-flex">
-    <h4 class="fontheavy">{{user_name}}:&nbsp;</h4>
-    <h4>{{content}}</h4>
-</div>
- {{/each}}
+
+    {{#each comment}}
+    <div id="displaycomment" class="d-flex">
+        <h4 class="fontheavy">{{user_name}}:&nbsp;</h4>
+        <h4>{{content}}</h4>
+    </div>
+    {{/each}}
 </div>

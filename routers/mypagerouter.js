@@ -7,9 +7,12 @@ const {
   readRecipeFromID,
   readCommentsByUser,
   writeRecipe,
+  readAllMarks,
   writeRecipeTable,
   writeIngredient,
   writeHowTo,
+  writeFoodName,
+  writeTag,
   initializeVote,
   postComment,
   updateVote,
@@ -18,6 +21,11 @@ const {
   addFavourite,
   deleteFavourite,
 } = require('../services/recipe');
+const {
+  filterRPname,
+  filterUSname,
+  filterFDname,
+} = require('../services/service');
 
 module.exports = (express) => {
   const router = express.Router();
@@ -26,6 +34,7 @@ module.exports = (express) => {
     if (req.isAuthenticated()) {
       return next();
     }
+    req.session.referrer = req.originalUrl;
     res.redirect("/login");
   }
 
@@ -47,9 +56,15 @@ module.exports = (express) => {
   router.get(
     "/auth/twitter/callback",
     passport.authenticate("twitter", {
-      successRedirect: "/",
-      failureRedirect: "/login",
-    })
+      failureRedirect: "/error",
+    }),
+    (req, res) => {
+      if (req.session.referrer) {
+        res.redirect(req.session.referrer);
+      } else {
+        res.redirect('/');
+      }
+    }
   );
   // twitter will redirect the user to this URL after approval.  Finish the
   // authentication process by attempting to obtain an access token.  If
@@ -70,9 +85,15 @@ module.exports = (express) => {
   router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      successRedirect: "/",
-      failureRedirect: "/login",
-    })
+      failureRedirect: "/error",
+    }),
+    (req, res) => {
+      if (req.session.referrer) {
+        res.redirect(req.session.referrer);
+      } else {
+        res.redirect('/');
+      }
+    }
   );
   // google will redirect the user to this URL after approval.  Finish the
   // authentication process by attempting to obtain an access token.  If
@@ -84,7 +105,6 @@ module.exports = (express) => {
 
   router.get("/login", (req, res) => {
     res.render('login');
-  
   });
 
   router.get("/mypagecopy", (req, res) =>{
@@ -161,11 +181,17 @@ favourite:[
   });
 
   router.post(
-    "/login",
+    "/login", 
     passport.authenticate("local-login", {
-      successRedirect: "/",
       failureRedirect: "/error",
-    })
+    }),
+    (req, res) => {
+      if (req.session.referrer) {
+        res.redirect(req.session.referrer);
+      } else {
+        res.redirect('/');
+      }
+    }
   );
 
   router.get("/signup", (req, res) => {

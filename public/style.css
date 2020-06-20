@@ -1,19 +1,24 @@
 /* font */
 .font2{font-family: 'Quicksand', sans-serif;}
+.font3{font-family: Arial, Helvetica, sans-serif;}
 .fontheavy{font-weight: bold;}
+.bigtitle{font-size: 350%;}
 .bigfont{font-size: 2rem;}
+span{font-weight: bold;}
 /* colour */
 .green{background-color:rgba(13, 122, 55, 0.856);}
 .redB{background-color: rgb(179, 14, 14);}
-.white{color: rgb(255, 255, 255);}
-.red{color:rgba(236, 13, 13, 0.863);}
-.yellow{color:rgb(221, 235, 23)}
+.white{color: rgba(255, 255, 255, 0.671);}
+.red{color:rgba(180, 20, 20, 0.863);}
+.yellow{color:rgb(236, 201, 42)}
 .grey{color: rgb(107, 105, 105);}
 .black{color: rgb(0, 0, 0)};
 .highlight{color: rgb(120, 45, 170)};
 .nodeco{text-decoration: none; }
+.nobg{background:none;}
 
 /* position */
+.flexlayout {display: flex;}
 .hidden{display: none;}
 .center{
     display: flex;
@@ -25,7 +30,7 @@
     border-radius: 10px;
 }
 .shadowborder{
-    border:rgba(71, 71, 71, 0.315)solid 5px;
+    border:rgba(87, 35, 15, 0.452)solid 5px;
 }
 
 .scroll{ 
@@ -34,35 +39,97 @@
 
 .top{z-index:1051 }
 
-/* Body parts */
-
-.navbar{
-    font-family: 'Playfair Display', serif;
+/* logo design */
+#homelogo{
+  position: relative;
+  font-family: Impact, sans-serif;
+  font-size: 45px;
+  letter-spacing: 2px;
+  background-image: url(./fire.jpg);
+  background-repeat: no-repeat;
+  background-size: 120%;
+  animation: animate 3s;
+  animation-direction: alternate-reverse;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 40, 40, 0);
 }
 
+@keyframes animate {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+  }
+
+/*  */
 body{
+    background-color: rgba(129, 66, 2, 0.507);
     font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
 
-.footer{
-font-family: 'Quicksand', sans-serif; 
-padding: 2rem 8rem;   
+#indexpage{
+    height: 100%;
+    background-image: url('./street.jpg'); 
+    background-repeat: no-repeat; 
+    background-position: cover;
 }
 
+#Homebtn{
+    width: fit-content; 
+    border-radius: 10px; 
+    border: solid chocolate; 
+    background: rosybrown; }
+
+#Homebtn a{
+    color: white;
+    text-decoration: none; 
+    font-size: 4rem;}
+
+#searchbarinput{
+    border: rgba(36, 36, 36, 0.493) solid 1px;
+    background: transparent;
+}    
+
+.footer{
+   font-family: 'Quicksand', sans-serif; 
+   padding: 2rem 8rem;   
+}
+
+#searchdiv { z-index: 100;}
 
 /* navbar */
+.navbar{
+    font-family: 'Playfair Display', serif;
+    background-color: #f88080;
+    margin-top:0;
+    width: 100%;
+}
+
+#navrecipe:hover{
+    color: rgba(245, 222, 179, 0.514);
+}
+/* 
+.hiddenfliter{display: none;}
+
+#navrecipe:hover #hiddenfliter{
+    display: table-column;
+} */
+
+
 #dropdown{
-    
-    padding-right: 10rem;
+    padding: 1rem;
 }
 #dropdownmenu{
     width: 270px;
+    transform: translate(-50%)
    
 }
 
 #welcomeuser{
-padding: 1rem;
+    padding: 1rem;
 }
 
 .lgicon{
@@ -70,17 +137,25 @@ padding: 1rem;
     height: 3rem;
 }
 
-.lgicon:hover{ filter: opacity(0.5); cursor: pointer;}
+.lgicon:hover{ 
+    filter: opacity(0.5); 
+    cursor: pointer;}
 
 .icon2{
     width: 2rem;
     height: 2rem;
 }
 
-.icon2:hover{ filter: opacity(0.5); cursor: pointer;}
+.icon2:hover{ 
+    filter: opacity(0.5); 
+    cursor: pointer;}
 
-#selectTB{border: none;}
+#selectTB{
+    border: none; 
+    background: none; }
+
 /* index page */
+
 .book{
     border: solid 1px rgb(0, 0, 0);
     padding: 1rem;
@@ -91,16 +166,20 @@ padding: 1rem;
 }
 
 .screen{
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-height: 83vh;
 }
 
 #screenvideo{
     padding: 1rem 0;
     width: 50vw;
+}
+
+#whattoeat{
+    color: cornsilk;
 }
 
 #foodimage{
@@ -134,10 +213,10 @@ padding: 1rem;
 
 #recipemain{
     border: none;
+    background-color: rgb(247, 140, 121);
 }
 
 #food{
-
     width: 45vw;
     height: 40vw;
     filter: brightness(0.9);
@@ -329,4 +408,35 @@ padding: 1rem;
     overflow-x: none;
     }
     #recipebox{min-height: fit-content;}
+    
 }
+
+
+/* About */
+
+.jumbotron{
+    background-image: url(./bgpic5.jpg);
+    flex-direction: column;
+    margin-bottom:0;
+    background-color: transparent; 
+
+    background-repeat:no-repeat;
+    background-size: cover;
+    color: rgb(0, 0, 0);
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.jumbotron a{
+    background-color: rgba(255, 0, 0, 0.692);
+    border: none;
+}
+
+.main1{
+    background-color: rgba(90, 89, 18, 0.445);
+    flex-direction: column;
+    color: white;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    
+    }

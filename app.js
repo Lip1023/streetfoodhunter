@@ -7,18 +7,6 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
-// const knex = require('knex')({
-//     client: 'postgresql',
-//     connection: {
-//         database: "streetfood",
-//         user: "admin",
-//         password: "supersecret"
-//     }
-// });
-// var client = new pg.Client('postgres://xccelerate:password@localhost:5432/bookings');
-
-// client.connect();
-
 const setupPassport = require('./passport/passport');
 const mypagerouter = require('./routers/mypagerouter')(express);
 const reciperouter = require('./routers/reciperouter')(express);
@@ -38,15 +26,6 @@ app.use(express.static("public"));
 //     imgae_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fishball.jpg/1200px-Fishball.jpg"
 // };
 
-app.get('/search', (req, res) => {
-    res.render('search');
-});
-
-
-// app.listen(8080, ()=>{
-
-//     console.log(`App is listening to port 8080`);
-// });
 
 app.use(session({
     secret: 'superDifficultAndSecret',
@@ -79,6 +58,7 @@ function insertUserInfo (obj, userobj) {
 app.get('/', (req, res) => {
     let promise1 = callFD()
    promise1.then((randomFD)=>{
+       console.log(randomFD)
     if (req.session.passport) {
         insertUserInfo(randomFD, req.session.passport.user);
     };
@@ -86,10 +66,17 @@ app.get('/', (req, res) => {
    })
 });
 
-https.createServer(options, app).listen(8080, function () {
-    console.log('app is listening to port 8080')
-});
+app.get('/about', (req,res)=>{
+    res.render('about')
+})
 
+app.get('*', function(req, res){
+    res.status(404).render('wrongpath');
+  });
+
+https.createServer(options, app).listen(8080, function () {
+    console.log('app is listening to port 8080');
+});
 
 
 

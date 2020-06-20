@@ -7,32 +7,30 @@
         <!-- filters -->
         <div class="d-flex row">
             <div id="cuisine" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight">
-                    <option class="dropdown-item" value="">Cuisine</option>
-                    <option class="dropdown-item" value="HongKongese">Hongkongese</option>
-                    <option class="dropdown-item" value="Japanese">Japanese</option>
-                    <option class="dropdown-item" value="Chinese">Chinese</option>
-                    <option class="dropdown-item" value="Korean">Korean</option>
-                    <option class="dropdown-item" value="Thai">Thai</option>
-                    <option class="dropdown-item" value="Others">Others</option>
+                <select class="form-control fontheavy highlight nullcheck">
+                    <option class="dropdown-item" value="" disabled selected>Cuisine</option>
+                    {{#each cuisine_name}}
+                    <option class="dropdown-item" value="{{this}}">{{this}}</option>
+                    {{/each}}
                 </select>
             </div>
 
             <div id="foodtype" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight">
-                    <option class="dropdown-item" value="">Food type</option>
-                    <option class="dropdown-item" value="BBQ">BBQ</option>
-                    <option class="dropdown-item" value="Dessert">Dessert</option>
-                    <option class="dropdown-item" value="Fried">Fried</option>
-                    <option class="dropdown-item" value="Steamed" >Steamed</option>
-                    <option class="dropdown-item" value="Others" >Others</option>
+                <select class="form-control fontheavy highlight nullcheck">
+                    <option class="dropdown-item" value="" disabled selected>Food type</option>
+                    {{#each food_type}}
+                    <option class="dropdown-item" value="{{this}}">{{this}}</option>
+                    {{/each}}
                 </select>
             </div>
 
 
             <div id="foodnamesection" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight">
-                    <option class="dropdown-item" href="#">Food name</option>
+                <select class="form-control fontheavy highlight nullcheck">
+                    <option class="dropdown-item" value="" disabled selected>Food name</option>
+                    {{#each food_name}}
+                    <option class="dropdown-item" value="{{this}}">{{this}}</option>
+                    {{/each}}
                 </select>
             </div>
 
@@ -47,7 +45,7 @@
         <div class="form-group row">
             <label for="cookingtime" class="col-sm-2 col-form-label">Cooking Time</label>
             <div class="col-sm-12">
-                <input type="text" class="form-control nullcheck" id="cookingtime" placeholder="ex) 10minutes">
+                <input type="text" class="form-control nullcheck" id="cookingtime" placeholder="ex) for 10 minutes, enter 10">
             </div>
         </div>
         <div class="form-group row">
@@ -55,6 +53,13 @@
             <div class="col-sm-12">
                 <input type="text" class="form-control nullcheck" id="recipedescription"
                     placeholder="Please describe your recipe in short">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="text" class="col-sm-2 col-form-label">Ingredients</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control nullcheck" id="recipeingredients"
+                    placeholder="ex) Pork 200g, salt 1 tbsp, some water">
             </div>
         </div>
         <fieldset class="form-group flex-wrap">
@@ -65,16 +70,16 @@
                         checked>★☆☆☆☆
                 </label>
                 <label class="radio-inline mx-4">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="2">★★☆☆☆
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">★★☆☆☆
                 </label>
                 <label class="radio-inline mx-4">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="3">★★★☆☆
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">★★★☆☆
                 </label>
                 <label class="radio-inline mx-4">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="4">★★★★☆
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="4">★★★★☆
                 </label>
                 <label class="radio-inline mx-4">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="5">★★★★★
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="5">★★★★★
                 </label>
             </div>
         </fieldset>
