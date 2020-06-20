@@ -33,7 +33,7 @@
             </div>
 
             {{!-- searchbar --}}
-            <div class="center pb-4" id="searchdiv">
+            <div class="center m-sm-4 " id="searchdiv">
                 <form action="/search" method="post" class="form-inline my-2 my-lg-0 row col-6 center">
                     {{#if selectTB}}<input class="hidden" type="text" id="selectTA" value="{{selectTB}}" />{{/if}}
                     <select name="selectTB" id="selectTB" class="grey hidden">
@@ -57,8 +57,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+
                 {{!-- recipe --}}
-                <ul class="col-8 navbar-nav mr-auto">
+                <ul class="col-7 navbar-nav ml-lg-4 mr-auto">
 
                     <a class="nav-link active ft-lg" href="/recipe">
                         <h1 id="navrecipe">Recipes</h1>
@@ -95,7 +96,11 @@
 
                 </ul>
 
-
+                <ul class="col-1"> 
+                    <a class="nav-link ft-rg" href="/about">
+                        <h1 class="nodeco black">About</h1>
+                    </a>
+                </ul>
                 {{!-- 4 --}}
                 <ul class="col-1">
                     <div class="dropdown" id="dropdown">

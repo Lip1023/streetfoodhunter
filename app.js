@@ -66,6 +66,11 @@ app.get('/', (req, res) => {
    })
 });
 
+app.get('/about', (req,res)=>{
+    res.render('about')
+})
+
+
 https.createServer(options, app).listen(8080, function () {
     console.log('app is listening to port 8080');
 });

@@ -104,9 +104,8 @@ body{
 .navbar{
     font-family: 'Playfair Display', serif;
     background-color: #f88080;
-    margin-top: -4rem;
+    margin-top:0;
     width: 100%;
-
 }
 
 #navrecipe:hover{
@@ -218,7 +217,6 @@ body{
 }
 
 #food{
-
     width: 45vw;
     height: 40vw;
     filter: brightness(0.9);
@@ -412,3 +410,33 @@ body{
     #recipebox{min-height: fit-content;}
     
 }
+
+
+/* About */
+
+.jumbotron{
+    background-image: url(./bgpic5.jpg);
+    flex-direction: column;
+    margin-bottom:0;
+    background-color: transparent; 
+
+    background-repeat:no-repeat;
+    background-size: cover;
+    color: rgb(0, 0, 0);
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.jumbotron a{
+    background-color: rgba(255, 0, 0, 0.692);
+    border: none;
+}
+
+.main1{
+    background-color: rgba(90, 89, 18, 0.445);
+    flex-direction: column;
+    color: white;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    
+    }
