@@ -22,13 +22,9 @@ Add additional notes about how to deploy this on a live system
 * [Node.js](https://nodejs.org/) -
 
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
-* **Alex* Cheung* (https://github.com/ty11123)
-* **Pullip Lee** - *Initial work* - (https://github.com/ccwy11)
-* **Christine Chen** - [PurpleBooth](https://github.com/Lip1023)
+* ** Alex Cheung* (https://github.com/ty11123)
+* ** Pullip Lee** - *Initial work* - (https://github.com/ccwy11)
+* ** Christine Chen** - [PurpleBooth](https://github.com/Lip1023)
 
