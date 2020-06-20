@@ -5,7 +5,7 @@ exports.up = function(knex,Promise) {
         // this is equal to primary key -SERIAL
         table.string('food_name');
         table.string('local_name');
-        table.string('cusine_name');
+        table.string('cuisine_name');
         table.string('imageurl', 10485760);
         table.timestamps(false, true); 
     });
