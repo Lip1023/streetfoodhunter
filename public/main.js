@@ -1,9 +1,28 @@
+//hover on recipes on navbar, show filter buttons
+$('#navrecipe').on('mouseover',function(e){
+    $('#hiddenfilter').removeClass('hidden');
+    $('#hiddenfilter').addClass('flexlayout');
+})
+
+$('#hiddenfliter').on('mouseout',function(e){
+    $(this).addClass('hidden');
+    $(this).removeClass('flexlayout')
+})
+
 //searchbar TB selection
 $('#selectTB').on('change', function () {
-    console.log('are you working')
     $('#selectTB').removeClass("grey")
     $('#selectTB').addClass("black")
 })
+
+
+
+//click searchbar, optionbar appears
+$('#searchbarinput').on('click',function(){
+    $('#selectTB').removeClass('hidden')
+    $('#placeholder').removeClass('hidden')
+})
+
 
 //video play
 $(document).ready()
@@ -229,24 +248,3 @@ $(() => {
     }
 });
 
-
-
-
-
-
-
-
-//click searchbar, optionbar appears
-$('#searchbarinput').on('click',function(){
-    $('#selectTB').removeClass('hidden')
-})
-
-
-
-//hover on recipes on navbar, show filter buttons
-// $(document).ready()
-// $('#navrecipe').on('click',function(e){
-//     e.preventDefault
-//     console.log('hi')
-//     $('navbar').css('background-color','black');
-// })

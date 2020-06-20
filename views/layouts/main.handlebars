@@ -16,43 +16,99 @@
     <script src="https://kit.fontawesome.com/1959ac8c31.js" crossorigin="anonymous"></script>
     {{!-- font --}}
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
+
     <div class="container-fluid">
 
 
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="d-flex flex-column justify-content-center">
+
+            {{!-- logo --}}
+            <div id="fulllogo" class="mt-2 center">
+                <a class="navbar-brand" id="shiny" href="/">
+                    <p class="red font2 fontheavy" id="homelogo">Street Food Hunters</p>
+                </a>
+            </div>
+
+            {{!-- searchbar --}}
+            <div class="center pb-4" id="searchdiv">
+                <form action="/search" method="post" class="form-inline my-2 my-lg-0 row col-6 center">
+                    {{#if selectTB}}<input class="hidden" type="text" id="selectTA" value="{{selectTB}}" />{{/if}}
+                    <select name="selectTB" id="selectTB" class="grey hidden">
+                        <option class="selectOP" value="RP">Recipe name</option>
+                        <option class="selectOP" value="FD">Food name</option>
+                        <option class="selectOP" value="US">Username</option>
+                    </select>
+                    <input {{#if word}}value={{word}}{{/if}} name="word" class="col-sm-4 form-control mr-sm-2"
+                        id="searchbarinput" type="search" aria-label="Search" required>
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                    <ul id="placeholder" class="col-1 hidden"></ul>
+                </form>
+            </div>
+
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                {{!-- recipe --}}
+                <ul class="col-8 navbar-nav mr-auto">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active ft-lg" href="/recipe">
-                            <h1 id="navrecipe">Recipes</h1>
+                    <a class="nav-link active ft-lg" href="/recipe">
+                        <h1 id="navrecipe">Recipes</h1>
+                    </a>
+
+                    <div id="hiddenfilter" class="hidden">
+                        <a class="nav-link mt-3 p" href="/recipe?tag=">
+                            <h3 class="tagsNV fixnav">All</h3>
                         </a>
-                    </li>
+
+                        <a class="nav-link mt-3" href="/recipe?tag=BBQ">
+                            <h3 class="tagsNV fixnav">BBQ</h3>
+                        </a>
+
+                        <a class="nav-link mt-3" href="/recipe?tag=DESSERT">
+                            <h3 class="tagsNV fixnav">Dessert</h3>
+                        </a>
+
+                        <a class="nav-link mt-3" href="/recipe?tag=FRIED">
+                            <h3 class="tagsNV fixnav">Fried</h3>
+                        </a>
+
+                        <a class="nav-link mt-3" href="/recipe?tag=SOUPY">
+                            <h3 class="tagsNV fixnav">Soupy</h3>
+                        </a>
+
+                        <a class="nav-link mt-3" href="/recipe?tag=STEAMED">
+                            <h3 class="tagsNV fixnav">Steamed</h3>
+                        </a>
+
+                    </div>
+
+
+
                 </ul>
 
-                <ul>
+
+                {{!-- 4 --}}
+                <ul class="col-1">
                     <div class="dropdown" id="dropdown">
                         <a class="black nav-link dropdown-toggle" href="/mypage" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{#if user_name}}
-
                             <img src="loginicon.png" class="active lgicon" alt="loginicon">
-                            
+
                             {{else}}
-                                  <img src="loginicon.png" class="lgicon" alt="loginicon">
+                            <img src="loginicon.png" class="lgicon" alt="loginicon">
                             {{/if}}
                         </a>
-
                         <div class="top dropdown-menu" id="dropdownmenu" aria-labelledby="navbarDropdown">
-
                             <h5 id="welcomeuser" class="justify-content-lg-center form-inline">
                                 {{#if user_name}}
                                 Welcome {{user_name}}!
@@ -60,21 +116,16 @@
                                 Please Login!
                                 {{/if}}
                             </h5>
-
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/mypage">My Page</a>
                             <a class="dropdown-item" href="/signup">Sign Up</a>
-
-
                             <div class="dropdown-divider"></div>
                             <div
                                 class="{{#if user_name}}hidden{{/if}} goneafterlogin icons justify-content-lg-center form-inline">
-
                                 <a href="/auth/twitter"><img src="t2.png" class="lgicon" alt="twitter"></a>
                                 <a href="/auth/google"><img src="g2.png" class="lgicon ml-lg-2" alt="google"></a>
                             </div>
                             <div class="dropdown-divider"></div>
-
                             <div class="d-flex justify-content-center">
                                 <a href='/logout'>
                                     <button id="logout"
@@ -84,97 +135,35 @@
                                     </button>
                                 </a>
                             </div>
-
                             <form action="/login" method="post"
                                 class="{{#if user_name}}hidden{{/if}} goneafterlogin justify-content-lg-center form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2 my-lg-2" type="text" name="username" placeholder="ID"
                                     aria-label="ID">
-
                                 <input class="form-control mr-sm-2" type="password" name="password"
                                     placeholder="Password" aria-label="Password">
-
                                 <div class="icons mb-lg-4">
                                     <button id="forgotpw" class=" btn btn-outline-dark mt-lg-4" type="submit"><a
                                             href="/forgotpassword" class="black">Forgotpassword</a> </button>
                                     <button id="login" class="btn btn-outline-dark mt-lg-4 ml-lg-2"
                                         type="submit">Login</button>
                                 </div>
-
                             </form>
-
-
                         </div>
                     </div>
                 </ul>
+
                 <br><br><br>
-
-
-
             </div>
         </nav>
-<div class="center">
-        <a class="navbar-brand" id="shiny" href="/">
-            <p class="red font2 fontheavy" id="homelogo">Street Food Hunters</p>
-        </a>
-</div>
-        <div class="center pb-4">
-            <form action="/search" method="post" class="form-inline my-2 my-lg-0 row col-6 center">
-                {{#if selectTB}}<input class="hidden" type="text" id="selectTA" value="{{selectTB}}"/>{{/if}}
-                <select name="selectTB" id="selectTB" class="grey hidden">
-                    <option class="selectOP" value="RP">Recipe name</option>
-                    <option class="selectOP" value="FD">Food name</option>
-                    <option class="selectOP" value="US">Username</option>
-                </select>
-                <input {{#if word}}value={{word}}{{/if}} name="word" class="col-sm-4 form-control mr-sm-2" id="searchbarinput" type="search" aria-label="Search" required>
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-        {{{body}}}
-
-
-        <div class="footer">
-            <div class="col-lg-3">
-                <p>Street food hunters</p>
-            </div>
-
-        </div>
-
-        {{!-- <div class="book roundborder row" id="indexpage">
-
-            
-
-            <!-- pic screen -->
-            <div class="screen col-sm-12">
-                <br>
-                <h1>What to eat today?</h1>
-                <video id="screenvideo" src="../public/bg.mp4"></video>
-
-
-                <img src="../public/fishball.jpg" class="hidden" id="foodimage" alt="fishball">
-
-
-                <div class="buttons center">
-
-                    <div class="knob  shadowborder green" id="start-btn">Start</div>
-
-                    <div class="knob"></div>
-
-                    <div class="knob  shadowborder red" id="stop-btn">Stop</div>
-
-                </div>
-
-                <div class="knob"></div>
-            </div>
-
-           
-
-        </div> --}}
 
     </div>
 
-
-
-
+    {{{body}}}
+    <div class="footer">
+        <div class="col-lg-3">
+            <p>Street food hunters</p>
+        </div>
+    </div>
 
 
 
