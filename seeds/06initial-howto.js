@@ -61,28 +61,28 @@ exports.seed = function (knex, Promise) {
           "created_at": "2020-06-19T11:49:27Z",
           "updated_at": "2020-06-19T11:49:27Z"
         },
+    
         {
 
           "recipe_id": 9,
-          "howto": "1.Make sure you separate the egg yolks from the white very carefully. Leaving as little trace of egg whites as possible when separating. If there is a trace of egg whites, you can run the egg yolks through the sieve. This is to ensure you don't get any lumps in the kaya. Otherwise, beat the yolks until smooth just using a regular fork is perfectly fine. Run it through the sieve if you want to., 2.Place coconut cream, sugars, pandan leaves (for regular kaya), pandan extract or pandan juice (for pandan kaya) in a saucepan. ,3.Cook over medium heat and just cook until the sugar melted. It shouldn't be boiling, just heated to warm. ,4.Tempering the egg yolks:\nWith one hand still beating the egg yolks, the other hand holding the saucepan with coconut cream, add 1\/4 of the coconut cream mixture., 5.Continue doing so several times, 6.Then you can pour the egg mixture back to the saucepan., 7.Stir to mix everything and then place this on the stove over medium heat., 8.Continue to stir over medium heat. The mixture started to thicken for me at around 8 minutes mark and continue to stir. It may still appear a bit runny, but it will continue to thicken once it cools down completely. Discard the pandan leaves.,9.At 10 minutes mark, the kaya jam is thick enough. If you use pandan juice instead of extract, you may need to cook a bit longer to get to this consistency. Remove from the heat., 10.Spread the kaya generously on both sides of the toast,  Cut thin slices of cold butter and arrange it on top of the toast, about 4 slices. 11. Finish",
-          "created_at": "2020-06-19T11:49:27Z",
-          "updated_at": "2020-06-19T11:49:27Z"
-        },
-        {
-
-          "recipe_id": 10,
           "howto": "1. Preheat steamer and greasing pudding cups with oil. Place cups into steamer.,2. In a pot over medium high heat, melt sugar and water together. Set aside.,3. Combine rice flour, wheat starch and coconut milk into a smooth paste,4. Slowly whisk in sugar mixture.,5. Put mixture into a spouted cup for easy pouring. After steamer is heated for 2-3 minutes, pour mixture into the preheated pudding cups.,6. Add in beans.,7. Steam for 15-20 minutes.,8. Let pudding cakes cool for about 2 hours before serving.",
           "created_at": "2020-06-19T11:49:27Z",
           "updated_at": "2020-06-19T11:49:27Z"
         },
         {
 
-          "recipe_id": 11,
+          "recipe_id": 10,
           "howto": "1.Heat 1 tbsp oil in a very large heavy based skillet or wok over high heat,2.Add garlic, cook 15 seconds. Add chicken, cook until it mostly changes from pink to white.,3.Add Chinese broccoli stems, cook until chicken is almost cooked through.,4.Add Chinese broccoli leaves, cook until just wilted.,5.Push everything to one side, crack egg in and scramble. Remove everything onto a plate (scrape wok clean).,6.Return wok to stove, heat 2 tbsp oil over high heat. 7.Add noodles and Sauce. Toss as few times as possible to disperse Sauce and make edges of noodles caramelise. ,8.Quickly add chicken and veg back in, and toss to disperse. Serve immediately!",
           "created_at": "2020-06-19T11:49:27Z",
           "updated_at": "2020-06-19T11:49:27Z"
         },
-        
+        {
+
+          "recipe_id": 11,
+          "howto": "1.Pour vegetable or mushroom stock into a large saucepan. Add in minced garlic, freshly grated ginger, soy sauce, rice wine vinegar, and miso if using. Bring the broth to a boil and reduce to a simmer.,2.Add in sliced mushrooms, red pepper, and bok choy into broth, and simmer for 7-10 minutes, or until greens are wilted.,3.Add in packaged ramen noodles (discard seasoning pack) and cook according to package directions–about 3 minutes.,4.Dish up cooked ramen into serving bowls and top ramen as desired. ",
+          "created_at": "2020-06-19T11:49:27Z",
+          "updated_at": "2020-06-19T11:49:27Z"
+        },
         {
 
           "recipe_id": 12,
@@ -90,20 +90,22 @@ exports.seed = function (knex, Promise) {
           "created_at": "2020-06-19T11:49:27Z",
           "updated_at": "2020-06-19T11:49:27Z"
         },
+
         {
 
           "recipe_id": 13,
-          "howto": "1.Pour vegetable or mushroom stock into a large saucepan. Add in minced garlic, freshly grated ginger, soy sauce, rice wine vinegar, and miso if using. Bring the broth to a boil and reduce to a simmer.,2.Add in sliced mushrooms, red pepper, and bok choy into broth, and simmer for 7-10 minutes, or until greens are wilted.,3.Add in packaged ramen noodles (discard seasoning pack) and cook according to package directions–about 3 minutes.,4.Dish up cooked ramen into serving bowls and top ramen as desired. ",
+          "howto": "1. Gather the ingredients. ,2. Combine water and tea leaves in a small saucepan over medium heat.,3. Bring to a low boil. Reduce heat and simmer for 3 minutes.,4. Remove from heat. Stir in sweetened, condensed milk. Return to heat.,5. Return to a boil. Simmer for 3 more minutes.,6. Strain tea and condensed milk.,7. Serve hot or (optional) chill and serve over ice. Small glasses are ideal.",
           "created_at": "2020-06-19T11:49:27Z",
           "updated_at": "2020-06-19T11:49:27Z"
         },
         {
 
           "recipe_id": 14,
-          "howto": "1. Gather the ingredients. ,2. Combine water and tea leaves in a small saucepan over medium heat.,3. Bring to a low boil. Reduce heat and simmer for 3 minutes.,4. Remove from heat. Stir in sweetened, condensed milk. Return to heat.,5. Return to a boil. Simmer for 3 more minutes.,6. Strain tea and condensed milk.,7. Serve hot or (optional) chill and serve over ice. Small glasses are ideal.",
+          "howto": "1.Heat oil in a wok or large pan over medium heat. Add pork shank, and turn up the heat a bit. Fry until golden brown on both sides. Transfer the leg to drain on a paper towel.,2.Pound garlic, peppercorns, and corriander in a mortar and pestle until it becomes a fine paste. Set aside.,3.Place fried pig leg in a pot and cover with water. Add garlic paste mixture, cinnamon, star anise, black soy, thin soy, Golden Mtn, salt, palm sugar, 5-spice, and eggs. Bring to a boil then reduce heat, and cook for another 2-3 hours until tender.,4.While the pork is cooking, thinly slice the pickled mustard green, gently squeeze it to remove the pickling liquid, and rinse it one time in a colander. Then slowly boil it in a bit of water or chicken stock, about 1.5 cups, until water evaporates, and set aside.,5.Separately, pound 2-3 fresh Thai chile peppers in a mortar and pestle. Transfer to a small sauce bowl, add 1 teaspoon salt and 1/2 cup vinegar. This sauce should be served with the khao kha moo.,6.Serve the meat over steamed jasmine rice, topped with some pickled mustard green, steamed bokchoy and the chile-vinegar sauce.",
           "created_at": "2020-06-19T11:49:27Z",
           "updated_at": "2020-06-19T11:49:27Z"
         },
+  
         {
 
           "recipe_id": 15,
