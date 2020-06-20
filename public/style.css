@@ -1,5 +1,6 @@
 /* font */
 .font2{font-family: 'Quicksand', sans-serif;}
+.font3{font-family: Arial, Helvetica, sans-serif;}
 .fontheavy{font-weight: bold;}
 .bigtitle{font-size: 350%;}
 .bigfont{font-size: 2rem;}
@@ -9,7 +10,7 @@ span{font-weight: bold;}
 .redB{background-color: rgb(179, 14, 14);}
 .white{color: rgba(255, 255, 255, 0.671);}
 .red{color:rgba(180, 20, 20, 0.863);}
-.yellow{color:rgb(221, 235, 23)}
+.yellow{color:rgb(236, 201, 42)}
 .grey{color: rgb(107, 105, 105);}
 .black{color: rgb(0, 0, 0)};
 .highlight{color: rgb(120, 45, 170)};
@@ -17,6 +18,7 @@ span{font-weight: bold;}
 .nobg{background:none;}
 
 /* position */
+.flexlayout {display: flex;}
 .hidden{display: none;}
 .center{
     display: flex;
@@ -69,6 +71,7 @@ body{
 }
 
 #indexpage{
+    height: 100%;
     background-image: url('./street.jpg'); 
     background-repeat: no-repeat; 
     background-position: cover;
@@ -95,19 +98,26 @@ body{
    padding: 2rem 8rem;   
 }
 
+#searchdiv { z-index: 100;}
+
 /* navbar */
 .navbar{
     font-family: 'Playfair Display', serif;
     background-color: #69696910;
-    padding: 0;
+    margin-top: -4rem;
     width: 100%;
-    height: 10%;
+
 }
 
 #navrecipe:hover{
-    color: wheat;
+    color: rgba(245, 222, 179, 0.514);
 }
+/* 
+.hiddenfliter{display: none;}
 
+#navrecipe:hover #hiddenfliter{
+    display: table-column;
+} */
 
 
 #dropdown{
@@ -157,16 +167,20 @@ body{
 }
 
 .screen{
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-height: 83vh;
 }
 
 #screenvideo{
     padding: 1rem 0;
     width: 50vw;
+}
+
+#whattoeat{
+    color: cornsilk;
 }
 
 #foodimage{
@@ -200,7 +214,7 @@ body{
 
 #recipemain{
     border: none;
-    background-color: rgba(253, 38, 81, 0.322);
+    background-color: rgb(247, 140, 121);
 }
 
 #food{
