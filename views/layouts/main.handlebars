@@ -38,6 +38,28 @@
                     </li>
                 </ul>
 
+                <div class="center row d-flex justify-content-center">
+                    <div class="col-6 ">
+                        <a class="navbar-brand" id="shiny" href="/">
+                            <p class="red font2 fontheavy" id="homelogo">Street Food Hunters</p>
+                        </a>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-10 pb-4">
+                        <form class="form-inline my-2 my-lg-0 row 
+                col-6 center">
+                            <select name="input" id="selectTB" class="grey hidden">
+                                <option class="selectOP" value="1">Recipe name</option>
+                                <option class="selectOP" value="2">Food name</option>
+                                <option class="selectOP" value="3">Username</option>
+                            </select>
+                            <input class="col-sm-4 form-control mr-sm-2" id="searchbarinput" type="search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+
                 <ul>
                     <div class="dropdown" id="dropdown">
                         <a class="black nav-link dropdown-toggle" href="/mypage" id="navbarDropdown" role="button"
@@ -45,9 +67,9 @@
                             {{#if user_name}}
 
                             <img src="loginicon.png" class="active lgicon" alt="loginicon">
-                            
+
                             {{else}}
-                                  <img src="loginicon.png" class="lgicon" alt="loginicon">
+                            <img src="loginicon.png" class="lgicon" alt="loginicon">
                             {{/if}}
                         </a>
 
@@ -112,7 +134,7 @@
 
             </div>
         </nav>
-<div class="center">
+        {{!-- <div class="center">
         <a class="navbar-brand" id="shiny" href="/">
             <p class="red font2 fontheavy" id="homelogo">Street Food Hunters</p>
         </a>
@@ -128,7 +150,7 @@
                 <input class="col-sm-4 form-control mr-sm-2" id="searchbarinput" type="search" aria-label="Search">
                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
             </form>
-        </div>
+        </div> --}}
         {{{body}}}
 
 
