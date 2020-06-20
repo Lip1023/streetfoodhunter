@@ -40,7 +40,7 @@ async function callfavREP() {
         image_url: dispfavrep.image_url,
     };
     console.log(dispfavrep)
-
+    return callfavREP
     let myfavreciperating = await knex('ratingsummaryTable').join('recipeTable', 'ratingsummaryTable.recipe_id', '=', 'recipeTable.id').where('ratingsummaryTable.recipe_id', 6)
     // console.log(myfavreciperating)
 
@@ -55,6 +55,8 @@ async function callfavREP() {
     // };
     // console.log(myREP)
     // return myREP
+    // return myfavreciperating
 }
+
 callfavREP()
 module.exports = { callfavREP }

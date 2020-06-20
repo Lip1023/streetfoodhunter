@@ -5,7 +5,6 @@ exports.seed = function(knex,Promise) {
       return knex('foodTable').insert([
         {food_name: 'Egg Waffles',local_name: 'Gai Daan Zai',cusine_name: 'HongKongese',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/150426_c6169ba733db6ebab43f63be170fd820.png'},
         {food_name: 'Tofu Pudding',local_name: 'Dao fu fa',cusine_name: 'HongKongese',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/160610_b5e62f3abeb247c873a78d5cb855b508.png'},
-        {food_name: 'Pineapple Buns ',local_name: 'Boh Loh Yau',cusine_name: 'HongKongese',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/160705_8ea54604c81cb81e78a61bc2ade350d3.png'},
         {food_name: 'Three Stuffed Treasures ',local_name: 'Jin yeung saam bo',cusine_name: 'HongKongese',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/160751_4c7d6be5c41928174667fcc58304b8a0.png'},
         {food_name: 'FAKE “shark fin” soup',local_name: 'Wun Jai Ci ',cusine_name: 'HongKongese',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/160821_1bb2c2eb9992e045e35607e74cba8b4d.png'},
         {food_name: 'Thai Stir Fried Noodle',local_name: 'Pad See Eiw',cusine_name: 'Thai',imageurl:'https://img.eservice-hk.net/upload/2020/06/15/160859_b7b77c006d4e356d9f28f092a9f12fb5.png'},
