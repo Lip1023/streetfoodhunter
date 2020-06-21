@@ -1,13 +1,13 @@
-<!-- sign up part -->
-<div class="signup">
+{{!-- container --}}
+<div class="signup p-4">
     <div class="my-4 d-flex justify-content-lg-start">
-        <h1 class="grey justify-content-sm-center">Add New Recipe</h1>
+        <h1 class="white fontheavy justify-content-sm-center">Add New Recipe</h1>
     </div>
     <form>
         <!-- filters -->
         <div class="d-flex row">
             <div id="cuisine" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight nullcheck">
+                <select class="form-control fontheavy nullcheck">
                     <option class="dropdown-item" value="" disabled selected>Cuisine</option>
                     <option class="dropdown-item" value="*">All</option>
                     {{#each cuisine_name}}
@@ -17,18 +17,21 @@
             </div>
 
             <div id="foodnamesection" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight nullcheck">
+                <select class="form-control fontheavy nullcheck">
                     <option class="dropdown-item" value="" disabled selected>Food name</option>
                     {{#each food_name}}
+
                     <option class="dropdown-item" value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
             </div>
 
+
             <div id="foodtype" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight nullcheck">
+                <select class="form-control fontheavy nullcheck">
                     <option class="dropdown-item" value="" disabled selected>Food type</option>
                     {{#each food_type}}
+                    
                     <option class="dropdown-item" value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>

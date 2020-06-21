@@ -292,8 +292,9 @@ body{
 }
 
 .mypagerecipe{
+    background-color:rgba(255, 255, 255, 0.164);
     margin: 1rem;
-    border: 1px dotted rgb(163, 163, 163);
+    border:none; 
     height: min-content;
     width: 80vw;
     direction: flex;
