@@ -1,12 +1,12 @@
 <div class="row center" id="indexpage">
 
     <!-- pic screen -->
-    <div class="screen col-sm-12 col-md-8 col-lg-6">
+    <div class="screen col-sm-12 col-md-8 col-lg-6" id="tvscreen">
         <h1 id="whattoeat" class="pt2-2 fontheavy font3 animate__animated animate__pulse animate__infinite animate__slow">What to eat today?</h1>
         <video id="screenvideo" src="bg2.mp4"></video>
 
 
-        <div class="hidden shadowborder scroll" id="foodimage">
+        <div class="hidden scroll" id="foodimage">
 
             <div id="recipenum">
                 <h1 class="mt-lg-2 fontheavy">
@@ -15,7 +15,7 @@
                     {{name}}</h3>
 
                 <img class="smallpic pb-2" src="{{image_url}}" alt="food image">
-                <br> <button id="call-btn" type="button" class="animate__animated animate__jello btn 
+                <br> <button id="call-btn" type="button" class=" btn 
                 btn-danger btn-lg"><a class="white" href="/recipe:{{recipeid.recipe_id}}"> View our famous
                         recipe</a></button>
             </div>
