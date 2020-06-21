@@ -34,6 +34,8 @@ $('#stop-btn').on('click', function () {
     $('#screenvideo').addClass('hidden')
     $('#foodimage').removeClass('hidden')
     $('#whattoeat').addClass('hidden')
+    $('#tvscreen').addClass('animLine')
+    $('#tvscreen').addClass('animate__animated animate__tada')
 })
 
 // sign up page 

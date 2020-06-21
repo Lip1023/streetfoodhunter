@@ -456,3 +456,63 @@ body{
 #close:hover{
     filter: brightness(0.8);
 }
+
+
+
+
+
+/* */
+.animLine {
+    margin: 4px;
+    box-shadow: 0 2px 4px #000;
+    position: relative;
+    transform: scale(1);
+    transition: .1s;
+  } 
+  
+  .animLine:hover {
+    transform: scale(1);
+    box-shadow: 0 2px 4px #000, 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+
+  
+  @keyframes beforeLineAnim {
+    45%,
+    50% {
+      background-position: -100% 0;
+    }
+    45% {
+      transform: scale(1)
+    }
+    50%,
+    95% {
+      transform: scale(1, -1)
+    }
+    95% {
+      background-position: 80% 0
+    }
+  }
+  
+  @keyframes afterLineAnim {
+    20%,
+    25% {
+      background-position: -100% 0;
+    }
+    20% {
+      transform: scale(1) rotate(-90deg)
+    }
+    25% {
+      transform: scale(-1, 1) rotate(-90deg)
+    }
+    70%,
+    75% {
+      background-position: 80% 0;
+    }
+    70% {
+      transform: scale(-1, 1) rotate(-90deg)
+    }
+    75% {
+      transform: scale(1, 1) rotate(-90deg)
+    }
+  }
