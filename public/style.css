@@ -239,6 +239,11 @@ body{
     text-align: center;
 }
 
+#displaycomment{
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.212);
+}
+
 .eachrecipe{
     border: solid 0.5px rgba(128, 128, 128, 0.096);
     padding: 2rem;
