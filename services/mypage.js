@@ -13,7 +13,7 @@ const knex = require('knex')({
 //display my recipes
 async function callREP() {
     let mypagerecipe = await knex.select("*").from("recipeTable").where("admin_id", 2)//where admin_id =2
-    console.log(mypagerecipe);
+    // console.log(mypagerecipe);
     //add forEACH needs to be done
     let REPcount = mypagerecipe.length
     let myREP = mypagerecipe[REPcount - 1]
@@ -39,7 +39,7 @@ async function callfavREP() {
         userid: dispfavrep.user_id,
         image_url: dispfavrep.image_url,
     };
-    console.log(dispfavrep)
+    // console.log(dispfavrep)
     return callfavREP
     let myfavreciperating = await knex('ratingsummaryTable').join('recipeTable', 'ratingsummaryTable.recipe_id', '=', 'recipeTable.id').where('ratingsummaryTable.recipe_id', 6)
     // console.log(myfavreciperating)

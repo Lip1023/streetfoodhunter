@@ -250,7 +250,7 @@ let list1 =
   recipePhoto: 'https://img.eservice-hk.net/upload/2020/06/14/171818_84064f1756fd535e99fec63b6abfacda.JPG'
 }
 async function writeRecipe(list1) {
-  console.log(list1);
+  // console.log(list1);
   let recipelist = {
     name: list1.recipeName,
     cookingtime: list1.cookingTime,
@@ -608,6 +608,7 @@ async function readAllMarks() {
 async function readFoodFromCuisine(cuisine_name = "") {
   let client = new pg.Client(config);
   let sql = escape('select "food_name" from "foodTable" where "cuisine_name" ilike %L', String(cuisine_name));
+  if (cuisine_name === "*") {sql = 'select "food_name" from "foodTable"'};
   let temp = null;
   let result1 = {food_name: null};
   await client.connect();
@@ -619,31 +620,6 @@ async function readFoodFromCuisine(cuisine_name = "") {
 }
 // let promise1 = readFoodFromCuisine('hongkongese');
 // promise1.then((stuff) => {console.log(stuff);});
-
-async function callFD() {
-  let allFD = knex.select("*").from("foodTable")
-  allFD.then((rows) => {
-      // console.log(rows)
-      let mxFD = rows.length
-      let number = Math.floor((Math.random() * `${mxFD}`) + 1)
-      // console.log(number)
-      let randomFD = rows[number-1]
-      // randomFD = {
-      //     id: randomFD.id,
-      //     name: randomFD.food_name,
-      //     imgae_url: randomFD.imageurl
-      // };
-      // console.log(randomFD)
-      return randomFD
-  })
-      .catch((error) => {
-          console.log(error);
-      })
-}
-
-
-
-
 
 module.exports = {
   getUserNameFromID,
