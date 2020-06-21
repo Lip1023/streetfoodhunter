@@ -12,7 +12,7 @@
                 <img src="add2.png" class="addfav lgicon" alt="{{recipe_id}}">
                 <br>
             </div>
-            <h3 class="font2">Difficulty: <div class="rating">
+            <h3 class="font2">Difficulty: <div class="rating" id="minstar">
                     <div class="rating-upper yellow" style="width: {{difficulty}}%">
                         <span>★</span>
                         <span>★</span>
@@ -56,12 +56,7 @@
                     {{/each}}
                 </ol>
             </h4>
-            <div class="d-flex justify-content-center my-4">
-                <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger btn-lg my-2 my-sm-0">Share your
-                    own version
-                    of the recipe!
-                </a>
-            </div>
+        
         </div>
 
     </div>
@@ -69,9 +64,14 @@
 
 <!-- comment box -->
 <div class="cotainer-fluid roundborder commentbox">
-
+ <div class="d-flex justify-content-center my-4 animate__animated animate__pulse animate__infinite animate__slow">
+                <a href="/newrecipe" role="button" id="newrecipe" class="btn btn-danger btn-lg my-2 my-sm-0">Share your
+                    own version
+                    of the recipe!
+                </a>
+            </div>
     <form class="commentform font2" action="post">
-        <h2>Share your thoughts about the recipe!</h2><br>
+        <h2>How do you think about the recipe?</h2><br>
         <div class="rate">
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="text">5 stars</label>
