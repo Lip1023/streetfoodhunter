@@ -33,7 +33,7 @@ async function callFD() {
 
     randomFD.numberofrecipe = recipes.length
     randomFD.recipeid = recipes[0]
-    console.log(randomFD)
+    // console.log(randomFD)
     return randomFD
 
 }

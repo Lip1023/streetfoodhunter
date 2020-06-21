@@ -15,7 +15,7 @@ const knex = require('knex')({
 //searching with recipe name
 async function filterRPname(userinput, order_by = "New") {
     if (userinput === "") {
-        console.log("No results found")
+        // console.log("No results found")
     }
     else {
         userinput = "%" + userinput + "%"
@@ -73,7 +73,7 @@ async function filterRPname(userinput, order_by = "New") {
 //searching with username
 async function filterUSname(userinput, order_by = "New") {
     if (userinput === "") {
-        console.log("No results found")
+        // console.log("No results found")
     }
     else {
         userinput = "%" + userinput + "%"
@@ -131,7 +131,7 @@ async function filterUSname(userinput, order_by = "New") {
 //search by food name
 async function filterFDname(userinput, order_by = "New") {
     if (userinput === "") {
-        console.log("No results found")
+        // console.log("No results found")
     }
     else {
         let IDlist = []

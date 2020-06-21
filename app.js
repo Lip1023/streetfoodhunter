@@ -58,7 +58,7 @@ function insertUserInfo (obj, userobj) {
 app.get('/', (req, res) => {
     let promise1 = callFD()
    promise1.then((randomFD)=>{
-       console.log(randomFD)
+       // console.log(randomFD)
     if (req.session.passport) {
         insertUserInfo(randomFD, req.session.passport.user);
     };
@@ -77,6 +77,3 @@ app.get('*', function(req, res){
 https.createServer(options, app).listen(8080, function () {
     console.log('app is listening to port 8080');
 });
-
-
-

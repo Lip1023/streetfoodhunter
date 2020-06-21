@@ -61,363 +61,361 @@ exports.seed = function (knex, Promise) {
       "id": 10,
       "user_id": 2,
       "recipe_id": 1,
-      "content": "1this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 11,
       "user_id": 3,
       "recipe_id": 2,
-      "content": "2i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 12,
       "user_id": 4,
       "recipe_id": 3,
-      "content": "3do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 13,
       "user_id": 2,
       "recipe_id": 4,
-      "content": "4easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 14,
       "user_id": 2,
       "recipe_id": 5,
-      "content": "5taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 15,
       "user_id": 3,
       "recipe_id": 6,
-      "content": "6this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 16,
       "user_id": 4,
       "recipe_id": 7,
-      "content": "7i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 17,
       "user_id": 4,
       "recipe_id": 8,
-      "content": "8do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 18,
       "user_id": 5,
       "recipe_id": 9,
-      "content": "9easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 19,
       "user_id": 6,
       "recipe_id": 10,
-      "content": "10taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 20,
       "user_id": 3,
       "recipe_id": 11,
-      "content": "11this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 21,
       "user_id": 5,
       "recipe_id": 12,
-      "content": "12i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 22,
       "user_id": 6,
       "recipe_id": 13,
-      "content": "13do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 23,
       "user_id": 2,
       "recipe_id": 14,
-      "content": "14easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 24,
       "user_id": 3,
       "recipe_id": 15,
-      "content": "15taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 25,
       "user_id": 4,
       "recipe_id": 16,
-      "content": "16this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 26,
       "user_id": 5,
       "recipe_id": 17,
-      "content": "17i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 27,
       "user_id": 6,
       "recipe_id": 18,
-      "content": "18do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 28,
       "user_id": 3,
       "recipe_id": 1,
-      "content": "19easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 29,
       "user_id": 4,
       "recipe_id": 2,
-      "content": "20taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 30,
       "user_id": 5,
       "recipe_id": 3,
-      "content": "21this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 31,
       "user_id": 2,
       "recipe_id": 4,
-      "content": "22i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 32,
       "user_id": 3,
       "recipe_id": 5,
-      "content": "23do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 33,
       "user_id": 6,
       "recipe_id": 6,
-      "content": "24easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 34,
       "user_id": 5,
       "recipe_id": 7,
-      "content": "25taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 35,
       "user_id": 2,
       "recipe_id": 8,
-      "content": "26taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 36,
       "user_id": 3,
       "recipe_id": 9,
-      "content": "27taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 37,
       "user_id": 4,
       "recipe_id": 10,
-      "content": "28taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 38,
       "user_id": 6,
       "recipe_id": 11,
-      "content": "29taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 39,
       "user_id": 2,
       "recipe_id": 12,
-      "content": "30taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 40,
       "user_id": 3,
       "recipe_id": 13,
-      "content": "31taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 41,
       "user_id": 4,
       "recipe_id": 14,
-      "content": "32taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 42,
       "user_id": 6,
       "recipe_id": 15,
-      "content": "33taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 43,
       "user_id": 5,
       "recipe_id": 16,
-      "content": "34taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 44,
       "user_id": 2,
       "recipe_id": 17,
-      "content": "35this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 45,
       "user_id": 3,
       "recipe_id": 18,
-      "content": "36i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 46,
       "user_id": 4,
       "recipe_id": 1,
-      "content": "37do not use this recipe",
-      "created_at": "2020-06-18T09:37:02Z",
-      "updated_at": "2020-06-18T09:37:02Z"
+      "content": "do not use this recipe",
     },
     {
       "id": 47,
       "user_id": 2,
       "recipe_id": 2,
-      "content": "38easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 48,
       "user_id": 2,
       "recipe_id": 3,
-      "content": "39taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 49,
       "user_id": 3,
       "recipe_id": 4,
-      "content": "40this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 50,
       "user_id": 4,
       "recipe_id": 5,
-      "content": "41i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 51,
       "user_id": 4,
       "recipe_id": 6,
-      "content": "42do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 52,
       "user_id": 5,
       "recipe_id": 7,
-      "content": "43easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 53,
       "user_id": 6,
       "recipe_id": 8,
-      "content": "44taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 54,
       "user_id": 3,
       "recipe_id": 9,
-      "content": "45this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 55,
       "user_id": 5,
       "recipe_id": 10,
-      "content": "46i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 56,
       "user_id": 6,
       "recipe_id": 11,
-      "content": "47do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 57,
       "user_id": 2,
       "recipe_id": 12,
-      "content": "48easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 58,
       "user_id": 3,
       "recipe_id": 13,
-      "content": "49taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 59,
       "user_id": 4,
       "recipe_id": 14,
-      "content": "50this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 60,
       "user_id": 5,
       "recipe_id": 15,
-      "content": "51taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 61,
       "user_id": 2,
       "recipe_id": 16,
-      "content": "52this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 62,
       "user_id": 3,
       "recipe_id": 17,
-      "content": "53i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 63,
       "user_id": 4,
       "recipe_id": 18,
-      "content": "54this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 64,
       "user_id": 2,
       "recipe_id": 1,
-      "content": "55i failed with this recipe"
+      "content": "i failed with this recipe"
     },
     {
       "id": 65,
       "user_id": 2,
       "recipe_id": 2,
-      "content": "56do not use this recipe"
+      "content": "do not use this recipe"
     },
     {
       "id": 66,
       "user_id": 3,
       "recipe_id": 3,
-      "content": "57easy and helpful"
+      "content": "easy and helpful"
     },
     {
       "id": 67,
       "user_id": 4,
       "recipe_id": 4,
-      "content": "58taste different from what i had before"
+      "content": "taste different from what i had before"
     },
     {
       "id": 68,
       "user_id": 4,
       "recipe_id": 5,
-      "content": "59this recipe is awesome"
+      "content": "this recipe is awesome"
     },
     {
       "id": 69,
       "user_id": 5,
       "recipe_id": 6,
-      "content": "60do not use this recipe"
+      "content": "do not use this recipe"
     }
   ]);
 
