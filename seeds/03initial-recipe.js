@@ -137,7 +137,7 @@ exports.seed = function(knex,Promise) {
           "admin_id" : 4,
           "draft" : false,
           "appr_status" : true,
-          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/17\/160736_66c740fcd10a15b641d49e4774b0cccc.jpg"
+          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/21\/140903_611f85ff508f7475a6513cc253539d1b.jpg"
         },
         {
           "name" : "Japanese ramen noodle ",
@@ -146,7 +146,7 @@ exports.seed = function(knex,Promise) {
           "admin_id" : 2,
           "draft" : false,
           "appr_status" : true,
-          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/17\/160736_66c740fcd10a15b641d49e4774b0cccc.jpg"
+          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/21\/132329_20d1af1197236502b1d442deedd0f565.jpg"
         },
         {
           "name" : "Japanese ramen noodle soup",
@@ -155,7 +155,7 @@ exports.seed = function(knex,Promise) {
           "admin_id" : 3,
           "draft" : false,
           "appr_status" : true,
-          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/17\/160736_66c740fcd10a15b641d49e4774b0cccc.jpg"
+          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/21\/132405_aee7a297f39b1ac3b262efa17dfd2197.jpg"
         },
         {
           "name" : "Japanese ramen noodle soup soup",
@@ -164,7 +164,7 @@ exports.seed = function(knex,Promise) {
           "admin_id" : 5,
           "draft" : false,
           "appr_status" : true,
-          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/17\/160736_66c740fcd10a15b641d49e4774b0cccc.jpg"
+          "image_url" : "https:\/\/img.eservice-hk.net\/upload\/2020\/06\/21\/132427_9de3a15a143080d001f8fc3b59b52d54.jpg"
         }
       ]);
   
