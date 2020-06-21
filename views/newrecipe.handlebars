@@ -9,7 +9,17 @@
             <div id="cuisine" class="col-sm-12 col-lg-4">
                 <select class="form-control fontheavy highlight nullcheck">
                     <option class="dropdown-item" value="" disabled selected>Cuisine</option>
+                    <option class="dropdown-item" value="*">All</option>
                     {{#each cuisine_name}}
+                    <option class="dropdown-item" value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div id="foodnamesection" class="col-sm-12 col-lg-4">
+                <select class="form-control fontheavy highlight nullcheck">
+                    <option class="dropdown-item" value="" disabled selected>Food name</option>
+                    {{#each food_name}}
                     <option class="dropdown-item" value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
@@ -19,16 +29,6 @@
                 <select class="form-control fontheavy highlight nullcheck">
                     <option class="dropdown-item" value="" disabled selected>Food type</option>
                     {{#each food_type}}
-                    <option class="dropdown-item" value="{{this}}">{{this}}</option>
-                    {{/each}}
-                </select>
-            </div>
-
-
-            <div id="foodnamesection" class="col-sm-12 col-lg-4">
-                <select class="form-control fontheavy highlight nullcheck">
-                    <option class="dropdown-item" value="" disabled selected>Food name</option>
-                    {{#each food_name}}
                     <option class="dropdown-item" value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
@@ -93,7 +93,7 @@
         <div class="custom-file mb-3">
             <div>
                 <label for="file">Choose 1 picture of your recipe (This picture will be added to your recipe)</label><br>
-                <input type="file" class="btn btn-outline-secondary col-12" id="file" name="file" multiple>
+                <input type="file" class="btn btn-outline-secondary col-12" id="file" name="file" accept="image/*">
             </div><br>
 
             <div class="form-group row d-flex justify-content-center">
